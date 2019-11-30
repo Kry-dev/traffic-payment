@@ -1,0 +1,18 @@
+.btn {
+    font-family: $btn-font-family;
+    border-width: 3px;
+    box-shadow: none;
+    &-danger,
+    &-warning,
+    &-primary,
+    &-success {
+        color: $white;
+        box-shadow: none;
+    }
+    &:disabled,
+    &.disabled {
+        background: $gray-100;
+        border-color: $gray-100;
+        color: $white;
+    }
+}

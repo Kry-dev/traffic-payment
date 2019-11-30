@@ -1,0 +1,156 @@
+.row.payment-row
+    .col-md-2.offset-1
+        h3.text-blue-dark Personal Information
+    .col-md-8
+        .form-group.mb-4
+            label Full Name
+            p   Derrik Sun
+                include ../locked/locked
+        .form-group.row
+            .col-6
+                label(for='phoneNumber') Phone Number: *
+                input#phoneNumber.form-control(
+                    type = "tel",
+                    pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}",
+                    required = "required",
+                    title = "Use numeric only",
+                    name = "str_phone",
+                    placeholder = "(XXX) XXX-XXXX"
+                    )
+                .invalid-feedback Use numeric only
+            .col-6
+                .row.payment-DOB
+                    label(for='month').col-12 Date of Birth: *
+                    .col-4.pr-0
+                        select#month.form-control.custom-select(placeholder="Month")
+                            option(selected disabled value="") Month
+                            option(val="Jan")  Jan
+                            option(val="Feb")  Feb
+                            option(val="Mar")  Mar
+                            option(val="Apr")  Apr
+                            option(val="May")  May
+                            option(val="June")  June
+                            option(val="July")  July
+                            option(val="Aug")  Aug
+                            option(val="Sep")  Sep
+                            option(val="Oct")  Oct
+                            option(val="Nov")  Nov
+                            option(val="Dec")  Dec
+                    .col-4.pr-0
+                        select#date.form-control.custom-select
+                            option(selected disabled value="") Date
+                            option(val="01") 01
+                            option(val="02") 02
+                            option(val="03") 03
+                            option(val="04") 04
+                            option(val="05") 05
+                            option(val="06") 06
+                            option(val="07") 07
+                            option(val="08") 08
+                            option(val="09") 09
+                            option(val="10") 10
+                            option(val="11") 11
+                            option(val="12") 12
+                    .col-4.pr-0
+                        select#year.form-control.custom-select
+                            option(selected disabled value="") Year
+                            option(val="2019") 2019
+                            option(val="2018") 2018
+                            option(val="2017") 2017
+                            option(val="2016") 2016
+                            option(val="2015") 2015
+                            option(val="2014") 2014
+                            option(val="2013") 2013
+                            option(val="2012") 2012
+                            option(val="2011") 2011
+                            option(val="2010") 2010
+
+        .form-group.row
+            .col-md-9
+                label(for='address') Address: *
+                input#address.form-control(type='text', name="str_address1", placeholder='Start typing full address')
+                .payment-modal
+                    .modal-close
+                    .row.mb-4
+                        .col-6.pr-md-0
+                            label(for='phoneNumber') Street Number: *
+                            input#streetNumber.form-control(type='text', placeholder='888', name="str_number")
+                        .col-6
+                            label(for='streetName') Street Name: *
+                            input#streetName.form-control(type='text', placeholder='Brenann Street', name="str_name")
+                    .row.mb-4
+                        .col-6.pr-md-0
+                            label(for='unitNumber') Unit Number: *
+                            input#unitNumber.form-control(type='text', name="unit", placeholder='')
+                        .col-6
+                            label(for='city') City: *
+                            input#city.form-control(type='text', name="city", placeholder='San Fransisco')
+                    .row.mb-4
+                        .col-6.pr-md-0
+                            label(for='state') State: *
+                            select#state.form-control(type='text', name="state")
+                                option(selected disabled value="") Select State
+                                +listOfStates
+                        .col-6
+                            label(for='country') Country: *
+                            select#country.form-control(type='text',name="str_county")
+                                option(selected disabled value="") United States
+                                option(value="USA") United States
+                    .row.mb-4
+                        .col-6.pr-md-0
+                            label(for='postalCode') Postal code: *
+                            input#postalCode.form-control(type='text', name="zip", placeholder='94103')
+                    .row
+                        .col-6.pr-md-0
+                            button.w-100.btn.btn-outline-secondary Clear Address
+                        .col-6
+                            button.w-100.btn.btn-danger Save Changes
+
+.row.payment-row.border-bottom-0
+    .col-md-2.offset-1
+        h3.text-blue-dark Citation Information
+    .col-md-8
+        .form-group.row
+            .col-6
+                label(for='str_county') Country of Violation: *
+                select#str_county.form-control.custom-select( name="str_county")
+                    option(selected disabled value="") Select Country
+                    option(val="USA")  USA
+            .col-6
+                label(for='str_court') Court of Violation: *
+                select#str_court.form-control.custom-select( name="str_court")
+                    option(selected disabled value="")
+                    option(val="USA")  USA
+        .form-group.row
+            .col-6
+                label(for='str_docket') Case Number: *
+                input#str_docket.form-control.custom-select(type="text", placeholder="e.g. 092769302", name="str_docket")
+            .col-6
+                p.font-italic
+                    em
+                        | If you have a citation number AND a case or docket number, we suggest using the case or
+                        | docket number.}
+        .form-group.row
+            .col-6
+                label(for='str_state') Driver’s License State: *
+                select#str_state.form-control.select2-selection(type="text", name="str_state")
+                    option(selected disabled value="") Select State
+                    +listOfStates
+            .col-6
+                label(for='driverslicense') Driver’s License Number: *
+                input#driverslicense.form-control.custom-select(type="text", placeholder="e.g. DL05876", name="driverslicense")
+.row.payment-row.border-bottom-0
+    .col-md-8.offset-3
+        .form-group.row
+            .col-12
+                p.text-danger Important!
+                p.mb-5
+                    | It is your responsibility to make sure you are eligible for traffic school. We will be submitting your
+                    | course results to the DMV and Court, but the submission may not be accepted if you have unpaid court fees
+                    | or errors in your information. If you require us to RESUBMIT your test results again, we will assess a
+                    | $6.99 fee to reissue your certificate and resubmit your course results.
+            .col-6
+                button.w-100.btn.btn-danger(type='submit') Save Changes & Continue
+
+
+

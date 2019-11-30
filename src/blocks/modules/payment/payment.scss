@@ -1,0 +1,32 @@
+.payment{
+    &-row {
+        padding: 24px 0 80px;
+        border-bottom: 1px solid $border-color;
+    }
+    label {
+        font-family: $label-font-family;
+        color: $label-text-color;
+        font-size: $label-font-size;
+        line-height: $label-line-height;
+        font-weight: $label-font-weight;
+    }
+    &-DOB {
+        label {
+            margin-bottom: 11px;
+        }
+    }
+    &-modal {
+        width: 100%;
+        background: $modal-bg;
+        margin: 2rem auto ;
+        padding: 2rem 2rem 80px;
+    }
+    p em,
+    p i,
+    em,i{
+        font-family: "Roboto", sans-serif;
+        font-weight: 100;
+        font-style: italic;
+        font-size: 0.9375rem;
+    }
+}

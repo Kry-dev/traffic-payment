@@ -1,0 +1,21 @@
+.header {
+    box-shadow: $box-shadow-sm;
+    .navbar {
+        
+        &-collapsde {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
+    .nav-link {
+        font-size: $font-size-base;
+        line-height: $nav-link-height;
+        color: $nav-link-color;
+        font-family: $nav-link-font-family;
+        font-weight: $nav-link-font-weight;
+        text-transform: uppercase;
+        padding: $nav-link-padding-y $nav-link-padding-x !important;
+    }
+}
+

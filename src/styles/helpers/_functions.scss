@@ -1,3 +1,10 @@
 @function rem($px) {
     @return ($px / 16) +rem;
 }
+@function color($key: "blue") {
+    @return map-get($colors, $key);
+}
+
+@function theme-color($key: "primary") {
+    @return map-get($theme-colors, $key);
+}
