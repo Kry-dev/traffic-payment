@@ -1,13 +1,5 @@
-modules.define('payment', ['i-bem-dom'], function(provide, bemDom) {
-    
-    provide(bemDom.declBlock(this.name, {
-        onSetMod: {
-            js: {
-                inited: function() {
-                    console.log("payment");
-                }
-            }
-        }
-    }));
-    
+import $ from "jquery";
+
+$(document).ready(function() {
+    $('.select2-selection').select2();
 });

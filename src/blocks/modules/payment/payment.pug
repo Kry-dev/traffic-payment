@@ -130,11 +130,10 @@
                     em
                         | If you have a citation number AND a case or docket number, we suggest using the case or
                         | docket number.}
-        .form-group.row
-            .col-6
+        .row
+            .col-6.form-group
                 label(for='str_state') Driver’s License State: *
-                select#str_state.form-control.select2-selection(type="text", name="str_state")
-                    option(selected disabled value="") Select State
+                select#str_state.form-control.custom-select.select2-selection(type="text", name="states[]",data-placeholder="Select a state")
                     +listOfStates
             .col-6
                 label(for='driverslicense') Driver’s License Number: *

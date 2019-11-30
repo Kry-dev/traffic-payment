@@ -36,7 +36,10 @@
 @import "../../node_modules/bootstrap/scss/images";
 
 // Other libs
+@import "../../node_modules/select2/src/scss/core.scss";
+//@import "../../node_modules/select2-theme-bootstrap4/src/build";
 @import "../../node_modules/select2-theme-bootstrap4/src/select2-bootstrap";
+
 //@import "vendor/libs";
 @import "base/fonts";
 @import "base/general";

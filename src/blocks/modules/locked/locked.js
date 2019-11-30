@@ -1,13 +1,5 @@
-modules.define('locked', ['i-bem-dom'], function(provide, bemDom) {
-    
-    provide(bemDom.declBlock(this.name, {
-        onSetMod: {
-            js: {
-                inited: function() {
-                    console.log("locked");
-                }
-            }
-        }
-    }));
-    
+import $ from "jquery";
+
+$(document).ready(function () {
+    $('.locked').popover();
 });
