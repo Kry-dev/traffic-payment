@@ -77,7 +77,7 @@
                     <div class="row payment-DOB">
                       <label class="col-12" for="month">Date of Birth: *</label>
                       <div class="col-4 pr-0">
-                        <select class="form-control custom-select select2-selection" id="month" placeholder="Month">
+                        <select class="form-control custom-select select2-selection" id="month" data-width="100%" data-minimum-results-for-search="Infinity">
                           <option val="Jan"> Jan</option>
                           <option val="Feb"> Feb</option>
                           <option val="Mar"> Mar</option>
@@ -93,7 +93,7 @@
                         </select>
                       </div>
                       <div class="col-4 pr-0">
-                        <select class="form-control custom-select select2-selection" id="date">
+                        <select class="form-control custom-select select2-selection" id="date" data-width="100%" data-minimum-results-for-search="Infinity">
                           <option val="01">01</option>
                           <option val="02">02</option>
                           <option val="03">03</option>
@@ -109,7 +109,7 @@
                         </select>
                       </div>
                       <div class="col-4 pr-0">
-                        <select class="form-control custom-select select2-selection" id="year">
+                        <select class="form-control custom-select select2-selection" id="year" data-width="100%" data-minimum-results-for-search="Infinity">
                           <option val="2019">2019</option>
                           <option val="2018">2018</option>
                           <option val="2017">2017</option>
@@ -154,8 +154,7 @@
                       <div class="row mb-4">
                         <div class="col-6 pr-md-0">
                           <label for="state">State: *</label>
-                          <select class="form-control select2-selection" id="state" type="text" name="state">
-                            <option selected disabled value="">Select State</option>
+                          <select class="form-control select2-selection js-states" id="state" name="state" data-width="100%" data-minimum-results-for-search="Infinity">
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -211,7 +210,7 @@
                         </div>
                         <div class="col-6">
                           <label for="country">Country: *</label>
-                          <select class="form-control select2-selection" id="country" type="text" name="str_county">
+                          <select class="form-control select2-selection" id="country" name="str_county" data-width="100%" data-minimum-results-for-search="Infinity">
                             <option selected disabled value="">United States</option>
                             <option value="USA">United States</option>
                           </select>
@@ -244,13 +243,13 @@
                 <div class="form-group row">
                   <div class="col-6">
                     <label for="str_county">Country of Violation: *</label>
-                    <select class="form-control custom-select select2-selection" id="str_county" name="str_county">
+                    <select class="form-control custom-select select2-selection" id="str_county" name="str_county" data-minimum-results-for-search="Infinity">
                       <option val="USA"> USA</option>
                     </select>
                   </div>
                   <div class="col-6">
                     <label for="str_court">Court of Violation: *</label>
-                    <select class="form-control custom-select select2-selection" id="str_court" name="str_court">
+                    <select class="form-control custom-select select2-selection" id="str_court" name="str_court" data-minimum-results-for-search="Infinity">
                       <option val="USA"> USA</option>
                     </select>
                   </div>
@@ -269,7 +268,7 @@
                 <div class="row">
                   <div class="col-6 form-group">
                     <label for="str_state">Driver’s License State: *</label>
-                    <select class="form-control custom-select select2-selection" id="str_state" name="states[]" data-placeholder="Select a state" style="width: 100%">
+                    <select class="form-control custom-select select2-selection" id="str_state" name="states[]" data-placeholder="Select a state" data-width="100%" data-minimum-results-for-search="Infinity">
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
                       <option value="AZ">Arizona</option>
