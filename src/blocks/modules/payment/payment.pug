@@ -22,8 +22,7 @@
                 .row.payment-DOB
                     label(for='month').col-12 Date of Birth: *
                     .col-4.pr-0
-                        select#month.form-control.custom-select(placeholder="Month")
-                            option(selected disabled value="") Month
+                        select#month.form-control.custom-select.select2-selection(placeholder="Month")
                             option(val="Jan")  Jan
                             option(val="Feb")  Feb
                             option(val="Mar")  Mar
@@ -37,8 +36,7 @@
                             option(val="Nov")  Nov
                             option(val="Dec")  Dec
                     .col-4.pr-0
-                        select#date.form-control.custom-select
-                            option(selected disabled value="") Date
+                        select#date.form-control.custom-select.select2-selection
                             option(val="01") 01
                             option(val="02") 02
                             option(val="03") 03
@@ -52,8 +50,7 @@
                             option(val="11") 11
                             option(val="12") 12
                     .col-4.pr-0
-                        select#year.form-control.custom-select
-                            option(selected disabled value="") Year
+                        select#year.form-control.custom-select.select2-selection
                             option(val="2019") 2019
                             option(val="2018") 2018
                             option(val="2017") 2017
@@ -88,12 +85,12 @@
                     .row.mb-4
                         .col-6.pr-md-0
                             label(for='state') State: *
-                            select#state.form-control(type='text', name="state")
+                            select#state.form-control.select2-selection(type='text', name="state")
                                 option(selected disabled value="") Select State
                                 +listOfStates
                         .col-6
                             label(for='country') Country: *
-                            select#country.form-control(type='text',name="str_county")
+                            select#country.form-control.select2-selection(type='text',name="str_county")
                                 option(selected disabled value="") United States
                                 option(value="USA") United States
                     .row.mb-4
@@ -113,13 +110,11 @@
         .form-group.row
             .col-6
                 label(for='str_county') Country of Violation: *
-                select#str_county.form-control.custom-select( name="str_county")
-                    option(selected disabled value="") Select Country
+                select#str_county.form-control.custom-select.select2-selection( name="str_county")
                     option(val="USA")  USA
             .col-6
                 label(for='str_court') Court of Violation: *
-                select#str_court.form-control.custom-select( name="str_court")
-                    option(selected disabled value="")
+                select#str_court.form-control.custom-select.select2-selection( name="str_court")
                     option(val="USA")  USA
         .form-group.row
             .col-6
@@ -133,7 +128,7 @@
         .row
             .col-6.form-group
                 label(for='str_state') Driver’s License State: *
-                select#str_state.form-control.custom-select.select2-selection(type="text", name="states[]",data-placeholder="Select a state")
+                select#str_state.form-control.custom-select.select2-selection(name="states[]", data-placeholder="Select a state",style="width: 100%")
                     +listOfStates
             .col-6
                 label(for='driverslicense') Driver’s License Number: *
