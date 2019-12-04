@@ -155,6 +155,46 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/blocks/modules/adress-modal/adress-modal.js":
+/*!*********************************************************!*\
+  !*** ./src/blocks/modules/adress-modal/adress-modal.js ***!
+  \*********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+ // $(document).ready(function() {
+//     $("#address-form").on('submit', function( event ) {
+//         console.log( $( this ).serializeArray() );
+//         event.preventDefault();
+//     });
+// });
+
+(function () {
+  'use strict';
+
+  window.addEventListener('load', function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var addressForm = document.getElementsByClassName('address-form'); // Loop over them and prevent submission
+
+    var validation = Array.prototype.filter.call(addressForm, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+/***/ }),
+
 /***/ "./src/blocks/modules/footer/footer.js":
 /*!*********************************************!*\
   !*** ./src/blocks/modules/footer/footer.js ***!
@@ -206,9 +246,110 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var formvalidation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formvalidation */ "./node_modules/formvalidation/dist/js/formValidation.js");
+/* harmony import */ var formvalidation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(formvalidation__WEBPACK_IMPORTED_MODULE_1__);
+
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.select2-selection').select2();
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('select').select2();
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-states').select2({
+    minimumResultsForSearch: -1,
+    placeholder: "Select a state"
+  });
+});
+document.addEventListener('DOMContentLoaded', function (e) {
+  formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.formValidation(document.getElementById('payment'), {
+    fields: {
+      str_phone: {
+        validators: {
+          phone: {
+            message: 'The value is not a valid phone number'
+          }
+        }
+      },
+      // firstName: {
+      //     validators: {
+      //         notEmpty: {
+      //             message: 'The first name is required'
+      //         },
+      //         regexp: {
+      //             regexp: /^[a-zA-Zs]+$/,
+      //             message: 'The first name can only consist of alphabetical and space'
+      //         }
+      //     }
+      // },
+      // lastName: {
+      //     validators: {
+      //         notEmpty: {
+      //             message: 'The last name is required'
+      //         },
+      //         regexp: {
+      //             regexp: /^[a-zA-Zs]+$/,
+      //             message: 'The last name can only consist of alphabetical and space'
+      //         }
+      //     }
+      // },
+      str_county: {
+        validators: {
+          notEmpty: {
+            message: 'The city is required'
+          }
+        }
+      } // city: {
+      //     validators: {
+      //         notEmpty: {
+      //             message: 'The city is required'
+      //         }
+      //     }
+      // },
+      // state: {
+      //     validators: {
+      //         notEmpty: {
+      //             message: 'The state is required'
+      //         }
+      //     }
+      // },
+      // zipcode: {
+      //     validators: {
+      //         notEmpty: {
+      //             message: 'The zipcode is required'
+      //         }
+      //     }
+      // },
+
+    },
+    plugins: {
+      trigger: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.Trigger(),
+      bootstrap: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.Bootstrap({
+        rowSelector: function rowSelector(field, ele) {
+          // field is the field name
+          // ele is the field element
+          switch (field) {
+            // case 'firstName':
+            // case 'lastName':
+            //     return '.col-sm-4';
+            case 'phoneNumber':
+            case 'str_county': // case 'city':
+            // case 'state':
+            // case 'zipcode':
+            //     return '.col-sm-3';
+            //
+
+            default:
+              return '.form-group';
+          }
+        }
+      }),
+      submitButton: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.SubmitButton(),
+      icon: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.Icon({
+        valid: 'fa fa-check',
+        invalid: 'fa fa-times',
+        validating: 'fa fa-refresh'
+      })
+    }
+  });
 });
 
 /***/ }),
@@ -238,10 +379,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var popper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
-/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(select2__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
-/* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(validate_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var formvalidation_dist_js_formValidation_min__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formvalidation/dist/js/formValidation.min */ "./node_modules/formvalidation/dist/js/formValidation.min.js");
+/* harmony import */ var formvalidation_dist_js_formValidation_min__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(formvalidation_dist_js_formValidation_min__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var formvalidation_dist_js_framework_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! formvalidation/dist/js/framework/bootstrap */ "./node_modules/formvalidation/dist/js/framework/bootstrap.js");
+/* harmony import */ var formvalidation_dist_js_framework_bootstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(formvalidation_dist_js_framework_bootstrap__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
+/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(select2__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -263,8 +407,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_header_header__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_header_header__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _modules_payment_payment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! %modules%/payment/payment */ "./src/blocks/modules/payment/payment.js");
 /* harmony import */ var _modules_locked_locked__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! %modules%/locked/locked */ "./src/blocks/modules/locked/locked.js");
-/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/footer/footer */ "./src/blocks/modules/footer/footer.js");
-/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_footer_footer__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _modules_adress_modal_adress_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/adress-modal/adress-modal */ "./src/blocks/modules/adress-modal/adress-modal.js");
+/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! %modules%/footer/footer */ "./src/blocks/modules/footer/footer.js");
+/* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_footer_footer__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 

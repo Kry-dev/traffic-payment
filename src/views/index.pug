@@ -8,8 +8,7 @@ block content
     .wrapper
         include ../blocks/modules/header/header
         main.content(role="main")
-            //form.payment.needs-validation(novalidate)
-            form.payment.needs-validation()
+            form#payment.payment.needs-validation(method="POST")
                 .container
                     include ../blocks/modules/my-info/my-info
                     include ../blocks/modules/payment/payment
@@ -18,5 +17,5 @@ block content
 
 block scripts
 
-    script(src="../js/main.js")
-    script(src="../js/vendor.js")
+    script(src="js/main.js")
+    script(src="js/vendor.js")

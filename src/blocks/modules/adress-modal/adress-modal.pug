@@ -1,0 +1,108 @@
+label(for='address') Address: *
+input#address.form-control(type='text', name="str_address1", placeholder='Start typing full address',
+        data-toggle="collapse" data-target="#address-collapse")
+#address-collapse.collapse.payment-modal.fade(tabindex='-1', role='dialog', aria-labelledby='address-collapseLabel', aria-hidden='true')
+    form#address-form.address-form.needs-validation(novalidate)
+        button.close(type='button', data-toggle="collapse", data-target="#address-collapse")
+            span(aria-hidden='true') ×
+        .row.mb-4
+            .col-6.pr-md-0
+                label(for='streetNumber') Street Number: *
+                input#streetNumber.form-control(
+                    type='text',
+                    placeholder='888',
+                    name="str_number",
+                    required="required"
+                    )
+            .col-6
+                label(for='streetName') Street Name: *
+                input#streetName.form-control(
+                    type='text',
+                    placeholder='Brenann Street',
+                    name="str_name",
+                    required="required"
+                )
+                .valid-feedback
+                    | Looks good!
+                .invalid-feedback
+                    | Doesn't look good!
+
+        .row.mb-4
+            .col-6.pr-md-0
+                label(for='unitNumber') Unit Number: *
+                input#unitNumber.form-control(
+                    type='text',
+                    name="unit",
+                    placeholder='',
+                    required="required"
+                    )
+                .valid-feedback
+                    | Looks good!
+                .invalid-feedback
+                    | Doesn't look good!
+
+            .col-6
+                label(for='city') City: *
+                input#city.form-control(
+                    type='text',
+                    name="city",
+                    placeholder='San Fransisco',
+                    required="required"
+                    )
+                .valid-feedback
+                    | Looks good!
+                .invalid-feedback
+                    | Doesn't look good!
+
+        .row.mb-4
+            .col-6.pr-md-0
+                label(for='state') State: *
+                select.form-control.select2-selection.js-states(
+                    id="state",
+                    name="state",
+                    data-width="100%",
+                    data-minimum-results-for-search="Infinity"
+                )
+                    +listOfStates
+                .valid-feedback
+                    | Looks good!
+                .invalid-feedback
+                    | Doesn't look good!
+
+            .col-6
+                label(for='country') Country: *
+                select.form-control.select2-selection(
+                    id="country",
+                    name="str_county",
+                    data-width="100%",
+                    data-minimum-results-for-search="Infinity"
+                )
+                    option(selected disabled value="") United States
+                    option(value="USA") United States
+                .valid-feedback
+                    | Looks good!
+                .invalid-feedback
+                    | Doesn't look good!
+
+        .row.mb-4
+            .col-6.pr-md-0
+                label(for='postalCode') Postal code: *
+                input#postalCode.form-control(
+                    type='text',
+                    name="zip",
+                    placeholder='94103',
+                    required="required"
+                )
+                .valid-feedback
+                    | Looks good!
+                .invalid-feedback
+                    | Doesn't look good!
+
+        .row
+            .col-6.pr-md-0
+                button.w-100.btn.btn-outline-secondary(type="reset") Clear Address
+            .col-6
+                button.w-100.btn.btn-danger(type="submit") Save Changes
+
+
+
