@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @import "https://fonts.googleapis.com/css?family=Lora:400,400i|Roboto:300i,400|Work+Sans:400,700,800&display=swap";
 
 *,
@@ -6492,6 +6494,38 @@ select2 select2-container.select2-container--default.select2-container--above se
 .select2-container--default .select2-search--dropdown .select2-search__field:focus {
   outline: 0;
   border-color: #12C0C5;
+}
+
+.form-control.invalid-feedback {
+  display: block;
+  font-size: 1.125rem;
+  margin-top: 0;
+  border-color: #FE8B7B;
+  position: relative;
+}
+
+.form-control.invalid-feedback:after {
+  display: inline-block;
+  content: "×";
+  position: absolute;
+  right: 1rem;
+  color: #FE8B7B;
+}
+
+.form-control:disabled {
+  background: #FCFCFC;
+}
+
+form label {
+  width: 100%;
+  text-align: left;
+}
+
+form label.invalid-feedback {
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  color: #FE8B7B;
+  text-align: right;
 }
 
 .header {

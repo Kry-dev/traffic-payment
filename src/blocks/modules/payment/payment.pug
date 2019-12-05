@@ -16,68 +16,53 @@
                     name = "str_phone",
                     placeholder = "(XXX) XXX-XXXX"
                     )
-                .invalid-feedback Use numeric only
             .col-6
                 .row.payment-DOB
                     label(for='month').col-12 Date of Birth: *
                     .col-4.pr-0
-                        select.form-control.custom-select.select2-selection(
+                        //input.form-control.custom-select.select2-selection(
+                        //    id="month",
+                        //    type="month"
+                        //    name="month",
+                        //    data-width="100%",
+                        //    data-placeholder="Month",
+                        //    required="required",
+                        //    data-minimum-results-for-search="Infinity"
+                        //    )
+                        select.form-control.bear-short-months(
+                            required="required",
                             id="month",
-                            data-width="100%",
-                            data-placeholder="Month",
-                            data-minimum-results-for-search="Infinity"
+                            type="month",
+                            name="month"
                             )
-                            option(val="Jan")  Jan
-                            option(val="Feb")  Feb
-                            option(val="Mar")  Mar
-                            option(val="Apr")  Apr
-                            option(val="May")  May
-                            option(val="June")  June
-                            option(val="July")  July
-                            option(val="Aug")  Aug
-                            option(val="Sep")  Sep
-                            option(val="Oct")  Oct
-                            option(val="Nov")  Nov
-                            option(val="Dec")  Dec
-                    .col-4.pr-0
-                        select.form-control.custom-select.select2-selection(
-                            id="date",
-                            data-width="100%",
-                            data-placeholder="Date",
-                            data-minimum-results-for-search="Infinity"
-                            )
-                            option(val="01") 01
-                            option(val="02") 02
-                            option(val="03") 03
-                            option(val="04") 04
-                            option(val="05") 05
-                            option(val="06") 06
-                            option(val="07") 07
-                            option(val="08") 08
-                            option(val="09") 09
-                            option(val="10") 10
-                            option(val="11") 11
-                            option(val="12") 12
-                    .col-4.pr-0
-                        select.form-control.custom-select.select2-selection(
-                            id="year",
-                            data-width="100%",
-                            placeholder="Year",
-                            data-minimum-results-for-search="Infinity"
-                            )
-                            option(val="2019") 2019
-                            option(val="2018") 2018
-                            option(val="2017") 2017
-                            option(val="2016") 2016
-                            option(val="2015") 2015
-                            option(val="2014") 2014
-                            option(val="2013") 2013
-                            option(val="2012") 2012
-                            option(val="2011") 2011
-                            option(val="2010") 2010
 
+                    .col-4.pr-0
+                        //input.form-control.custom-select.select2-selection(
+                        //    id="date",
+                        //    type="date"
+                        //    name="date",
+                        //    data-width="100%",
+                        //    data-placeholder="Date",
+                        //    required="required",
+                        //    data-minimum-results-for-search="Infinity"
+                        //    )
+                        select.form-control.bear-dates(
+                            required="required"
+                        )
+                    .col-4.pr-0
+                        //input.form-control.custom-select.select2-selection(
+                        //    id="year",
+                        //    type="year"
+                        //    name="year",
+                        //    data-width="100%",
+                        //    placeholder="Year",
+                        //    required="required",
+                        //    data-minimum-results-for-search="Infinity"
+                        //    )
+                        select.form-control.bear-years(
+                            required="required"
+                        )
                     .col-12
-                    #DOB-invalid.invalid-feedback Use numeric only
         .form-group.row
             .col-md-9
                 include ../adress-modal/adress-modal

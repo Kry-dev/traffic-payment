@@ -1,0 +1,33 @@
+.form-control {
+    &.invalid-feedback {
+        display: block;
+        font-size: 1.125rem;
+        margin-top: 0;
+        border-color: $danger;
+        position: relative;
+        &:after {
+            display: inline-block;
+            content: "×";
+            position: absolute;
+            right: 1rem;
+            color: $danger;
+            
+        }
+    }
+    &:disabled {
+        background: #FCFCFC;
+    }
+}
+form label {
+    width: 100%;
+    text-align: left;
+    &.invalid-feedback{
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+        color: $danger;
+        text-align: right;
+    }
+}
+.payment-DOB{
+
+}

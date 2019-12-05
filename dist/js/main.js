@@ -159,39 +159,69 @@
 /*!*********************************************************!*\
   !*** ./src/blocks/modules/adress-modal/adress-modal.js ***!
   \*********************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
- // $(document).ready(function() {
-//     $("#address-form").on('submit', function( event ) {
-//         console.log( $( this ).serializeArray() );
-//         event.preventDefault();
-//     });
-// });
+// import $ from "jquery";
+$(document).ready(function () {
+  (function () {
+    var $inputAuto = $('#str_address1');
+    var addrComponents = {
+      streetNumber: {
+        display: 'short_name',
+        type: 'street_number'
+      },
+      streetName: {
+        display: 'long_name',
+        type: 'route'
+      },
+      cityName: {
+        display: 'long_name',
+        type: 'locality'
+      },
+      stateName: {
+        display: 'short_name',
+        type: 'administrative_area_level_1'
+      },
+      zipCode: {
+        display: 'short_name',
+        type: 'postal_code'
+      }
+    };
+    var autocomplete;
+    var autocompleteOptions = {
+      radius: 10,
+      types: ['geocode']
+    };
 
-(function () {
-  'use strict';
+    function initAutocomplete() {
+      autocomplete = new google.maps.places.Autocomplete($inputAuto[0], autocompleteOptions);
+      autocomplete.addListener('place_changed', setAddress);
+    }
 
-  window.addEventListener('load', function () {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var addressForm = document.getElementsByClassName('address-form'); // Loop over them and prevent submission
+    ;
 
-    var validation = Array.prototype.filter.call(addressForm, function (form) {
-      form.addEventListener('submit', function (event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
+    function setAddress() {
+      var place = autocomplete.getPlace().address_components;
+      var streetAddr = [addrComponents.streetNumber, addrComponents.streetName];
+      var streetAddrDisplay = []; // Add additional field values
 
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
+      place.forEach(function (placeComponent) {
+        streetAddr.forEach(function (streetAddrComponent) {
+          if (placeComponent.types[0] === streetAddrComponent.type) {
+            streetAddrDisplay.push(placeComponent[streetAddrComponent.display]);
+          } // else if <additional field values>
+
+        });
+      });
+      var addrString = streetAddrDisplay.join(' ');
+      $inputAuto.val(addrString);
+    }
+
+    ;
+    initAutocomplete();
+  })();
+});
 
 /***/ }),
 
@@ -246,110 +276,321 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var formvalidation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! formvalidation */ "./node_modules/formvalidation/dist/js/formValidation.js");
-/* harmony import */ var formvalidation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(formvalidation__WEBPACK_IMPORTED_MODULE_1__);
 
 window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
-window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a; // CALENDAR start
+//Date method
 
+function dates(tags) {
+  var dates = "";
+  var i;
+
+  if (tags == "") {
+    //If the dates('') paramenter is empty, add no tags
+    for (i = 1; i < 32; i++) {
+      dates += i;
+    }
+  } else {
+    for (i = 1; i < 32; i++) {
+      dates += "<" + tags + ">" + i + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-dates");
+  var placeholderDate = "Date";
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = "<option value='' disabled='' selected>" + placeholderDate + "</option>" + dates;
+  }
+} //Days method
+
+
+function days(tags) {
+  //List all the Days with array
+  var list_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  var days, i, l;
+
+  if (tags == "") {
+    //If the days('') paramenter is empty, add no tags
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += list_days[i];
+    }
+  } else {
+    //If the days('option') has paramenter, add the tags to it
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += "<" + tags + ">" + list_days[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-days");
+
+  for (i = 1; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = days;
+  }
+} //Short Days method
+
+
+function short_days(tags) {
+  //List all the Days with array
+  var list_days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var i, l, days;
+
+  if (tags == "") {
+    //If the short_days('') paramenter is empty, add no tags
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += list_days[i];
+    }
+  } else {
+    //If the days('option') has paramenter, add the tags to it
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += "<" + tags + ">" + list_days[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-short-days");
+
+  for (i = 1; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = days;
+  }
+} //Months method
+
+
+function months(tags) {
+  //List all the Days with array
+  var list_months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var i, l, months;
+
+  if (tags == "") {
+    //If the months('') paramenter is empty, add no tags
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += list_months[i];
+    }
+  } else {
+    //If the months('option') has paramenter, add the tags to it
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += "<" + tags + ">" + list_months[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-months");
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = months;
+  }
+} //Short Months method
+
+
+function short_months(tags) {
+  //List all the Months with array
+  var list_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var i, l, months;
+
+  if (tags == "") {
+    //If the short_months('') paramenter is empty, add no tags
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += list_months[i];
+    }
+  } else {
+    //If the months('option') has paramenter, add the tags to it
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += "<" + tags + ">" + list_months[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-short-months");
+  var monthPlaceholder = "Month";
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = "<option value='' disabled='' selected>" + monthPlaceholder + "</option>" + months;
+  }
+} //Year method
+
+
+function years(tags, startY, endY) {
+  var i,
+      years = "";
+
+  if (tags == "") {
+    //If the years('') paramenter is empty, add no tags
+    for (i = startY; i < endY + 1; i++) {
+      years = i;
+    }
+  } else {
+    //If the years('option') has paramenter, add the tags to it
+    for (i = startY; i < endY + 1; i++) {
+      years += "<" + tags + ">" + i + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-years");
+  var yearPlaceholder = "Year";
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = "<option value='' disabled='' selected>" + yearPlaceholder + "</option>" + years;
+  }
+} //CALENDAR end
+//get current date
+
+
+var now = new Date();
+var currentMonth = now.getMonth();
+var currentYear = now.getFullYear();
+var minAge = 16;
+var maxAge = 100;
+var startYear = currentYear - minAge;
+var endYear = currentYear - maxAge;
+console.log("today is: " + now);
+console.log("current month is: " + currentMonth);
+console.log("currentYear: " + currentYear);
+console.log("startYear: " + startYear);
+console.log("endYear: " + endYear);
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('select').select2();
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-states').select2({
-    minimumResultsForSearch: -1,
-    placeholder: "Select a state"
+  // $('select').select2();
+  // $('.js-states').select2({
+  //     minimumResultsForSearch: -1,
+  //     placeholder: "Select a state",
+  // });
+  short_months('option');
+  dates('option'); //You can change the startYear(2003) and endYear(1919)
+
+  years('option', endYear, startYear);
+
+  function initialize() {
+    var input = document.getElementById("str_address1");
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    google.maps.event.addListener(autocomplete, "place_changed", function () {
+      var place = autocomplete.getPlace();
+      document.getElementById("city").value = place.name; // document.getElementById('cityLat').value = place.geometry.location.lat();
+      // document.getElementById('cityLng').value = place.geometry.location.lng();
+    });
+  }
+
+  google.maps.event.addDomListener(window, "load", initialize);
+  /*  validate form  */
+
+  jQuery.validator.setDefaults({
+    debug: true,
+    success: "valid"
   });
-});
-document.addEventListener('DOMContentLoaded', function (e) {
-  formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.formValidation(document.getElementById('payment'), {
-    fields: {
-      str_phone: {
-        validators: {
-          phone: {
-            message: 'The value is not a valid phone number'
-          }
+  jQuery.validator.addMethod("noSpace", function (value, element) {
+    return value.indexOf("  ") < 0 && value !== "";
+  }, "Space are not allowed");
+  jQuery.validator.addMethod("phoneUS", function (phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, "");
+    return this.optional(element) || phone_number.length > 9 && phone_number.match(/^(\+?1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+  }, "Use numeric values only");
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#payment").each(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).validate({
+      // onfocusout: true,
+      successClass: "valid-feedback",
+      errorClass: "invalid-feedback",
+      ignore: ":hidden",
+      rules: {
+        str_phone: {
+          required: true,
+          phoneUS: true,
+          minlength: 10
+        },
+        month: {
+          required: true
+        },
+        day: {
+          required: true
+        },
+        year: {
+          required: true
+        },
+        str_address1: {
+          required: true
+        } // str_county: {
+        //     required: true
+        // },
+        // str_court: {
+        //     required: true,
+        //     minlength: 5
+        // }
+
+      },
+      messages: {
+        str_phone: {
+          required: "Please enter your phone number",
+          phoneUS: "Use numeric values only. ",
+          digits: true
+        },
+        str_address1: {
+          required: "Please enter your current address"
+        },
+        month: {
+          required: "Please select your month of birth"
+        },
+        day: {
+          required: "Please select your day of birth"
+        },
+        year: {
+          required: "Please select year day of birth"
+        } // email: {
+        //     required: "Email не может быть пустым",
+        //     email: "Неверный формат Email"
+        // },
+        // Phone: {
+        //     required: "Телефон не может быть пустым"
+        // },
+        // password: {
+        //     required: "Пароль не может быть пустым",
+        //     minlength: jQuery.validator.format("Введите не менее {0} символов")
+        // }
+
+      }
+    });
+  });
+  /*  end of validate form  */
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address-collapse").each(function () {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).validate({
+      successClass: "valid-feedback",
+      errorClass: "invalid-feedback",
+      ignore: ":hidden",
+      rules: {
+        str_number: {
+          required: true
+        },
+        str_name: {
+          required: true
+        },
+        unit_number: {
+          required: false
+        },
+        city: {
+          required: false
         }
       },
-      // firstName: {
-      //     validators: {
-      //         notEmpty: {
-      //             message: 'The first name is required'
-      //         },
-      //         regexp: {
-      //             regexp: /^[a-zA-Zs]+$/,
-      //             message: 'The first name can only consist of alphabetical and space'
-      //         }
-      //     }
-      // },
-      // lastName: {
-      //     validators: {
-      //         notEmpty: {
-      //             message: 'The last name is required'
-      //         },
-      //         regexp: {
-      //             regexp: /^[a-zA-Zs]+$/,
-      //             message: 'The last name can only consist of alphabetical and space'
-      //         }
-      //     }
-      // },
-      str_county: {
-        validators: {
-          notEmpty: {
-            message: 'The city is required'
-          }
+      messages: {
+        str_number: {
+          required: "Please enter your street number"
+        },
+        str_name: {
+          required: "Please enter your street name"
+        },
+        city: {
+          required: "Please enter your City"
         }
-      } // city: {
-      //     validators: {
-      //         notEmpty: {
-      //             message: 'The city is required'
-      //         }
-      //     }
-      // },
-      // state: {
-      //     validators: {
-      //         notEmpty: {
-      //             message: 'The state is required'
-      //         }
-      //     }
-      // },
-      // zipcode: {
-      //     validators: {
-      //         notEmpty: {
-      //             message: 'The zipcode is required'
-      //         }
-      //     }
-      // },
-
-    },
-    plugins: {
-      trigger: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.Trigger(),
-      bootstrap: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.Bootstrap({
-        rowSelector: function rowSelector(field, ele) {
-          // field is the field name
-          // ele is the field element
-          switch (field) {
-            // case 'firstName':
-            // case 'lastName':
-            //     return '.col-sm-4';
-            case 'phoneNumber':
-            case 'str_county': // case 'city':
-            // case 'state':
-            // case 'zipcode':
-            //     return '.col-sm-3';
-            //
-
-            default:
-              return '.form-group';
-          }
-        }
-      }),
-      submitButton: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.SubmitButton(),
-      icon: new formvalidation__WEBPACK_IMPORTED_MODULE_1___default.a.plugins.Icon({
-        valid: 'fa fa-check',
-        invalid: 'fa fa-times',
-        validating: 'fa fa-refresh'
-      })
-    }
+      }
+    });
   });
+  /*  validate form Address */
+  // let dataAddress = $('#address-collapse').serializeArray();
+  // console.log(dataAddress);
+  // dataAddress.each(data,function(){
+  //     console.log(this.name+'='+this.value);
+  // });
+
+  /*  end of validate form Address  */
 });
 
 /***/ }),
@@ -361,7 +602,160 @@ document.addEventListener('DOMContentLoaded', function (e) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// CALENDAR start
+//Date method
+function dates(tags) {
+  var dates = "";
+  var i;
 
+  if (tags == "") {
+    //If the dates('') paramenter is empty, add no tags
+    for (i = 1; i < 32; i++) {
+      dates += i;
+    }
+  } else {
+    //If the dates('option') has paramenter, add the tags to it
+    for (i = 1; i < 32; i++) {
+      dates += "<" + tags + ">" + i + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-dates");
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = dates;
+  }
+} //Days method
+
+
+function days(tags) {
+  //List all the Days with array
+  var list_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  var days, i, l;
+
+  if (tags == "") {
+    //If the days('') paramenter is empty, add no tags
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += list_days[i];
+    }
+  } else {
+    //If the days('option') has paramenter, add the tags to it
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += "<" + tags + ">" + list_days[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-days");
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = days;
+  }
+} //Short Days method
+
+
+function short_days(tags) {
+  //List all the Days with array
+  var list_days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  var i, l, days;
+
+  if (tags == "") {
+    //If the short_days('') paramenter is empty, add no tags
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += list_days[i];
+    }
+  } else {
+    //If the days('option') has paramenter, add the tags to it
+    for (i = 0, l = list_days.length, days = ""; i < l; i++) {
+      days += "<" + tags + ">" + list_days[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-short-days");
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = days;
+  }
+} //Months method
+
+
+function months(tags) {
+  //List all the Days with array
+  var list_months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var i, l, months;
+
+  if (tags == "") {
+    //If the months('') paramenter is empty, add no tags
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += list_months[i];
+    }
+  } else {
+    //If the months('option') has paramenter, add the tags to it
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += "<" + tags + ">" + list_months[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-months");
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = months;
+  }
+} //Short Months method
+
+
+function short_months(tags) {
+  //List all the Months with array
+  var list_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var i, l, months;
+
+  if (tags == "") {
+    //If the short_months('') paramenter is empty, add no tags
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += list_months[i];
+    }
+  } else {
+    //If the months('option') has paramenter, add the tags to it
+    for (i = 0, l = list_months.length, months = ""; i < l; i++) {
+      months += "<" + tags + ">" + list_months[i] + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-short-months");
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = months;
+  }
+} //Year method
+
+
+function years(tags, startY, endY) {
+  var i,
+      years = "";
+
+  if (tags == "") {
+    //If the years('') paramenter is empty, add no tags
+    for (i = startY; i < endY + 1; i++) {
+      years += i;
+    }
+  } else {
+    //If the years('option') has paramenter, add the tags to it
+    for (i = startY; i < endY + 1; i++) {
+      years += "<" + tags + ">" + i + "</" + tags + ">";
+    }
+  } //You can call the class multiple times
+
+
+  var multiple_list = document.getElementsByClassName("bear-years");
+
+  for (i = 0; i < multiple_list.length; i++) {
+    multiple_list[i].innerHTML = years;
+  }
+} //CALENDAR end
 
 /***/ }),
 
@@ -379,13 +773,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var popper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var formvalidation_dist_js_formValidation_min__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formvalidation/dist/js/formValidation.min */ "./node_modules/formvalidation/dist/js/formValidation.min.js");
-/* harmony import */ var formvalidation_dist_js_formValidation_min__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(formvalidation_dist_js_formValidation_min__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var formvalidation_dist_js_framework_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! formvalidation/dist/js/framework/bootstrap */ "./node_modules/formvalidation/dist/js/framework/bootstrap.js");
-/* harmony import */ var formvalidation_dist_js_framework_bootstrap__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(formvalidation_dist_js_framework_bootstrap__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
-/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(select2__WEBPACK_IMPORTED_MODULE_5__);
-
+/* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
+/* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery_validation__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! select2 */ "./node_modules/select2/dist/js/select2.js");
+/* harmony import */ var select2__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(select2__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -408,6 +799,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_payment_payment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! %modules%/payment/payment */ "./src/blocks/modules/payment/payment.js");
 /* harmony import */ var _modules_locked_locked__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! %modules%/locked/locked */ "./src/blocks/modules/locked/locked.js");
 /* harmony import */ var _modules_adress_modal_adress_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/adress-modal/adress-modal */ "./src/blocks/modules/adress-modal/adress-modal.js");
+/* harmony import */ var _modules_adress_modal_adress_modal__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_modules_adress_modal_adress_modal__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! %modules%/footer/footer */ "./src/blocks/modules/footer/footer.js");
 /* harmony import */ var _modules_footer_footer__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_modules_footer_footer__WEBPACK_IMPORTED_MODULE_4__);
 

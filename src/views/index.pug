@@ -8,7 +8,7 @@ block content
     .wrapper
         include ../blocks/modules/header/header
         main.content(role="main")
-            form#payment.payment.needs-validation(method="POST")
+            form#payment.payment(method="POST")
                 .container
                     include ../blocks/modules/my-info/my-info
                     include ../blocks/modules/payment/payment
@@ -17,5 +17,6 @@ block content
 
 block scripts
 
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGMYS-RP5r37u2t6ToQDKxyjerY-jDZj8&libraries=places")
     script(src="js/main.js")
     script(src="js/vendor.js")
