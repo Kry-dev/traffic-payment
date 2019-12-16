@@ -6575,8 +6575,38 @@ form label.invalid-feedback {
   font-weight: 400;
 }
 
+.payment-DOB {
+  position: relative;
+}
+
 .payment-DOB label {
+  display: block;
+  width: 100%;
   margin-bottom: 11px;
+}
+
+.payment-DOB .dateBirth {
+  position: absolute;
+  top: 33px;
+  z-index: -1;
+  opacity: 0;
+}
+
+.payment-DOB .dateBirth.invalid-feedback {
+  display: block;
+}
+
+.payment-DOB .dob-field {
+  flex: 0 0 31.33333%;
+  max-width: 33.33333%;
+}
+
+.payment-DOB .dob-field + .dob-field {
+  margin-left: .5rem;
+}
+
+.payment-DOB .dob-field.invalid-feedback {
+  position: relative;
 }
 
 .payment-modal {

@@ -11,8 +11,30 @@
         font-weight: $label-font-weight;
     }
     &-DOB {
+        position: relative;
         label {
+            display: block;
+            width: 100%;
             margin-bottom: 11px;
+        }
+        .dateBirth {
+            position: absolute;
+            top: 33px;
+            z-index: -1;
+            opacity: 0;
+            &.invalid-feedback {
+                display: block;
+            }
+        }
+        .dob-field {
+            flex: 0 0 31.33333%;
+            max-width: 33.33333%;
+            & + .dob-field {
+                margin-left: .5rem;
+            }
+            &.invalid-feedback {
+                position: relative;
+            }
         }
     }
     &-modal {

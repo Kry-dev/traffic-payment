@@ -8,61 +8,25 @@
                 include ../locked/locked
         .form-group.row
             .col-6
-                label(for='phoneNumber') Phone Number: *
-                input#phoneNumber.form-control.input-tel(
-                    type = "tel",
-                    pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}",
-                    required = "required",
-                    name = "str_phone",
-                    placeholder = "(XXX) XXX-XXXX"
-                    )
+                label(for='phone') Phone Number: *
+                input.form-control.input-tel(
+                    id="phone",
+                    name="phone",
+                    type="tel",
+                    placeholder="888 888-8888",
+                    value="9999999999"
+                    required="required")
+                i.errorTxt
             .col-6
                 .row.payment-DOB
-                    label(for='month').col-12 Date of Birth: *
-                    .col-4.pr-0
-                        //input.form-control.custom-select.select2-selection(
-                        //    id="month",
-                        //    type="month"
-                        //    name="month",
-                        //    data-width="100%",
-                        //    data-placeholder="Month",
-                        //    required="required",
-                        //    data-minimum-results-for-search="Infinity"
-                        //    )
-                        select.form-control.bear-short-months(
-                            required="required",
-                            id="month",
-                            type="month",
-                            name="month"
-                            )
-
-                    .col-4.pr-0
-                        //input.form-control.custom-select.select2-selection(
-                        //    id="date",
-                        //    type="date"
-                        //    name="date",
-                        //    data-width="100%",
-                        //    data-placeholder="Date",
-                        //    required="required",
-                        //    data-minimum-results-for-search="Infinity"
-                        //    )
-                        select.form-control.bear-dates(
-                            required="required"
-                        )
-                    .col-4.pr-0
-                        //input.form-control.custom-select.select2-selection(
-                        //    id="year",
-                        //    type="year"
-                        //    name="year",
-                        //    data-width="100%",
-                        //    placeholder="Year",
-                        //    required="required",
-                        //    data-minimum-results-for-search="Infinity"
-                        //    )
-                        select.form-control.bear-years(
-                            required="required"
-                        )
-                    .col-12
+                    label().col-12 Date of Birth: *
+                    select.form-control.dob-field(id="date-month",name="dobMonth" required)
+                        option(value="" selected="selected", disabled="disabled") Month
+                    select.form-control.dob-field(id="date-day",name="dobDay" required)
+                        option(value="" selected="selected", disabled="disabled") Day
+                    select.form-control.dob-field(id="date-year",name="dobYear" required)
+                        option(value="" selected="selected", disabled="disabled") Year
+                    input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
         .form-group.row
             .col-md-9
                 include ../adress-modal/adress-modal
@@ -73,23 +37,25 @@
     .col-md-8
         .form-group.row
             .col-6
-                label(for='str_county') Country of Violation: *
-                select#str_county.form-control.custom-select.select2-selection(
-                    name="str_county",
-                    data-minimum-results-for-search="Infinity"
-                    )
-                    option(val="USA")  USA
+                label(for='county') County of Violation: *
+                select.form-control.custom-select(
+                    name="county" id="county" required)
+                i.errorTxt
             .col-6
-                label(for='str_court') Court of Violation: *
-                select#str_court.form-control.custom-select.select2-selection(
-                    name="str_court",
-                    data-minimum-results-for-search="Infinity"
-                    )
-                    option(val="USA")  USA
+                label(for='court') Court of Violation: *
+                select.form-control.custom-select(
+                    name="court" id="court" disabled required)
+                i.errorTxt
+            .col-6
+                label(for='lea') Law Enforcement Agency (LEA): *
+                select.form-control.custom-select(
+                    name="lea" id="lea" disabled required)
+                i.errorTxt
         .form-group.row
             .col-6
-                label(for='str_docket') Case Number: *
-                input#str_docket.form-control.custom-select(type="text", placeholder="e.g. 092769302", name="str_docket")
+                label(for='case-number') Case Number: *
+                input.form-control.custom-select(id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302")
+                i.errorTxt
             .col-6
                 p.font-italic
                     em
@@ -97,17 +63,13 @@
                         | docket number.}
         .row
             .col-6.form-group
-                label(for='str_state') Driver’s License State: *
-                select#str_state.form-control.custom-select.js-example-placeholder-single.js-states(
-                    name="states[]",
-                    data-placeholder="Select a state",
-                    data-width="100%",
-                    data-minimum-results-for-search="Infinity"
-                    )
+                label(for='license-state') Driver’s License State: *
+                select.form-control.custom-select(name="license-state", id="license-state")
+                    option(value="" selected="selected") Select a State
                     +listOfStates
             .col-6
-                label(for='driverslicense') Driver’s License Number: *
-                input#driverslicense.form-control.custom-select(type="text", placeholder="e.g. DL05876", name="driverslicense")
+                label(for='license-number') Driver’s License Number: *
+                input.form-control.custom-select(type="text",id="license-number" name="license-number" placeholder="e.g. DL05876")
 .row.payment-row.border-bottom-0
     .col-md-8.offset-3
         .form-group.row

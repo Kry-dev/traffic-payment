@@ -42,7 +42,7 @@
         </div>
       </header>
       <main class="content" role="main">
-        <form class="payment" id="payment" method="POST">
+        <form class="payment" id="address">
           <div class="container">
             <div class="row my-info border-bottom">
               <div class="col-md-2 offset-md-1">
@@ -68,140 +68,79 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-6">
-                    <label for="phoneNumber">Phone Number: *</label>
-                    <input class="form-control input-tel" id="phoneNumber" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required="required" name="str_phone" placeholder="(XXX) XXX-XXXX">
+                    <label for="phone">Phone Number: *</label>
+                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="9999999999" required="required"><i class="errorTxt"></i>
                   </div>
                   <div class="col-6">
                     <div class="row payment-DOB">
-                      <label class="col-12" for="month">Date of Birth: *</label>
-                      <div class="col-4 pr-0">
-                        <!--input.form-control.custom-select.select2-selection(-->
-                        <!--    id="month",-->
-                        <!--    type="month"-->
-                        <!--    name="month",-->
-                        <!--    data-width="100%",-->
-                        <!--    data-placeholder="Month",-->
-                        <!--    required="required",-->
-                        <!--    data-minimum-results-for-search="Infinity"-->
-                        <!--    )-->
-                        <select class="form-control bear-short-months" required="required" id="month" type="month" name="month"></select>
-                      </div>
-                      <div class="col-4 pr-0">
-                        <!--input.form-control.custom-select.select2-selection(-->
-                        <!--    id="date",-->
-                        <!--    type="date"-->
-                        <!--    name="date",-->
-                        <!--    data-width="100%",-->
-                        <!--    data-placeholder="Date",-->
-                        <!--    required="required",-->
-                        <!--    data-minimum-results-for-search="Infinity"-->
-                        <!--    )-->
-                        <select class="form-control bear-dates" required="required"></select>
-                      </div>
-                      <div class="col-4 pr-0">
-                        <!--input.form-control.custom-select.select2-selection(-->
-                        <!--    id="year",-->
-                        <!--    type="year"-->
-                        <!--    name="year",-->
-                        <!--    data-width="100%",-->
-                        <!--    placeholder="Year",-->
-                        <!--    required="required",-->
-                        <!--    data-minimum-results-for-search="Infinity"-->
-                        <!--    )-->
-                        <select class="form-control bear-years" required="required"></select>
-                      </div>
-                      <div class="col-12"></div>
+                      <label class="col-12">Date of Birth: *</label>
+                      <select class="form-control dob-field" id="date-month" name="dobMonth" required>
+                        <option value="" selected="selected" disabled="disabled">Month</option>
+                      </select>
+                      <select class="form-control dob-field" id="date-day" name="dobDay" required>
+                        <option value="" selected="selected" disabled="disabled">Day</option>
+                      </select>
+                      <select class="form-control dob-field" id="date-year" name="dobYear" required>
+                        <option value="" selected="selected" disabled="disabled">Year</option>
+                      </select>
+                      <input class="dateBirth" type="text" name="dateBirth" id="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000">
                     </div>
                   </div>
                 </div>
                 <div class="form-group row">
-                  <div class="col-md-9">
-                    <label for="str_address1">Address: *</label>
-                    <input class="form-control" id="str_address1" type="text" name="str_address1" placeholder="Start typing full address">
-                    <!--#address-collapse.payment-modal(tabindex='-1', role='dialog', aria-labelledby='address-collapseLabel', aria-hidden='true')-->
-                    <!--    #address-form.address-form-->
-                    <!--        button.close(type='button', data-toggle="collapse", data-target="#address-collapse")-->
-                    <!--            span(aria-hidden='true') ×-->
-                    <!--        .row.mb-4-->
-                    <!--            .col-6.pr-md-0-->
-                    <!--                label(for='street_number') Street Number: *-->
-                    <!--                input#street_number.form-control(-->
-                    <!--                    type='text',-->
-                    <!--                    placeholder='888',-->
-                    <!--                    name="str_number",-->
-                    <!--                    required="required"-->
-                    <!--                    )-->
-                    <!--            .col-6-->
-                    <!--                label(for='route') Street Name: *-->
-                    <!--                input#route.form-control(-->
-                    <!--                    type='text',-->
-                    <!--                    placeholder='Brenann Street',-->
-                    <!--                    name="str_name",-->
-                    <!--                    required="required"-->
-                    <!--                )-->
-                    <!--        .row.mb-4-->
-                    <!--            .col-6.pr-md-0-->
-                    <!--                label(for='unit_number') Unit Number: *-->
-                    <!--                input#unit_number.form-control(-->
-                    <!--                    type='text',-->
-                    <!--                    name="unit_number",-->
-                    <!--                    placeholder='',-->
-                    <!--                    required="required"-->
-                    <!--                    )-->
-                    <!--            .col-6-->
-                    <!--                label(for='locality') City: *-->
-                    <!--                input#locality.form-control(-->
-                    <!--                    type='text',-->
-                    <!--                    name="city",-->
-                    <!--                    placeholder='San Fransisco',-->
-                    <!--                    required="required"-->
-                    <!--                    )-->
-                    <!---->
-                    <!--        .row.mb-4-->
-                    <!--            .col-6.pr-md-0-->
-                    <!--                label(for='administrative_area_level_1') State: *-->
-                    <!--                select.form-control.select2-selection.js-states(-->
-                    <!--                    id="administrative_area_level_1",-->
-                    <!--                    name="state",-->
-                    <!--                    data-width="100%",-->
-                    <!--                    data-minimum-results-for-search="Infinity"-->
-                    <!--                )-->
-                    <!--                    //+listOfStates-->
-                    <!---->
-                    <!--            .col-6-->
-                    <!--                label(for='country') Country: *-->
-                    <!--                select.form-control.select2-selection(-->
-                    <!--                    id="country",-->
-                    <!--                    name="str_county",-->
-                    <!--                    data-width="100%",-->
-                    <!--                    data-minimum-results-for-search="Infinity"-->
-                    <!--                )-->
-                    <!--                    option(selected disabled value="") United States-->
-                    <!--                    option(value="USA") United States-->
-                    <!--                .valid-feedback-->
-                    <!--                    | Looks good!-->
-                    <!--                .invalid-feedback-->
-                    <!--                    | Doesn't look good!-->
-                    <!---->
-                    <!--        .row.mb-4-->
-                    <!--            .col-6.pr-md-0-->
-                    <!--                label(for='postal_code') Postal code: *-->
-                    <!--                input#postal_code.form-control(-->
-                    <!--                    type='text',-->
-                    <!--                    name="zip",-->
-                    <!--                    placeholder='94103',-->
-                    <!--                    required="required"-->
-                    <!--                )-->
-                    <!--                .valid-feedback-->
-                    <!--                    | Looks good!-->
-                    <!--                .invalid-feedback-->
-                    <!--                    | Doesn't look good!-->
-                    <!---->
-                    <!--        .row-->
-                    <!--            .col-6.pr-md-0-->
-                    <!--                button.w-100.btn.btn-outline-secondary(type="reset") Clear Address-->
-                    <!--            .col-6-->
-                    <!--                button.w-100.btn.btn-danger(type="button") Save Changes-->
+                  <div class="col-md-9"><!-- Search Field -->
+                    <div id="locationField">
+                      <label for="autocomplete">Address: *</label>
+                      <input class="form-control" value="888, Brannan Street" id="autocomplete" placeholder="Start typing full address" type="text">
+                      <button id="action-edit">edit</button>
+                    </div>
+                    <div class="payment-modal" id="autocomplete-edit">
+                      <div class="address-form">
+                        <button class="close" type="button" data-toggle="collapse" data-target="#address-collapse"><span aria-hidden="true">×</span></button>
+                        <div class="row mb-4"><!-- Street Address -->
+                          <div class="col-6 pr-md-0">
+                            <label for="street_number">Street Number: *</label>
+                            <input class="form-control" id="street_number" type="text" placeholder="888" name="str_number" required="required">
+                          </div>
+                          <div class="col-6">
+                            <label for="route">Street Name: *</label>
+                            <input class="form-control" id="route" type="text" placeholder="Brenann Street" name="str_name" required="required">
+                          </div>
+                        </div>
+                        <div class="row mb-4">
+                          <div class="col-6"><!-- City -->
+                            <label for="locality">City: *</label>
+                            <input class="form-control" id="locality" type="text" name="city" placeholder="San Fransisco" required="required">
+                          </div>
+                          <div class="col-6 pr-md-0">
+                            <label for="administrative_area_level_1">State: *</label>
+                            <input class="form-control" id="administrative_area_level_1" name="state" required>
+                          </div>
+                        </div><!-- State & Zip -->
+                        <div class="row mb-4">
+                          <div class="col-6">
+                            <label for="country">Country: *</label>
+                            <input class="form-control" id="country" name="country" required>
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Doesn't look good!</div>
+                          </div>
+                          <div class="col-6 pr-md-0">
+                            <label for="postal_code">Postal code: *</label>
+                            <input class="form-control" id="postal_code" required value="" name="postal_code" title="Enter valid ZIP 4-5 numbers">
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Doesn't look good!</div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6 pr-md-0">
+                            <button class="w-100 btn btn-outline-secondary" id="action-reset">Clear Address</button>
+                          </div>
+                          <div class="col-6">
+                            <button class="w-100 btn btn-danger" id="action-save">Save Changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -213,22 +152,22 @@
               <div class="col-md-8">
                 <div class="form-group row">
                   <div class="col-6">
-                    <label for="str_county">Country of Violation: *</label>
-                    <select class="form-control custom-select select2-selection" id="str_county" name="str_county" data-minimum-results-for-search="Infinity">
-                      <option val="USA"> USA</option>
-                    </select>
+                    <label for="county">County of Violation: *</label>
+                    <select class="form-control custom-select" name="county" id="county" required></select><i class="errorTxt"></i>
                   </div>
                   <div class="col-6">
-                    <label for="str_court">Court of Violation: *</label>
-                    <select class="form-control custom-select select2-selection" id="str_court" name="str_court" data-minimum-results-for-search="Infinity">
-                      <option val="USA"> USA</option>
-                    </select>
+                    <label for="court">Court of Violation: *</label>
+                    <select class="form-control custom-select" name="court" id="court" disabled required></select><i class="errorTxt"></i>
+                  </div>
+                  <div class="col-6">
+                    <label for="lea">Law Enforcement Agency (LEA): *</label>
+                    <select class="form-control custom-select" name="lea" id="lea" disabled required></select><i class="errorTxt"></i>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-6">
-                    <label for="str_docket">Case Number: *</label>
-                    <input class="form-control custom-select" id="str_docket" type="text" placeholder="e.g. 092769302" name="str_docket">
+                    <label for="case-number">Case Number: *</label>
+                    <input class="form-control custom-select" id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302"><i class="errorTxt"></i>
                   </div>
                   <div class="col-6">
                     <p class="font-italic"><em>
@@ -238,8 +177,9 @@
                 </div>
                 <div class="row">
                   <div class="col-6 form-group">
-                    <label for="str_state">Driver’s License State: *</label>
-                    <select class="form-control custom-select js-example-placeholder-single js-states" id="str_state" name="states[]" data-placeholder="Select a state" data-width="100%" data-minimum-results-for-search="Infinity">
+                    <label for="license-state">Driver’s License State: *</label>
+                    <select class="form-control custom-select" name="license-state" id="license-state">
+                      <option value="" selected="selected">Select a State</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
                       <option value="AZ">Arizona</option>
@@ -294,8 +234,8 @@
                     </select>
                   </div>
                   <div class="col-6">
-                    <label for="driverslicense">Driver’s License Number: *</label>
-                    <input class="form-control custom-select" id="driverslicense" type="text" placeholder="e.g. DL05876" name="driverslicense">
+                    <label for="license-number">Driver’s License Number: *</label>
+                    <input class="form-control custom-select" type="text" id="license-number" name="license-number" placeholder="e.g. DL05876">
                   </div>
                 </div>
               </div>
