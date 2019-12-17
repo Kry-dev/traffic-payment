@@ -6699,9 +6699,10 @@ form label.invalid-feedback {
 .content-sign {
   padding: 80px 0;
   position: relative;
+  z-index: 1;
 }
 
-.content-sign:before {
+.content-sign:after {
   position: absolute;
   content: "";
   left: 0;
@@ -6717,7 +6718,7 @@ form label.invalid-feedback {
 
 .content-sign .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .form-sign {
@@ -6758,6 +6759,26 @@ form label.invalid-feedback {
 
 .form-sign .form-group {
   position: relative;
+}
+
+.form-sign .form-group input.invalid-feedback {
+  position: relative;
+}
+
+.form-sign .form-group label.invalid-feedback {
+  position: absolute;
+  text-align: right;
+  right: 0;
+  bottom: -25px;
+}
+
+.form-sign .form-group label.invalid-feedback:before {
+  display: inline-block;
+  content: "×";
+  position: absolute;
+  right: 1rem;
+  color: #FE8B7B;
+  z-index: 100;
 }
 
 .form-sign .toggle-password {

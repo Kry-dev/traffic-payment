@@ -30,6 +30,23 @@
     }
     .form-group{
         position: relative;
+        input.invalid-feedback {
+            position: relative;
+        }
+        label.invalid-feedback {
+            position: absolute;
+            text-align: right;
+            right: 0;
+            bottom: -25px;
+            &:before{
+                display: inline-block;
+                content: "×";
+                position: absolute;
+                right: 1rem;
+                color: #FE8B7B;
+                z-index: 100;
+            }
+        }
     }
     .toggle-password{
         display: flex;

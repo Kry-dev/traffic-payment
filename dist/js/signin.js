@@ -166,7 +166,12 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
+/* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery_validation__WEBPACK_IMPORTED_MODULE_1__);
 
+
+window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".toggle-password").on('click', function () {
     console.log('click');
@@ -178,6 +183,37 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       input.attr("type", "text");
     } else {
       input.attr("type", "password");
+    }
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#sign-in").validate({
+    successClass: "valid-feedback",
+    errorClass: "invalid-feedback",
+    ignore: ":hidden",
+    rules: {
+      signin_email: {
+        required: true
+      },
+      signin_pass: {
+        required: true
+      }
+    },
+    groups: {
+      signin: "signin_email signin_pass"
+    },
+    messages: {
+      signin_pass: {
+        required: "Incorrect username or password."
+      },
+      signin_email: {
+        required: "Incorrect username or password."
+      }
+    },
+    errorPlacement: function errorPlacement(error, element) {
+      if (element.attr("name") == "signin_email" || element.attr("name") == "signin_pass") {
+        error.insertAfter("#signin_pass");
+      } else {
+        error.insertAfter(element);
+      }
     }
   });
 });
