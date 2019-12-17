@@ -1,9 +1,25 @@
 form#sign-in.form.form-sign
     .form-group.mb-5
         h2.form-sign-title Welcome Back!
+    .form-group.mb-3
+        input.form-control.mb-3(
+            id="signin_email",
+            type="email",
+            name="sign_email",
+            required="required",
+            placeholder="Email"
+            )
+        input.form-control.mb-3(
+            id="signin_pass",
+            type="password",
+            required="required",
+            placeholder="Create Password",
+            name="signin_pass",
+            value=""
+            )
+
+        span.fa.fa-fw.fa-eye.field-icon.toggle-password(toggle='#signin_pass')
     .form-group.mb-5
-        input.form-control.mb-3(type="mail",name="sign_mail",required="required", placeholder="Email")
-        input.form-control.mb-3(type="password",name="sign_pass",required="required", placeholder="Create Password")
         a(href="#").forgot-link Forgot password?
     .form-group
         button.btn.btn-danger.w-100(type="submit") Sign Up

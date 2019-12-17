@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
     entry: {
         main: "./src/js/index.js",
-        signin: "./src/js/signin.js",
+        signin: "./src/js/import/pages/sign-in.js",
     },
 
     output: {

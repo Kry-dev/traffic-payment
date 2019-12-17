@@ -6697,7 +6697,7 @@ form label.invalid-feedback {
 }
 
 .content-sign {
-  padding: 80px;
+  padding: 80px 0;
   position: relative;
 }
 
@@ -6754,6 +6754,28 @@ form label.invalid-feedback {
   font-family: "Lora";
   font-style: italic;
   text-decoration: underline;
+}
+
+.form-sign .form-group {
+  position: relative;
+}
+
+.form-sign .toggle-password {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 10px 0;
+  width: 40px;
+  height: 40px;
+  color: #D0D0D0;
+}
+
+.form-sign .toggle-password:focus,
+.form-sign .toggle-password:hover {
+  cursor: pointer;
 }
 
 .badge {

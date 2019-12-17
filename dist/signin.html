@@ -48,10 +48,11 @@
                 <div class="form-group mb-5">
                   <h2 class="form-sign-title">Welcome Back!</h2>
                 </div>
-                <div class="form-group mb-5">
-                  <input class="form-control mb-3" type="mail" name="sign_mail" required="required" placeholder="Email">
-                  <input class="form-control mb-3" type="password" name="sign_pass" required="required" placeholder="Create Password"><a class="forgot-link" href="#">Forgot password?</a>
+                <div class="form-group mb-3">
+                  <input class="form-control mb-3" id="signin_email" type="email" name="sign_email" required="required" placeholder="Email">
+                  <input class="form-control mb-3" id="signin_pass" type="password" required="required" placeholder="Create Password" name="signin_pass" value=""><span class="fa fa-fw fa-eye field-icon toggle-password" toggle="#signin_pass"></span>
                 </div>
+                <div class="form-group mb-5"><a class="forgot-link" href="#">Forgot password?</a></div>
                 <div class="form-group">
                   <button class="btn btn-danger w-100" type="submit">Sign Up</button>
                 </div>
@@ -82,7 +83,7 @@
         </div>
       </footer>
     </div>
-    <!--script(src="js/signin.js")-->
+    <script src="js/signin.js"></script>
     <script src="js/vendor.js"></script>
   </body>
 </html>
