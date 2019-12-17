@@ -1,0 +1,85 @@
+.badge {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: $box-shadow;
+    padding: 3rem;
+    border-radius: $border-radius;
+    font-size: 100%;
+    white-space: inherit;
+    
+    &-icon {
+        display: block;
+        width: 170px;
+        height: 170px;
+        margin: 0 auto 1.5rem;
+        
+        img {
+            width: 100%;
+        }
+    }
+    
+    &-descr {
+        font-family: "Lora";
+        font-style: italic;
+        color: $body-color;
+        text-align: center;
+        white-space: inherit;
+        margin-bottom: 2rem;
+    }
+    
+    &-rating {
+        margin-bottom: .5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        &-scr {
+            font-family: "Work Sans";
+            font-weight: bold;
+            color: $danger;
+            margin-bottom: 0;
+            margin-right: .5rem;
+        }
+    }
+    &-reviews {
+        font-style: italic;
+        color: $body-color;
+        font-family: "Roboto",sans-serif;
+    }
+}
+
+.back-stars {
+    display: flex;
+    width: 90px;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    
+    .fa {
+        font-size: 18px;
+        width: 18px;
+        padding: 0 1px;
+    }
+    
+    .fa-star-o {
+        color: $danger;
+    }
+    
+    .fa-star {
+        color: $danger;
+    }
+    
+    .front-stars {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+}
+
+

@@ -6712,6 +6712,12 @@ form label.invalid-feedback {
   background: #fff url("../img/general/sign-bg.png") repeat-x center;
   background-size: contain;
   transform: translateY(-50%);
+  z-index: -1;
+}
+
+.content-sign .container {
+  position: relative;
+  z-index: 1;
 }
 
 .form-sign {
@@ -6724,6 +6730,7 @@ form label.invalid-feedback {
 .form-sign-title {
   color: #3A8FC8;
   margin-bottom: 3px;
+  font-weight: bold;
 }
 
 .form-sign .btn {
@@ -6740,6 +6747,98 @@ form label.invalid-feedback {
   font-family: 'Roboto', sans-serif;
   font-weight: lighter;
   color: #585858;
+}
+
+.form-sign .form-bottom-link {
+  color: #3A8FC8;
+  font-family: "Lora";
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  padding: 3rem;
+  border-radius: 0.25rem;
+  font-size: 100%;
+  white-space: inherit;
+}
+
+.badge-icon {
+  display: block;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 1.5rem;
+}
+
+.badge-icon img {
+  width: 100%;
+}
+
+.badge-descr {
+  font-family: "Lora";
+  font-style: italic;
+  color: #585858;
+  text-align: center;
+  white-space: inherit;
+  margin-bottom: 2rem;
+}
+
+.badge-rating {
+  margin-bottom: .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.badge-rating-scr {
+  font-family: "Work Sans";
+  font-weight: bold;
+  color: #FE8B7B;
+  margin-bottom: 0;
+  margin-right: .5rem;
+}
+
+.badge-reviews {
+  font-style: italic;
+  color: #585858;
+  font-family: "Roboto",sans-serif;
+}
+
+.back-stars {
+  display: flex;
+  width: 90px;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.back-stars .fa {
+  font-size: 18px;
+  width: 18px;
+  padding: 0 1px;
+}
+
+.back-stars .fa-star-o {
+  color: #FE8B7B;
+}
+
+.back-stars .fa-star {
+  color: #FE8B7B;
+}
+
+.back-stars .front-stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .footer {

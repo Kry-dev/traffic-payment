@@ -6,6 +6,7 @@
     &-title {
         color: $blue-dark;
         margin-bottom: 3px;
+        font-weight: bold;
     }
     .btn {
         height: 40px;
@@ -20,5 +21,11 @@
         font-family: 'Roboto', sans-serif;
         font-weight: lighter;
         color: $body-color;
+    }
+    .form-bottom-link {
+        color: $blue-dark;
+        font-family: "Lora";
+        font-style: italic;
+        text-decoration: underline;
     }
 }

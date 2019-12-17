@@ -13,5 +13,10 @@
         background: $white url('../img/general/sign-bg.png') repeat-x center;
         background-size: contain;
         transform: translateY(-50%);
+        z-index: -1;
+    }
+    .container {
+        position: relative;
+        z-index: 1;
     }
 }
