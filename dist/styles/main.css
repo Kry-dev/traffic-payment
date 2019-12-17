@@ -6289,6 +6289,14 @@ body {
   flex-direction: column;
 }
 
+.wrapper.wrapper-signin {
+  background-color: #fff;
+  background-image: url("../img/general/sign-bg.png");
+  background-repeat: repeat-x;
+  background-position: center 65%;
+  background-size: contain;
+}
+
 .content {
   flex: 1 0 auto;
 }
@@ -6702,30 +6710,12 @@ form label.invalid-feedback {
   z-index: 1;
 }
 
-.content-sign:after {
-  position: absolute;
-  content: "";
-  left: 0;
-  top: 50%;
-  display: block;
-  width: 100%;
-  height: 150px;
-  background: #fff url("../img/general/sign-bg.png") repeat-x center;
-  background-size: contain;
-  transform: translateY(-50%);
-  z-index: -1;
-}
-
-.content-sign .container {
-  position: relative;
-  z-index: 2;
-}
-
 .form-sign {
   width: 100%;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   padding: 3rem;
   border-radius: 0.25rem;
+  background: #fff;
 }
 
 .form-sign-title {
@@ -6808,6 +6798,7 @@ form label.invalid-feedback {
   border-radius: 0.25rem;
   font-size: 100%;
   white-space: inherit;
+  background: #fff;
 }
 
 .badge-icon {
