@@ -210,7 +210,7 @@ $(document).ready(() => {
     function PhoneZipVlidation() {
         document.getElementById('phone').addEventListener('input', (e) => {
             const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : `${x[1]} ${x[2]}${x[3] ? `-${x[3]}` : ''}`;
+            e.target.value = !x[2] ? x[1] : `${x[1]}${x[2]}${x[3] ? `${x[3]}` : ''}`;
         });
         
         const phone = document.getElementById('phone');
@@ -237,8 +237,13 @@ $(document).ready(() => {
     const $reset = $('#action-reset');
     const $edit = $('#action-edit');
     const $autocomplete = $('#autocomplete-edit');
-    
-    $('body').on('click', '#action-save', (e) => {
+    const body = $('body');
+    $('#autocomplete').prop('disabled', true);
+    $autocomplete.find('input').prop('disabled', true);
+    $autocomplete.find('select').prop('disabled', true);
+    $autocomplete.addClass('disabled');
+    $autocomplete.hide('slow');
+    body.on('click', '#action-save', (e) => {
         if (!$autocomplete.hasClass('disabled')) {
             $('#autocomplete').prop('disabled', true);
             $autocomplete.find('input').prop('disabled', true);
@@ -248,7 +253,7 @@ $(document).ready(() => {
         }
     });
     
-    $('body').on('click', '#action-edit', (e) => {
+    body.on('click', '#action-edit', (e) => {
         if ($autocomplete.hasClass('disabled')) {
             $('#autocomplete').prop('disabled', false);
             $autocomplete.find('input').prop('disabled', false);
@@ -258,7 +263,7 @@ $(document).ready(() => {
         }
     });
     
-    $('body').on('click', '#action-reset', (e) => {
+    body.on('click', '#action-reset', (e) => {
         if ($autocomplete.hasClass('disabled')) {
             $('#autocomplete').prop('disabled', false);
             $autocomplete.find('input').prop('disabled', false);
@@ -513,7 +518,6 @@ $(document).ready(() => {
         var subMonth = myDate[1] - 1;
         var subYear = myDate[2];
         var subDate = new Date(subYear, subMonth, subDay);
-            console.log(subYear);
         // this will "correct" any out of range input
         var calcDay = subDate.getDate();
         var calcMonth = subDate.getMonth();
@@ -530,7 +534,7 @@ $(document).ready(() => {
         console.log(isValidDate(value));
         if (calcDay != subDay || calcMonth != subMonth || calcYear != subYear) {
             console.log(calcDay ,subDay, calcMonth ,subMonth, calcYear,subYear);
-            $.validator.messages.dob = "Invalid date";
+            $.validator.messages.dob = "Please select a valid Date of Birth";
             result = false;
         }
         
@@ -552,7 +556,7 @@ $(document).ready(() => {
                 if (age < ageMin) {
                     $.validator.messages.dob = "You must be at least 16 years old to complete our course";
                     result = false;
-                    console.log('validate bad');
+                    console.log('age:', age);
                 }
             }
             
@@ -560,27 +564,27 @@ $(document).ready(() => {
                 if (age >= ageMax) {
                     $.validator.messages.dob = "Please select a valid Date of Birth";
                     result = false;
-                    console.log('validate bad');
+                    console.log('age:', age);
                 }
             }
-            console.log('validate good');
+            console.log('dob validate good');
         }
         console.log(result);
-        console.log('validate bad');
+        console.log('dob validate bad');
         return result;
     },
-    "Please enter a date in the format DD/MM/YYYY");
+    "Please select a valid Date of Birth");
     $("#address").validate({
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
         rules: {
             phone : {
-                required: true,
                 digits: true,
                 minlength: 10,
                 maxlength: 10,
-                // pattern: "^\\\\d\\W+$"
+                required: true,
+                phoneUS: true,
             },
             dobMonth : {
                 required: true,
@@ -598,34 +602,43 @@ $(document).ready(() => {
                 required: true,
                 dob: true
             },
-            // str_number: {
-            //     required: true,
-            // },
-            // str_name: {
-            //     required: true,
-            // },
-            // city: {
-            //     required: true,
-            // },
-            // state: {
-            //     required: true,
-            // },
-            // country: {
-            //     required : true,
-            // },
-            // county: {
-            //     required : true,
-            // },
-            // court: {
-            //     required : true,
-            // },
-            // lea: {
-            //     required : true,
-            // },
-            // case_number: {
-            //     required : true,
-            // }
+            str_number: {
+                required: true,
             },
+            str_name: {
+                required: true,
+            },
+            city: {
+                required: true,
+            },
+            state: {
+                required: true,
+            },
+            country: {
+                required : true,
+            },
+            postal_code: {
+                required : true,
+            },
+            county: {
+                required : true,
+            },
+            court: {
+                required : true,
+            },
+            lea: {
+                required : true,
+            },
+            case_number: {
+                required : true,
+            },
+            license_state: {
+                required : true,
+            },
+            license_number: {
+                required : true,
+            }
+        },
         groups: {
             birthday: "dobMonth dobDay dobYear dateBirth",
         },
@@ -634,28 +647,47 @@ $(document).ready(() => {
                 required : "Please enter your phone number",
                 minLength: "Your phone number must be 10 digits",
                 maxLength: "Your phone number must be 10 digits",
+                phoneUS: "Enter valid phone number"
             },
-            // dateBirth: {
-            //     required: true,
-            //     dob: true
-            // },
-            // birthday: {
-            //     required: true,
-            //     dob: true
-            // }
-        //     // month: {
-        //     //     required: true,
-        //     //     dob: true
-        //     // }
-        //     // str_number: {
-        //     //     required: "Please enter your street number",
-        //     // },
-        //     // str_name: {
-        //     //     required: "Please enter your street name",
-        //     // },
-        //     // city: {
-        //     //     required: "Please enter your City",
-        //     // }
+            str_address1 : {
+                required: "Please enter your current address",
+            },
+            str_number: {
+                required: "Please enter your street number",
+            },
+            str_name: {
+                required: "Please enter your street name",
+            },
+            city: {
+                required: "Please enter your City",
+            },
+            state: {
+                required: "Please enter your State",
+            },
+            country: {
+                required: 'Please select your County',
+            },
+            postal_code: {
+                required : "Please enter your zip code"
+            },
+            county: {
+                required : "Please select a County"
+            },
+            court: {
+                required : "Please select a Court"
+            },
+            lea: {
+                required : "Please select a LEA Code"
+            },
+            case_number: {
+                required : "Please enter your Case Number"
+            },
+            license_state: {
+                required : "Please enter your Driver’s License Number"
+            },
+            license_number: {
+                required : true,
+            }
         },
         errorPlacement: function(error, element) {
             let name = element.prop("name");

@@ -14,7 +14,7 @@
                     name="phone",
                     type="tel",
                     placeholder="888 888-8888",
-                    value="9999999999"
+                    value=""
                     required="required")
                 i.errorTxt
             .col-6
@@ -36,21 +36,18 @@
         h3.text-blue-dark Citation Information
     .col-md-8
         .form-group.row
-            .col-6
+            .col-6.mb-4
                 label(for='county') County of Violation: *
                 select.form-control.custom-select(
                     name="county" id="county" required)
-                i.errorTxt
-            .col-6
+            .col-6.mb-4
                 label(for='court') Court of Violation: *
                 select.form-control.custom-select(
                     name="court" id="court" disabled required)
-                i.errorTxt
-            .col-6
+            .col-6.mb-4
                 label(for='lea') Law Enforcement Agency (LEA): *
                 select.form-control.custom-select(
                     name="lea" id="lea" disabled required)
-                i.errorTxt
         .form-group.row
             .col-6
                 label(for='case-number') Case Number: *
@@ -64,12 +61,12 @@
         .row
             .col-6.form-group
                 label(for='license-state') Driver’s License State: *
-                select.form-control.custom-select(name="license-state", id="license-state")
+                select.form-control.custom-select(name="license_state", id="license-state")
                     option(value="" selected="selected") Select a State
                     +listOfStates
             .col-6
                 label(for='license-number') Driver’s License Number: *
-                input.form-control.custom-select(type="text",id="license-number" name="license-number" placeholder="e.g. DL05876")
+                input.form-control.custom-select(type="text",id="license-number" name="license_number" placeholder="e.g. DL05876")
 .row.payment-row.border-bottom-0
     .col-md-8.offset-3
         .form-group.row

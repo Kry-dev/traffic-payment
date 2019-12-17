@@ -1,5 +1,7 @@
 .header {
     box-shadow: $box-shadow-sm;
+    min-height: 100px;
+    display: flex;
     .navbar {
         
         &-collapsde {

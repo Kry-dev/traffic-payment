@@ -28,7 +28,7 @@
   <body>
     <div class="wrapper">
       <header class="header border-bottom">
-        <div class="container">
+        <div class="container my-auto">
           <nav class="navbar navbar-expand-lg"><a class="navbar-brand brand" href="/">BEST ONLINE<br>TRAFFIC SCHOOL</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="w-50"></div>
@@ -69,7 +69,7 @@
                 <div class="form-group row">
                   <div class="col-6">
                     <label for="phone">Phone Number: *</label>
-                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="9999999999" required="required"><i class="errorTxt"></i>
+                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="" required="required"><i class="errorTxt"></i>
                   </div>
                   <div class="col-6">
                     <div class="row payment-DOB">
@@ -89,14 +89,15 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-md-9"><!-- Search Field -->
-                    <div id="locationField">
+                    <div class="locationField" id="locationField">
                       <label for="autocomplete">Address: *</label>
-                      <input class="form-control" value="888, Brannan Street" id="autocomplete" placeholder="Start typing full address" type="text">
-                      <button id="action-edit">edit</button>
+                      <input class="form-control" name="str_address" value="888, Brannan Street" id="autocomplete" placeholder="Start typing full address" type="text">
+                      <button class="edit" id="action-edit"><i class="fa fa-pencil"></i></button>
                     </div>
                     <div class="payment-modal" id="autocomplete-edit">
                       <div class="address-form">
-                        <button class="close" type="button" data-toggle="collapse" data-target="#address-collapse"><span aria-hidden="true">×</span></button>
+                        <!--button.close(type='button', data-toggle="collapse", data-target="#address-collapse")-->
+                        <!--    span(aria-hidden='true') ×-->
                         <div class="row mb-4"><!-- Street Address -->
                           <div class="col-6 pr-md-0">
                             <label for="street_number">Street Number: *</label>
@@ -151,17 +152,17 @@
               </div>
               <div class="col-md-8">
                 <div class="form-group row">
-                  <div class="col-6">
+                  <div class="col-6 mb-4">
                     <label for="county">County of Violation: *</label>
-                    <select class="form-control custom-select" name="county" id="county" required></select><i class="errorTxt"></i>
+                    <select class="form-control custom-select" name="county" id="county" required></select>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 mb-4">
                     <label for="court">Court of Violation: *</label>
-                    <select class="form-control custom-select" name="court" id="court" disabled required></select><i class="errorTxt"></i>
+                    <select class="form-control custom-select" name="court" id="court" disabled required></select>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 mb-4">
                     <label for="lea">Law Enforcement Agency (LEA): *</label>
-                    <select class="form-control custom-select" name="lea" id="lea" disabled required></select><i class="errorTxt"></i>
+                    <select class="form-control custom-select" name="lea" id="lea" disabled required></select>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -178,7 +179,7 @@
                 <div class="row">
                   <div class="col-6 form-group">
                     <label for="license-state">Driver’s License State: *</label>
-                    <select class="form-control custom-select" name="license-state" id="license-state">
+                    <select class="form-control custom-select" name="license_state" id="license-state">
                       <option value="" selected="selected">Select a State</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
@@ -235,7 +236,7 @@
                   </div>
                   <div class="col-6">
                     <label for="license-number">Driver’s License Number: *</label>
-                    <input class="form-control custom-select" type="text" id="license-number" name="license-number" placeholder="e.g. DL05876">
+                    <input class="form-control custom-select" type="text" id="license-number" name="license_number" placeholder="e.g. DL05876">
                   </div>
                 </div>
               </div>

@@ -1,0 +1,24 @@
+.form-sign {
+    width: 100%;
+    box-shadow: $box-shadow;
+    padding: 3rem;
+    border-radius: $border-radius;
+    &-title {
+        color: $blue-dark;
+        margin-bottom: 3px;
+    }
+    .btn {
+        height: 40px;
+        padding: 0 0.75rem;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        line-height: 150%;
+    }
+    .forgot-link {
+        text-decoration: underline;
+        font-style: italic;
+        font-family: 'Roboto', sans-serif;
+        font-weight: lighter;
+        color: $body-color;
+    }
+}

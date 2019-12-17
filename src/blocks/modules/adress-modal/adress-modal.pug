@@ -1,16 +1,18 @@
 <!-- Search Field -->
-#locationField
+#locationField.locationField
     label(for='autocomplete') Address: *
     input.form-control(
+        name="str_address",
         value="888, Brannan Street",
         id="autocomplete",
         placeholder="Start typing full address",
         type="text")
-    button#action-edit edit
+    button#action-edit.edit
+        i.fa.fa-pencil
 #autocomplete-edit.payment-modal
     .address-form
-        button.close(type='button', data-toggle="collapse", data-target="#address-collapse")
-            span(aria-hidden='true') ×
+        //button.close(type='button', data-toggle="collapse", data-target="#address-collapse")
+        //    span(aria-hidden='true') ×
         .row.mb-4
             <!-- Street Address -->
             .col-6.pr-md-0

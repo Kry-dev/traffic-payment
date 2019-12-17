@@ -516,7 +516,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   function PhoneZipVlidation() {
     document.getElementById('phone').addEventListener('input', function (e) {
       var x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-      e.target.value = !x[2] ? x[1] : "".concat(x[1], " ").concat(x[2]).concat(x[3] ? "-".concat(x[3]) : '');
+      e.target.value = !x[2] ? x[1] : "".concat(x[1]).concat(x[2]).concat(x[3] ? "".concat(x[3]) : '');
     });
     var phone = document.getElementById('phone');
     var postalCode = document.getElementById('postal_code');
@@ -541,7 +541,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   var $reset = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-reset');
   var $edit = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-edit');
   var $autocomplete = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete-edit');
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').on('click', '#action-save', function (e) {
+  var body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
+  $autocomplete.find('input').prop('disabled', true);
+  $autocomplete.find('select').prop('disabled', true);
+  $autocomplete.addClass('disabled');
+  $autocomplete.hide('slow');
+  body.on('click', '#action-save', function (e) {
     if (!$autocomplete.hasClass('disabled')) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
       $autocomplete.find('input').prop('disabled', true);
@@ -550,7 +556,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       $autocomplete.hide('slow');
     }
   });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').on('click', '#action-edit', function (e) {
+  body.on('click', '#action-edit', function (e) {
     if ($autocomplete.hasClass('disabled')) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', false);
       $autocomplete.find('input').prop('disabled', false);
@@ -559,7 +565,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       $autocomplete.show('slow');
     }
   });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').on('click', '#action-reset', function (e) {
+  body.on('click', '#action-reset', function (e) {
     if ($autocomplete.hasClass('disabled')) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', false);
       $autocomplete.find('input').prop('disabled', false);
@@ -835,8 +841,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     var subDay = myDate[0];
     var subMonth = myDate[1] - 1;
     var subYear = myDate[2];
-    var subDate = new Date(subYear, subMonth, subDay);
-    console.log(subYear); // this will "correct" any out of range input
+    var subDate = new Date(subYear, subMonth, subDay); // this will "correct" any out of range input
 
     var calcDay = subDate.getDate();
     var calcMonth = subDate.getMonth();
@@ -857,7 +862,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 
     if (calcDay != subDay || calcMonth != subMonth || calcYear != subYear) {
       console.log(calcDay, subDay, calcMonth, subMonth, calcYear, subYear);
-      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "Invalid date";
+      jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "Please select a valid Date of Birth";
       result = false;
     }
 
@@ -879,7 +884,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         if (age < ageMin) {
           jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "You must be at least 16 years old to complete our course";
           result = false;
-          console.log('validate bad');
+          console.log('age:', age);
         }
       }
 
@@ -887,28 +892,28 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         if (age >= ageMax) {
           jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "Please select a valid Date of Birth";
           result = false;
-          console.log('validate bad');
+          console.log('age:', age);
         }
       }
 
-      console.log('validate good');
+      console.log('dob validate good');
     }
 
     console.log(result);
-    console.log('validate bad');
+    console.log('dob validate bad');
     return result;
-  }, "Please enter a date in the format DD/MM/YYYY");
+  }, "Please select a valid Date of Birth");
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address").validate({
     successClass: "valid-feedback",
     errorClass: "invalid-feedback",
     ignore: ":hidden",
     rules: {
       phone: {
-        required: true,
         digits: true,
         minlength: 10,
-        maxlength: 10 // pattern: "^\\\\d\\W+$"
-
+        maxlength: 10,
+        required: true,
+        phoneUS: true
       },
       dobMonth: {
         required: true // dob: true
@@ -925,34 +930,43 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       dateBirth: {
         required: true,
         dob: true
-      } // str_number: {
-      //     required: true,
-      // },
-      // str_name: {
-      //     required: true,
-      // },
-      // city: {
-      //     required: true,
-      // },
-      // state: {
-      //     required: true,
-      // },
-      // country: {
-      //     required : true,
-      // },
-      // county: {
-      //     required : true,
-      // },
-      // court: {
-      //     required : true,
-      // },
-      // lea: {
-      //     required : true,
-      // },
-      // case_number: {
-      //     required : true,
-      // }
-
+      },
+      str_number: {
+        required: true
+      },
+      str_name: {
+        required: true
+      },
+      city: {
+        required: true
+      },
+      state: {
+        required: true
+      },
+      country: {
+        required: true
+      },
+      postal_code: {
+        required: true
+      },
+      county: {
+        required: true
+      },
+      court: {
+        required: true
+      },
+      lea: {
+        required: true
+      },
+      case_number: {
+        required: true
+      },
+      license_state: {
+        required: true
+      },
+      license_number: {
+        required: true
+      }
     },
     groups: {
       birthday: "dobMonth dobDay dobYear dateBirth"
@@ -961,29 +975,48 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       phone: {
         required: "Please enter your phone number",
         minLength: "Your phone number must be 10 digits",
-        maxLength: "Your phone number must be 10 digits"
-      } // dateBirth: {
-      //     required: true,
-      //     dob: true
-      // },
-      // birthday: {
-      //     required: true,
-      //     dob: true
-      // }
-      //     // month: {
-      //     //     required: true,
-      //     //     dob: true
-      //     // }
-      //     // str_number: {
-      //     //     required: "Please enter your street number",
-      //     // },
-      //     // str_name: {
-      //     //     required: "Please enter your street name",
-      //     // },
-      //     // city: {
-      //     //     required: "Please enter your City",
-      //     // }
-
+        maxLength: "Your phone number must be 10 digits",
+        phoneUS: "Enter valid phone number"
+      },
+      str_address1: {
+        required: "Please enter your current address"
+      },
+      str_number: {
+        required: "Please enter your street number"
+      },
+      str_name: {
+        required: "Please enter your street name"
+      },
+      city: {
+        required: "Please enter your City"
+      },
+      state: {
+        required: "Please enter your State"
+      },
+      country: {
+        required: 'Please select your County'
+      },
+      postal_code: {
+        required: "Please enter your zip code"
+      },
+      county: {
+        required: "Please select a County"
+      },
+      court: {
+        required: "Please select a Court"
+      },
+      lea: {
+        required: "Please select a LEA Code"
+      },
+      case_number: {
+        required: "Please enter your Case Number"
+      },
+      license_state: {
+        required: "Please enter your Driver’s License Number"
+      },
+      license_number: {
+        required: true
+      }
     },
     errorPlacement: function errorPlacement(error, element) {
       var name = element.prop("name");
