@@ -1,0 +1,21 @@
+extends ../layouts/default
+include ../helpers/mixins
+block variables
+    - const title = "Sign Un";
+
+block content
+    .wrapper.wrapper-signin
+        include ../../blocks/modules/signin-header/signin-header
+        main.content.content-sign(role="main")
+            .container
+                .row
+                    .col-xl-6.offset-xl-1
+                        include ../../blocks/modules/signup-form/signup-form
+                    .col-xl-4
+                        include ../../blocks/modules/badge/badge
+
+
+        include ../../blocks/modules/footer/footer
+block scripts
+    script(src="js/signup.js")
+    script(src="js/vendor.js")
