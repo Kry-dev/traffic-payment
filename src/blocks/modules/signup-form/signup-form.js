@@ -1,7 +1,7 @@
 import $ from 'jquery';
-import validate from 'jquery-validation';
 window.jQuery = $;
 window.$ = $;
+import 'jquery-validation';
 $(document).ready(() => {
     $(".toggle-password").on('click', function() {
         console.log('click');
@@ -14,28 +14,29 @@ $(document).ready(() => {
             input.attr("type", "password");
         }
     });
-    $("#sign-in").validate({
+    
+    $("#signUp").validate({
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
         rules: {
-            signup_email: {required: true,},
-            signup_pass: {required: true,}
+            signUp_email: {required: true,},
+            signUp_pass: {required: true,}
         },
         groups: {
-            signin: "signup_email signup_pass",
+            signup: "signUp_email signUp_pass",
         },
         messages: {
-            signup_pass: {
+            signUp_email: {
                 required: "Incorrect username or password."
             },
-            signup_email: {
+            signUp_pass: {
                 required: "Incorrect username or password."
             }
         },
         errorPlacement: function(error, element) {
-            if (element.attr("name") =="signup_email" || element.attr("name") =="signup_pass") {
-                error.insertAfter("#signin_pass");
+            if (element.attr("name") === "signUp_email" || element.attr("name") === "signUp_pass") {
+                error.insertAfter("#signUp_pass");
             } else {
                 error.insertAfter(element);
             }

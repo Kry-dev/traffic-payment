@@ -57,7 +57,7 @@
 /******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 	// Promise = chunk loading, 0 = chunk loaded
 /******/ 	var installedChunks = {
-/******/ 		"signup": 0
+/******/ 		"verify": 0
 /******/ 	};
 /******/
 /******/ 	var deferredModules = [];
@@ -148,16 +148,16 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push(["./src/js/import/pages/sign-up.js","vendor"]);
+/******/ 	deferredModules.push(["./src/js/import/pages/verify.js","vendor"]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/blocks/modules/signup-form/signup-form.js":
+/***/ "./src/blocks/modules/verify-form/verify-form.js":
 /*!*******************************************************!*\
-  !*** ./src/blocks/modules/signup-form/signup-form.js ***!
+  !*** ./src/blocks/modules/verify-form/verify-form.js ***!
   \*******************************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -172,67 +172,259 @@ __webpack_require__.r(__webpack_exports__);
 window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".toggle-password").on('click', function () {
-    console.log('click');
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).toggleClass("fa-eye fa-eye-slash");
-    var input = jquery__WEBPACK_IMPORTED_MODULE_0___default()(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("toggle"));
-    console.log(input);
+/** INIT DATE FIELDS */
 
-    if (input.attr("type") === "password") {
-      input.attr("type", "text");
+function initializeDate() {
+  var dateMonth = document.getElementById('date-month');
+  var dateDay = document.getElementById('date-day');
+  var dateYear = document.getElementById('date-year');
+  var Today = new Date();
+  var minYear = Today.getYear() - 16 + 1900;
+  var maxYear = Today.getYear() - 100 + 1900; // console.log('min year', minYear);
+  // console.log('max year', maxYear);
+
+  for (var i = minYear; i >= maxYear; i--) {
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = i;
+    dateYear.appendChild(opt);
+  }
+
+  var aMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var nMonths = 12;
+
+  for (var _i = 1; _i <= nMonths; _i++) {
+    var _opt = document.createElement('option');
+
+    if (_i < 10) {
+      _opt.innerHTML = "0" + _i;
+      _opt.value = "0" + _i;
+
+      _opt.setAttribute('value', "0" + _i);
+
+      _opt.setAttribute('data-number', "0" + _i);
+
+      dateMonth.appendChild(_opt);
     } else {
-      input.attr("type", "password");
+      _opt.innerHTML = _i;
+      _opt.value = _i;
+
+      _opt.setAttribute('data-number', _i);
+
+      dateMonth.appendChild(_opt);
     }
-  });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#signUp").validate({
-    successClass: "valid-feedback",
-    errorClass: "invalid-feedback",
-    ignore: ":hidden",
-    rules: {
-      signUp_email: {
-        required: true
-      },
-      signUp_pass: {
-        required: true
-      }
-    },
-    groups: {
-      signup: "signUp_email signUp_pass"
-    },
-    messages: {
-      signUp_email: {
-        required: "Incorrect username or password."
-      },
-      signUp_pass: {
-        required: "Incorrect username or password."
-      }
-    },
-    errorPlacement: function errorPlacement(error, element) {
-      if (element.attr("name") === "signUp_email" || element.attr("name") === "signUp_pass") {
-        error.insertAfter("#signUp_pass");
-      } else {
-        error.insertAfter(element);
+  }
+
+  var nDays = 31;
+
+  for (var _i2 = 1; _i2 <= nDays; _i2++) {
+    var _opt2 = document.createElement('option');
+
+    if (_i2 < 10) {
+      _opt2.innerHTML = "0" + _i2;
+      _opt2.value = "0" + _i2;
+
+      _opt2.setAttribute('value', "0" + _i2);
+
+      _opt2.setAttribute('data-number', "0" + _i2);
+    } else {
+      _opt2.value = _i2;
+      _opt2.innerHTML = _i2;
+
+      _opt2.setAttribute('value', _i2);
+
+      _opt2.setAttribute('data-number', _i2);
+    }
+
+    dateDay.appendChild(_opt2);
+  }
+
+  dateMonth.addEventListener('change', changeDateCount, true);
+  dateYear.addEventListener('change', changeDateCount, true);
+  dateDay.addEventListener('change', changeDateDay, true);
+
+  function changeDateCount(event) {
+    var dateDay = document.getElementById('date-day');
+    var selectedYear = document.getElementById('date-year').value;
+    var selectedMonthElement = document.getElementById('date-month');
+    var selectedMonth = selectedMonthElement.options[selectedMonthElement.selectedIndex].getAttribute('value');
+
+    if (selectedYear && selectedMonth) {
+      var daysInMoth = getDaysInMonth(selectedMonth, selectedYear);
+      dateDay.innerHTML = '';
+
+      for (var _i3 = 1; _i3 <= daysInMoth; _i3++) {
+        var _opt3 = document.createElement('option');
+
+        if (_i3 < 10) {
+          _opt3.innerHTML = "0" + _i3;
+          _opt3.value = "0" + _i3;
+
+          _opt3.setAttribute('value', "0" + _i3);
+
+          _opt3.setAttribute('data-number', "0" + _i3);
+        } else {
+          _opt3.value = _i3;
+          _opt3.innerHTML = _i3;
+
+          _opt3.setAttribute('value', _i3);
+
+          _opt3.setAttribute('data-number', _i3);
+        }
+
+        dateDay.appendChild(_opt3);
       }
     }
-  });
+  }
+
+  function changeDateDay(event) {
+    console.log(event);
+  }
+
+  function getDaysInMonth(month, year) {
+    // Here January is 1 based
+    // Day 0 is the last day in the previous month
+    return new Date(year, month, 0).getDate();
+  }
+}
+
+initializeDate();
+jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod("dob", function (value, element) {
+  var result = true;
+  var ageMin = 16;
+  var ageMax = 100; //is the date valid?
+  //is it within the allowed range
+
+  var myDate = value.split("/"); // console.log(myDate);
+  // var myDate = value;
+
+  var subDay = myDate[0];
+  var subMonth = myDate[1] - 1;
+  var subYear = myDate[2];
+  var subDate = new Date(subYear, subMonth, subDay); // this will "correct" any out of range input
+
+  var calcDay = subDate.getDate();
+  var calcMonth = subDate.getMonth();
+  var calcYear = subDate.getFullYear(); // this checks to see if any of the submitted input was out of range
+  // comment this out to ignore the discrepancy if you want to set a "corrected" value below
+
+  function isValidDate(strDate) {
+    var myDateStr = new Date(strDate);
+
+    if (!isNaN(myDateStr.getMonth())) {
+      return true;
+    }
+
+    return false;
+  }
+
+  console.log(isValidDate(value));
+
+  if (calcDay != subDay || calcMonth != subMonth || calcYear != subYear) {
+    console.log(calcDay, subDay, calcMonth, subMonth, calcYear, subYear);
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "Please select a valid Date of Birth";
+    result = false;
+  }
+
+  if (result) {
+    var currDate = new Date();
+    var currYear = currDate.getFullYear();
+    var currMonth = currDate.getMonth();
+    var currDay = currDate.getDate();
+    var age = currYear - subYear;
+    console.log('age:', age);
+
+    if (subMonth > currMonth) {
+      age = age - 1; // next birthday not yet reached
+    } else if (subMonth == currMonth && currDay < subDay) {
+      age = age - 1;
+    }
+
+    if (ageMin != undefined) {
+      if (age < ageMin) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "You must be at least 16 years old to complete our course";
+        result = false;
+        console.log('age:', age);
+      }
+    }
+
+    if (ageMax != undefined) {
+      if (age >= ageMax) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "Please select a valid Date of Birth";
+        result = false;
+        console.log('age:', age);
+      }
+    }
+
+    console.log('dob validate good');
+  }
+
+  console.log(result);
+  console.log('dob validate bad');
+  return result;
+}, "Please select a valid Date of Birth");
+jquery__WEBPACK_IMPORTED_MODULE_0___default()("#verify").validate({
+  successClass: "valid-feedback",
+  errorClass: "invalid-feedback",
+  ignore: ":hidden",
+  rules: {
+    dobMonth: {
+      required: true // dob: true
+
+    },
+    dobDay: {
+      required: true // dob: true
+
+    },
+    dobYear: {
+      required: true // dob: true
+
+    },
+    dateBirth: {
+      required: true,
+      dob: true
+    }
+  },
+  groups: {
+    birthday: "dobMonth dobDay dobYear dateBirth"
+  },
+  messages: {},
+  errorPlacement: function errorPlacement(error, element) {
+    var name = element.prop("name");
+
+    if (name === "dobMonth" || name === "dobDay" || name === "dobYear") {
+      error.insertAfter(".dateBirth");
+    } else {
+      error.insertAfter(element);
+    }
+  },
+  submitHandler: function submitHandler(form) {
+    // for demo
+    alert('valid form submitted'); // for demo
+
+    return false; // for demo
+  }
+});
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on('change', function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val(jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobDay"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobMonth"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobYear"] option:selected').val());
+  console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
 });
 
 /***/ }),
 
-/***/ "./src/js/import/pages/sign-up.js":
-/*!****************************************!*\
-  !*** ./src/js/import/pages/sign-up.js ***!
-  \****************************************/
+/***/ "./src/js/import/pages/verify.js":
+/*!***************************************!*\
+  !*** ./src/js/import/pages/verify.js ***!
+  \***************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_signup_form_signup_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! %modules%/signup-form/signup-form */ "./src/blocks/modules/signup-form/signup-form.js");
+/* harmony import */ var _modules_verify_form_verify_form__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! %modules%/verify-form/verify-form */ "./src/blocks/modules/verify-form/verify-form.js");
 
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=signup.js.map
+//# sourceMappingURL=verify.js.map

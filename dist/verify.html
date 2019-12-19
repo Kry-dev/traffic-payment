@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sign Up</title>
+    <title>Please Verify Your Identity</title>
     <meta name="theme-color" content="#fff">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <div class="wrapper wrapper-signin">
+    <div class="wrapper">
       <header class="header border-bottom">
         <div class="container my-auto">
           <nav class="navbar navbar-expand-lg"><a class="navbar-brand brand" href="/">BEST ONLINE<br>TRAFFIC SCHOOL</a>
@@ -40,44 +40,43 @@
           </nav>
         </div>
       </header>
-      <main class="content content-sign" role="main">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-6 offset-xl-1">
-              <form class="form form-sign" id="signUp">
-                <div class="form-group mb-5">
-                  <h2 class="form-sign-title">Create Your Account</h2>
-                </div>
-                <div class="form-group mb-3">
-                  <input class="form-control" id="signUp_email" type="email" name="signUp_email" required="required" placeholder="Email">
-                </div>
-                <div class="form-group mb-3">
-                  <input class="form-control" id="signUp_pass" type="password" required="required" placeholder="Create Password" name="signUp_pass" value=""><span class="fa fa-fw fa-eye field-icon toggle-password" toggle="#signUp_pass"></span>
-                </div>
-                <div class="form-group mb-5"><a class="forgot-link" href="#">Forgot password?</a></div>
-                <div class="form-group">
-                  <button class="btn btn-danger w-100" type="submit">Sign Up</button>
-                </div>
-                <div class="form-group">
-                  <h5 class="text-center"><a class="form-bottom-link" href="#">Don’t have an account? Sign Im.</a></h5>
-                </div>
-              </form>
-            </div>
-            <div class="col-xl-4">
-              <div class="badge h-100">
-                <div class="badge-icon"><img src="img/general/logo-blue.png"></div>
-                <h5 class="badge-descr">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</h5>
-                <div class="badge-rating" title="70">
-                  <h3 class="badge-rating-scr">4.9</h3>
-                  <div class="back-stars"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                    <div class="front-stars" style="width: 95%"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+      <main class="content content-verify" role="main">
+        <section class="verify">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-3 offset-xl-2">
+                <h2 class="verify-title mb-4">Please Verify Your Identity</h2>
+                <p class="verify-descr">Welcome {{NAME}}. To verify your identity, the DMV requires that you provide the answers to the security questions that you completed upon registration. If you’re having trouble, contact us using live chat for help.</p>
+              </div>
+              <div class="col-xl-4 offset-xl-1">
+                <form class="verify-dob" id="verify">
+                  <div class="form-group">
+                    <label>What is your Month of Birth?</label>
+                    <select class="form-control dob-field" id="date-month" name="dobMonth" required>
+                      <option value="" selected="selected" disabled="disabled">Month</option>
+                    </select>
                   </div>
-                </div>
-                <div class="badge-reviews">Based on 273 total reviews</div>
+                  <div class="form-group">
+                    <label>What is your Date of Birth?</label>
+                    <select class="form-control dob-field" id="date-day" name="dobDay" required>
+                      <option value="" selected="selected" disabled="disabled">Day</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>What is your Year of Birth?</label>
+                    <select class="form-control dob-field" id="date-year" name="dobYear" required>
+                      <option value="" selected="selected" disabled="disabled">Year</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <input class="dateBirth" type="text" name="dateBirth" id="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000">
+                    <button class="btn btn-danger w-100" type="submit">Verify Identity</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </main>
       <footer class="footer mt-auto">
         <div class="container">
@@ -85,7 +84,7 @@
         </div>
       </footer>
     </div>
-    <script src="js/signup.js"></script>
+    <script src="js/verify.js"></script>
     <script src="js/vendor.js"></script>
   </body>
 </html>

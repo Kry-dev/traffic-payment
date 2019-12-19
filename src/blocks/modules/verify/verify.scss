@@ -1,0 +1,12 @@
+.verify {
+    width: 100%;
+    padding: 120px 0 80px;
+    &-title {
+        color: $blue-dark;
+    }
+    &-descr {
+        color: $gray-500;
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+    }
+}

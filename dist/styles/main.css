@@ -6297,6 +6297,10 @@ body {
   background-size: contain;
 }
 
+.wrapper.wrapper-verify {
+  padding: 120px 0;
+}
+
 .content {
   flex: 1 0 auto;
 }
@@ -6873,6 +6877,21 @@ form label.invalid-feedback {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.verify {
+  width: 100%;
+  padding: 120px 0 80px;
+}
+
+.verify-title {
+  color: #3A8FC8;
+}
+
+.verify-descr {
+  color: #888888;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
 }
 
 .footer {

@@ -233,17 +233,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {// (f
 
 /***/ }),
 
-/***/ "./src/blocks/modules/data/regex.json":
-/*!********************************************!*\
-  !*** ./src/blocks/modules/data/regex.json ***!
-  \********************************************/
-/*! exports provided: AL, AK, AZ, AR, CA, CO, CT, DE, DC, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, PR, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"AL\":{\"rule\":\"^[0-9]{1,8}$\",\"description\":[\"1-8 Numeric\"]},\"AK\":{\"rule\":\"^[0-9]{1,7}$\",\"description\":[\"1-7 Numbers\"]},\"AZ\":{\"rule\":\"(^[A-Z]{1}[0-9]{1,8}$)|(^[A-Z]{2}[0-9]{2,5}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 1-8 Numeric\",\"2 Alpha + 2-5 Numeric\",\"9 Numeric\"]},\"AR\":{\"rule\":\"^[0-9]{4,9}$\",\"description\":[\"4-9 Numeric\"]},\"CA\":{\"rule\":\"^[A-Z]{1}[0-9]{7}$\",\"description\":[\"1 Alpha + 7 Numeric\"]},\"CO\":{\"rule\":\"(^[0-9]{9}$)|(^[A-Z]{1}[0-9]{3,6}$)|(^[A-Z]{2}[0-9]{2,5}$)\",\"description\":[\"9 Numeric\",\"1 Alpha + 3-6 Numeric\",\"2 Alpha + 2-5 Numeric\"]},\"CT\":{\"rule\":\"^[0-9]{9}$\",\"description\":[\"9 Numeric\"]},\"DE\":{\"rule\":\"^[0-9]{1,7}$\",\"description\":[\"1-7 Numeric\"]},\"DC\":{\"rule\":\"(^[0-9]{7}$)|(^[0-9]{9}$)\",\"description\":[\"7 Numeric\",\"9 Numeric\"]},\"FL\":{\"rule\":\"^[A-Z]{1}[0-9]{12}$\",\"description\":[\"1 Alpha + 12 Numeric\"]},\"GA\":{\"rule\":\"^[0-9]{7,9}$\",\"description\":[\"7-9 Numeric\"]},\"GU\":{\"rule\":\"^[A-Z]{1}[0-9]{14}$\",\"description\":[\"1 Alpha + 14 Numeric\"]},\"HI\":{\"rule\":\"(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 8 Numeric\",\"9 Numeric\"]},\"ID\":{\"rule\":\"(^[A-Z]{2}[0-9]{6}[A-Z]{1}$)|(^[0-9]{9}$)\",\"description\":[\"2 Alpha + 6 Numeric + 1 Alpha\",\"9 Numeric\"]},\"IL\":{\"rule\":\"^[A-Z]{1}[0-9]{11,12}$\",\"description\":[\"1 Alpha + 11-12 Numeric\"]},\"IN\":{\"rule\":\"(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9,10}$)\",\"description\":[\"1 Alpha + 9 Numeric\",\"9-10 Numeric\"]},\"IA\":{\"rule\":\"^([0-9]{9}$)|([0-9]{3}[A-Z]{2}[0-9]{4})$\",\"description\":[\"9 Numeric\",\"3 Numeric + 2 Alpha + 4 Numeric\"]},\"KS\":{\"rule\":\"(^([A-Z]{1}[0-9]{1}){2}[A-Z]{1}$)|(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 1 Numeric + 1 Alpha + 1 Numeric + 1 Alpha\",\"1 Alpha + 8 Numeric\",\"9 Numeric\"]},\"KY\":{\"rule\":\"(^[A-Z]{1}[0-9]{8,9}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 8-9 Numeric\",\"9 Numeric\"]},\"LA\":{\"rule\":\"^[0-9]{1,9}$\",\"description\":[\"1-9 Numeric\"]},\"ME\":{\"rule\":\"(^[0-9]{7,8}$)|(^[0-9]{7}[A-Z]{1}$)\",\"description\":[\"7-8 Numeric\",\"7 Numeric + 1 Alpha\"]},\"MD\":{\"rule\":\"^[A-Z]{1}[0-9]{12}$\",\"description\":[\"1Alpha+12Numeric\"]},\"MA\":{\"rule\":\"(^[A-Z]{1}[0-9]{8}$)|(^[A-Z]{2}[0-9]{7}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 8 Numeric\",\"2 Alpha + 7 Numeric\",\"9 Numeric\"]},\"MI\":{\"rule\":\"(^[A-Z]{1}[0-9]{10}$)|(^[A-Z]{1}[0-9]{12}$)\",\"description\":[\"1 Alpha + 10 Numeric\",\"1 Alpha + 12 Numeric\"]},\"MN\":{\"rule\":\"^[A-Z]{1}[0-9]{12}$\",\"description\":[\"1 Alpha + 12 Numeric\"]},\"MS\":{\"rule\":\"^[0-9]{9}$\",\"description\":[\"9 Numeric\"]},\"MO\":{\"rule\":\"(^[A-Z]{1}[0-9]{5,9}$)|(^[A-Z]{1}[0-9]{6}[R]{1}$)|(^[0-9]{3}[A-Z]{1}[0-9]{6}$)|(^[0-9]{8}[A-Z]{2}$)|(^[0-9]{9}[A-Z]{1}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 5-9 Numeric\",\"1 Alpha + 6 Numeric + 'R'\",\"8 Numeric + 2 Alpha\",\"9 Numeric + 1 Alpha\",\"9 Numeric\",\"3 Numeric + 1 Alpha + 6 Numeric\"]},\"MT\":{\"rule\":\"(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{13}$)|(^[0-9]{9}$)|(^[0-9]{14}$)\",\"description\":[\"1 Alpha + 8 Numeric\",\"13 Numeric\",\"9 Numeric\",\"14 Numeric\"]},\"NE\":{\"rule\":\"(^[0-9]{1,7}$)|(^[A-Z]{1}[0-9]{6,8}$)\",\"description\":[\"1-7 Numeric\",\"1Alpha+6-8Numeric\"]},\"NV\":{\"rule\":\"(^[0-9]{9,10}$)|(^[0-9]{12}$)|(^[X]{1}[0-9]{8}$)\",\"description\":[\"9 Numeric\",\"10 Numeric\",\"12 Numeric\",\"'X' + 8 Numeric\"]},\"NH\":{\"rule\":\"(^[0-9]{2}[A-Z]{3}[0-9]{5}$)|(^[A-Z]{3}[0-9]{8}$)\",\"description\":[\"2 Numeric + 3 Alpha + 5 Numeric\"]},\"NJ\":{\"rule\":\"^[A-Z]{1}[0-9]{14}$\",\"description\":[\"1 Alpha + 14 Numeric\"]},\"NM\":{\"rule\":\"^[0-9]{8,9}$\",\"description\":[\"8 Numeric\",\"9 Numeric\"]},\"NY\":{\"rule\":\"(^[A-Z]{1}[0-9]{7}$)|(^[A-Z]{1}[0-9]{18}$)|(^[0-9]{8}$)|(^[0-9]{9}$)|(^[0-9]{16}$)|(^[A-Z]{8}$)\",\"description\":[\"1 Alpha + 7 Numeric\",\"1 Alpha + 18 Numeric\",\"8 Numeric\",\"9 Numeric\",\"16 Numeric\",\"8 Alpha\"]},\"NC\":{\"rule\":\"^[0-9]{1,12}$\",\"description\":[\"1-12 Numeric\"]},\"ND\":{\"rule\":\"(^[A-Z]{3}[0-9]{6}$)|(^[0-9]{9}$)\",\"description\":[\"3 Alpha + 6 Numeric\",\"9 Numeric\"]},\"OH\":{\"rule\":\"(^[A-Z]{1}[0-9]{4,8}$)|(^[A-Z]{2}[0-9]{3,7}$)|(^[0-9]{8}$)\",\"description\":[\"1 Alpha + 4-8 Numeric\",\"2 Alpha + 3-7 Numeric\",\"8 Numeric\"]},\"OK\":{\"rule\":\"(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 9 Numeric\",\"9 Numeric\"]},\"OR\":{\"rule\":\"(^[0-9]{1,9}$)|(^[AB][0-9]{6}$)\",\"description\":[\"1-9 Numeric\",\"A+6 Numeric\",\"B+6 Numeric\"]},\"PA\":{\"rule\":\"^[0-9]{8}$\",\"description\":[\"8 Numeric\"]},\"PR\":{\"rule\":\"(^[0-9]{9}$)|(^[0-9]{5,7}$)\",\"description\":[\"5-7 Numeric\",\"9 Numeric\"]},\"RI\":{\"rule\":\"^([0-9]{7,8}$)|(^[A-Z]{1}[0-9]{6}$)\",\"description\":[\"7-8 Numeric\",\"1 Alpha + 6 Numeric\"]},\"SC\":{\"rule\":\"^[0-9]{5,11}$\",\"description\":[\"5-11 Numeric\"]},\"SD\":{\"rule\":\"(^[0-9]{6,10}$)|(^[0-9]{12}$)\",\"description\":[\"6-10 Numeric\",\"12 Numeric\"]},\"TN\":{\"rule\":\"^[0-9]{7,9}$\",\"description\":[\"7-9 Numeric\"]},\"TX\":{\"rule\":\"^[0-9]{7,8}$\",\"description\":[\"7-8 Numeric\"]},\"UT\":{\"rule\":\"^[0-9]{4,10}$\",\"description\":[\"4-10 Numeric\"]},\"VT\":{\"rule\":\"(^[0-9]{8}$)|(^[0-9]{7}[A]$)\",\"description\":[\"8 Numeric\",\"7 Numeric + 'A'\"]},\"VA\":{\"rule\":\"(^[A-Z]{1}[0-9]{8,11}$)|(^[0-9]{9}$)\",\"description\":[\"1 Alpha + 8 Numeric\",\"1 Alpha + 9 Numeric\",\"1 Alpha + 10 Numeric\",\"1 Alpha + 11 Numeric\",\"9 Numeric\"]},\"WA\":{\"rule\":\"^(?=.{12}$)[A-Z]{1,7}[A-Z0-9\\\\*]{4,11}$\",\"description\":[\"1-7 Alpha + any combination of Alpha, Numeric, and * for a total of 12 characters\"]},\"WV\":{\"rule\":\"(^[0-9]{7}$)|(^[A-Z]{1,2}[0-9]{5,6}$)\",\"description\":[\"7 Numeric\",\"1-2 Alpha + 5-6 Numeric\"]},\"WI\":{\"rule\":\"^[A-Z]{1}[0-9]{13}$\",\"description\":[\"1 Alpha + 13 Numeric\"]},\"WY\":{\"rule\":\"^[0-9]{9,10}$\",\"description\":[\"9-10 Numeric\"]}}");
-
-/***/ }),
-
 /***/ "./src/blocks/modules/footer/footer.js":
 /*!*********************************************!*\
   !*** ./src/blocks/modules/footer/footer.js ***!
@@ -295,13 +284,23 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery-validation */ "./node_modules/jquery-validation/dist/jquery.validate.js");
+/* harmony import */ var jquery_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery_validation__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var jquery_validation_dist_additional_methods__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery-validation/dist/additional-methods */ "./node_modules/jquery-validation/dist/additional-methods.js");
+/* harmony import */ var jquery_validation_dist_additional_methods__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery_validation_dist_additional_methods__WEBPACK_IMPORTED_MODULE_2__);
 // import { isValidLicense, isValidOrReturnDescription } from "./drive-license-validation";
 
 window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
-window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a; // https://github.com/gas-buddy/usdl-regex
-// https://ntsi.com/drivers-license-format/
+window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
-var regs = __webpack_require__(/*! ../data/regex.json */ "./src/blocks/modules/data/regex.json");
+ // require("jquery-validation");
+// require("jquery-validation/dist/additional-methods.js");
+// https://github.com/gas-buddy/usdl-regex
+// // https://ntsi.com/drivers-license-format/
+// require('../data/regex.json');
+// // let countyDATA = require('../data/county.json');
+// // let countyDataObj = JSON.parse(countyDATA);
+// import('../data/county.json').then(({default: countyDATA}) =>countyDATA);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   function isValidLicense(state, number) {
@@ -580,7 +579,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   });
 
   function countyJSON() {
-    var сountyUrl = "".concat(window.location.href, "../data/county.json"); // create select fields for County/Court of Violation
+    // const сountyUrl = `${window.location.href}../data/county.json`;
+    var сountyUrl = "../data/county.json"; // const сountyUrl = countyDATA;
+    // create select fields for County/Court of Violation
 
     function setDefaultSelect(idElement) {
       var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -1037,7 +1038,16 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on('change', function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val(jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobDay"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobMonth"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobYear"] option:selected').val());
     console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
-  });
+  }); // let changeHandler = function () {
+  //     console.log ($.trim(this.value));
+  //     if ($.trim(this.value)){
+  //         $("button[type=submit]").removeAttr("disabled");
+  //     } else {
+  //         $("button[type=submit]").attr("disabled", "disabled");
+  //     }
+  // };
+  //
+  // $("input, select, textarea").keyup(changeHandler())​
 });
 
 /***/ }),

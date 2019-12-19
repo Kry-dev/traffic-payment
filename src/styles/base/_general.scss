@@ -19,6 +19,9 @@ body {
         background-position: center 50%;
         background-size: contain;
     }
+    &.wrapper-verify {
+        padding: 120px 0;
+    }
 }
 
 .content {

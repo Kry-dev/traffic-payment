@@ -2,11 +2,16 @@
 import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
+import 'jquery-validation';
+import 'jquery-validation/dist/additional-methods';
+// require("jquery-validation");
+// require("jquery-validation/dist/additional-methods.js");
 // https://github.com/gas-buddy/usdl-regex
-// https://ntsi.com/drivers-license-format/
-const regs = require('../data/regex.json');
-
-
+// // https://ntsi.com/drivers-license-format/
+// require('../data/regex.json');
+// // let countyDATA = require('../data/county.json');
+// // let countyDataObj = JSON.parse(countyDATA);
+// import('../data/county.json').then(({default: countyDATA}) =>countyDATA);
 $(document).ready(() => {
     function isValidLicense(state, number) {
         const key = (state || '').toUpperCase();
@@ -276,7 +281,9 @@ $(document).ready(() => {
         $autocomplete.find('select').val('');
     });
     function countyJSON() {
-        const сountyUrl = `${window.location.href}../data/county.json`;
+        // const сountyUrl = `${window.location.href}../data/county.json`;
+        const сountyUrl = `../data/county.json`;
+        // const сountyUrl = countyDATA;
         // create select fields for County/Court of Violation
         function setDefaultSelect(idElement, position = 0, text, value = '') {
             const selectElement = document.getElementById(idElement);
@@ -706,4 +713,15 @@ $(document).ready(() => {
         $("#dateBirth").val($('[name="dobDay"] option:selected').val()+"/"+$('[name="dobMonth"] option:selected').val()+"/"+$('[name="dobYear"] option:selected').val());
         console.log($("#dateBirth").val());
     });
+    // let changeHandler = function () {
+    //     console.log ($.trim(this.value));
+    //     if ($.trim(this.value)){
+    //         $("button[type=submit]").removeAttr("disabled");
+    //     } else {
+    //         $("button[type=submit]").attr("disabled", "disabled");
+    //     }
+    // };
+    //
+    // $("input, select, textarea").keyup(changeHandler())​
+    
 });

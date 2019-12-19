@@ -1,25 +1,25 @@
-form#sign-up.form.form-sign
+form#signUp.form.form-sign
     .form-group.mb-5
         h2.form-sign-title Create Your Account
     .form-group.mb-3
         input.form-control(
-            id="signup_email",
+            id="signUp_email",
             type="email",
-            name="signup_email",
+            name="signUp_email",
             required="required",
             placeholder="Email"
         )
     .form-group.mb-3
         input.form-control(
-            id="signup_pass",
+            id="signUp_pass",
             type="password",
             required="required",
             placeholder="Create Password",
-            name="signup_pass",
+            name="signUp_pass",
             value=""
         )
 
-        span.fa.fa-fw.fa-eye.field-icon.toggle-password(toggle='#signup_pass')
+        span.fa.fa-fw.fa-eye.field-icon.toggle-password(toggle='#signUp_pass')
     .form-group.mb-5
         a(href="#").forgot-link Forgot password?
     .form-group
