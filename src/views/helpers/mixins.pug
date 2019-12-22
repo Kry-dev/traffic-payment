@@ -51,3 +51,8 @@ mixin listOfStates
     option(value='WI') Wisconsin
     option(value='WY') Wyoming
 
+mixin steps(count)
+    - var n = 0
+    while n < count
+        block
+        - n++

@@ -96,7 +96,16 @@ $theme-colors: map-merge(
     ),
     $theme-colors
 );
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
 
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1170px
+);
 
 // Body
 //
@@ -278,10 +287,10 @@ $custom-select-disabled-color:          $input-disabled-bg;
 $custom-select-indicator-color:         $gray-200;
 $custom-select-indicator:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"), "#", "%23");
 //$input-height-border:                   $input-border-width * 2;
-$custom-select-padding-y:           $input-padding-y;
-$custom-select-padding-x:           $input-padding-x;
+//$custom-select-padding-y:           $input-padding-y;
+//$custom-select-padding-x:           $input-padding-x;
 //$custom-select-font-family:         $input-font-family;
-$custom-select-font-size:           $input-font-size;
+//$custom-select-font-size:           $input-font-size;
 //$custom-select-height:              $input-height;
 $custom-select-indicator-padding:   1rem ; // Extra padding to account for the presence of the background-image based indicator
 $custom-select-font-weight:         $input-font-weight;
@@ -290,23 +299,23 @@ $custom-select-color:               $input-color;
 //$custom-select-disabled-color:      $gray-600;
 $custom-select-bg:                  $input-bg;
 //$custom-select-disabled-bg:         $gray-200;
-$custom-select-bg-size:             8px 10px; // In pixels because image dimensions
-$custom-select-indicator-color:     $gray-800 ;
-$custom-select-indicator:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"), "#", "%23");
-$custom-select-background:          $custom-select-indicator no-repeat right $custom-select-padding-x center / $custom-select-bg-size; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
+//$custom-select-bg-size:             8px 10px; // In pixels because image dimensions
+//$custom-select-indicator-color:     $gray-800 ;
+//$custom-select-indicator:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"), "#", "%23");
+//$custom-select-background:          $custom-select-indicator no-repeat right $custom-select-padding-x center / $custom-select-bg-size; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-$custom-select-feedback-icon-padding-right: calc((1em + #{2 * $custom-select-padding-y}) * 3 / 4 + #{$custom-select-padding-x + $custom-select-indicator-padding});
-$custom-select-feedback-icon-position:      center right ($custom-select-padding-x + $custom-select-indicator-padding);
-$custom-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half;
+//$custom-select-feedback-icon-padding-right: calc((1em + #{2 * $custom-select-padding-y}) * 3 / 4 + #{$custom-select-padding-x + $custom-select-indicator-padding});
+//$custom-select-feedback-icon-position:      center right ($custom-select-padding-x + $custom-select-indicator-padding);
+//$custom-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half;
 
-$custom-select-border-width:        $input-border-width;
-$custom-select-border-color:        $input-border-color;
+//$custom-select-border-width:        $input-border-width;
+//$custom-select-border-color:        $input-border-color;
 //$custom-select-border-radius:       $border-radius;
-$custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075);
+//$custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075);
 
-$custom-select-focus-border-color:  $input-focus-border-color;
+//$custom-select-focus-border-color:  $input-focus-border-color;
 //$custom-select-focus-width:         $input-focus-width;
-$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width $input-btn-focus-color;
+//$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width $input-btn-focus-color;
 
 
 
@@ -335,3 +344,53 @@ $btn-block-spacing-y:         .5rem;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           0;
+
+
+// Tooltips
+
+$tooltip-font-size:                 $font-size-base;
+$tooltip-max-width:                 228px;
+$tooltip-color:                     $white;
+$tooltip-bg:                        $black;
+$tooltip-border-radius:             4px;
+$tooltip-opacity:                   .9;
+$tooltip-padding-y:                 1.5rem;
+$tooltip-padding-x:                 1.5rem;
+$tooltip-margin:                    0;
+
+$tooltip-arrow-width:               .8rem;
+$tooltip-arrow-height:              .4rem;
+$tooltip-arrow-color:               $tooltip-bg;
+// Form tooltips must come after regular tooltips
+$form-feedback-tooltip-padding-y:     $tooltip-padding-y;
+$form-feedback-tooltip-padding-x:     $tooltip-padding-x;
+$form-feedback-tooltip-font-size:     $tooltip-font-size;
+$form-feedback-tooltip-line-height:   $line-height-base;
+$form-feedback-tooltip-opacity:       $tooltip-opacity;
+$form-feedback-tooltip-border-radius: $tooltip-border-radius;
+
+
+// Popovers
+
+$popover-font-size:                 $font-size-base;
+$popover-bg:                        $white;
+$popover-max-width:                 228px;
+$popover-border-width:              $border-width;
+$popover-border-color:              $gray-200;
+$popover-border-radius:             4px;
+$popover-box-shadow:                0 .25rem .5rem rgba($black, .2);
+
+$popover-header-bg:                 darken($popover-bg, 3%);
+$popover-header-color:              $body-color;
+$popover-header-padding-y:          1.5rem;
+$popover-header-padding-x:          1.5rem;
+
+$popover-body-color:                $body-color;
+$popover-body-padding-y:            $popover-header-padding-y;
+$popover-body-padding-x:            $popover-header-padding-x;
+
+$popover-arrow-width:               1rem;
+$popover-arrow-height:              .5rem;
+$popover-arrow-color:               $popover-bg;
+
+$popover-arrow-outer-color:         fade-in($popover-border-color, .05);

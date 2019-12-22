@@ -1,0 +1,67 @@
+.multi-steps {
+    min-width: 430px;
+    margin: 0 auto;
+}
+.multi-steps-list{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    list-style: none;
+    counter-reset: my-awesome-counter;
+    margin: 0 auto;
+    > li {
+        counter-increment: my-awesome-counter;
+        text-align: center;
+        display: table-cell;
+        position: relative;
+        color: $gray-200;
+        font-family: "Roboto", sans-serif;
+        font-size: 1rem;
+        &:before{
+            content: counter(my-awesome-counter);
+            display: block;
+            margin: 0 auto;
+            width: 36px;
+            height: 36px;
+            line-height: 28px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 50%;
+            color: $white;
+            border-width: 5px;
+            border-style: solid;
+            border-color: $white;
+            background: $gray-200;
+        }
+        &:after{
+            content: '';
+            height: 2px;
+            width: 100%;
+            background-color: $gray-200;
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            z-index: -1;
+        }
+        &:last-child{
+            &:after{
+                display: none;
+            }
+        }
+        
+        &.active {
+            color: $success;
+            &:before{
+                background-color: $success;
+            }
+            &:after {
+                background-color: $success;
+            }
+            ~ li{
+                &:after{
+                    background-color: $gray-200;
+                }
+            }
+        }
+    }
+}
