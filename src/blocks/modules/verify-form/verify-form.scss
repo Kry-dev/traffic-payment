@@ -1,0 +1,8 @@
+.verify-form {
+    position: relative;
+    .dateBirth {
+        position: absolute !important;
+        z-index: -9999;
+        opacity: 0;
+    }
+}

@@ -1,17 +1,23 @@
-{
-  "AL": {
+[
+  {
+    "name": "Alabama",
+    "code": "AL",
     "rule": "^[0-9]{1,8}$",
     "description": [
       "1-8 Numeric"
     ]
   },
-  "AK": {
+  {
+    "name": "Alaska",
+    "code": "AK",
     "rule": "^[0-9]{1,7}$",
     "description": [
       "1-7 Numbers"
     ]
   },
-  "AZ": {
+  {
+    "name": "Arizona",
+    "code": "AZ",
     "rule": "(^[A-Z]{1}[0-9]{1,8}$)|(^[A-Z]{2}[0-9]{2,5}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 1-8 Numeric",
@@ -19,19 +25,25 @@
       "9 Numeric"
     ]
   },
-  "AR": {
+  {
+    "name": "Arkansas",
+    "code": "AR",
     "rule": "^[0-9]{4,9}$",
     "description": [
       "4-9 Numeric"
     ]
   },
-  "CA": {
+  {
+    "name": "California",
+    "code": "CA",
     "rule": "^[A-Z]{1}[0-9]{7}$",
     "description": [
       "1 Alpha + 7 Numeric"
     ]
   },
-  "CO": {
+  {
+    "name": "Colorado",
+    "code": "CO",
     "rule": "(^[0-9]{9}$)|(^[A-Z]{1}[0-9]{3,6}$)|(^[A-Z]{2}[0-9]{2,5}$)",
     "description": [
       "9 Numeric",
@@ -39,78 +51,102 @@
       "2 Alpha + 2-5 Numeric"
     ]
   },
-  "CT": {
+  {
+    "name": "Connecticut",
+    "code": "CT",
     "rule": "^[0-9]{9}$",
     "description": [
       "9 Numeric"
     ]
   },
-  "DE": {
+  {
+    "name": "Delaware",
+    "code": "DE",
     "rule": "^[0-9]{1,7}$",
     "description": [
       "1-7 Numeric"
     ]
   },
-  "DC": {
+  {
+    "name": "District Of Columbia",
+    "code": "DC",
     "rule": "(^[0-9]{7}$)|(^[0-9]{9}$)",
     "description": [
       "7 Numeric",
       "9 Numeric"
     ]
   },
-  "FL": {
+  {
+    "name": "Florida",
+    "code": "FL",
     "rule": "^[A-Z]{1}[0-9]{12}$",
     "description": [
       "1 Alpha + 12 Numeric"
     ]
   },
-  "GA": {
+  {
+    "name": "Georgia",
+    "code": "GA",
     "rule": "^[0-9]{7,9}$",
     "description": [
       "7-9 Numeric"
     ]
   },
-  "GU" : {
+  {
+    "name": "Guam",
+    "code": "GU",
     "rule": "^[A-Z]{1}[0-9]{14}$",
     "description": [
       "1 Alpha + 14 Numeric"
     ]
   },
-  "HI": {
+  {
+    "name": "Hawaii",
+    "code": "HI",
     "rule": "(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 8 Numeric",
       "9 Numeric"
     ]
   },
-  "ID": {
+  {
+    "name": "Idaho",
+    "code": "ID",
     "rule": "(^[A-Z]{2}[0-9]{6}[A-Z]{1}$)|(^[0-9]{9}$)",
     "description": [
       "2 Alpha + 6 Numeric + 1 Alpha",
       "9 Numeric"
     ]
   },
-  "IL": {
+  {
+    "name": "Illinois",
+    "code": "IL",
     "rule": "^[A-Z]{1}[0-9]{11,12}$",
     "description": [
       "1 Alpha + 11-12 Numeric"
     ]
   },
-  "IN": {
+  {
+    "name": "Indiana",
+    "code": "IN",
     "rule": "(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9,10}$)",
     "description": [
       "1 Alpha + 9 Numeric",
       "9-10 Numeric"
     ]
   },
-  "IA": {
+  {
+    "name": "Iowa",
+    "code": "IA",
     "rule": "^([0-9]{9}$)|([0-9]{3}[A-Z]{2}[0-9]{4})$",
     "description": [
       "9 Numeric",
       "3 Numeric + 2 Alpha + 4 Numeric"
     ]
   },
-  "KS": {
+  {
+    "name": "Kansas",
+    "code": "KS",
     "rule": "(^([A-Z]{1}[0-9]{1}){2}[A-Z]{1}$)|(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 1 Numeric + 1 Alpha + 1 Numeric + 1 Alpha",
@@ -118,33 +154,43 @@
       "9 Numeric"
     ]
   },
-  "KY": {
+  {
+    "name": "Kentucky",
+    "code": "KY",
     "rule": "(^[A-Z]{1}[0-9]{8,9}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 8-9 Numeric",
       "9 Numeric"
     ]
   },
-  "LA": {
+  {
+    "name": "Louisiana",
+    "code": "LA",
     "rule": "^[0-9]{1,9}$",
     "description": [
       "1-9 Numeric"
     ]
   },
-  "ME": {
+  {
+    "name": "Maine",
+    "code": "ME",
     "rule": "(^[0-9]{7,8}$)|(^[0-9]{7}[A-Z]{1}$)",
     "description": [
       "7-8 Numeric",
       "7 Numeric + 1 Alpha"
     ]
   },
-  "MD": {
+  {
+    "name": "Maryland",
+    "code": "MD",
     "rule": "^[A-Z]{1}[0-9]{12}$",
     "description": [
       "1Alpha+12Numeric"
     ]
   },
-  "MA": {
+  {
+    "name": "Massachusetts",
+    "code": "MA",
     "rule": "(^[A-Z]{1}[0-9]{8}$)|(^[A-Z]{2}[0-9]{7}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 8 Numeric",
@@ -152,26 +198,34 @@
       "9 Numeric"
     ]
   },
-  "MI": {
+  {
+    "name": "Michigan",
+    "code": "MI",
     "rule": "(^[A-Z]{1}[0-9]{10}$)|(^[A-Z]{1}[0-9]{12}$)",
     "description": [
       "1 Alpha + 10 Numeric",
       "1 Alpha + 12 Numeric"
     ]
   },
-  "MN": {
+  {
+    "name": "Minnesota",
+    "code": "MN",
     "rule": "^[A-Z]{1}[0-9]{12}$",
     "description": [
       "1 Alpha + 12 Numeric"
     ]
   },
-  "MS": {
+  {
+    "name": "Mississippi",
+    "code": "MS",
     "rule": "^[0-9]{9}$",
     "description": [
       "9 Numeric"
     ]
   },
-  "MO": {
+  {
+    "name": "Missouri",
+    "code": "MO",
     "rule": "(^[A-Z]{1}[0-9]{5,9}$)|(^[A-Z]{1}[0-9]{6}[R]{1}$)|(^[0-9]{3}[A-Z]{1}[0-9]{6}$)|(^[0-9]{8}[A-Z]{2}$)|(^[0-9]{9}[A-Z]{1}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 5-9 Numeric",
@@ -182,7 +236,9 @@
       "3 Numeric + 1 Alpha + 6 Numeric"
     ]
   },
-  "MT": {
+  {
+    "name": "Montana",
+    "code": "MT",
     "rule": "(^[A-Z]{1}[0-9]{8}$)|(^[0-9]{13}$)|(^[0-9]{9}$)|(^[0-9]{14}$)",
     "description": [
       "1 Alpha + 8 Numeric",
@@ -191,14 +247,18 @@
       "14 Numeric"
     ]
   },
-  "NE": {
+  {
+    "name": "Nebraska",
+    "code": "NE",
     "rule": "(^[0-9]{1,7}$)|(^[A-Z]{1}[0-9]{6,8}$)",
     "description": [
       "1-7 Numeric",
       "1Alpha+6-8Numeric"
     ]
   },
-  "NV": {
+  {
+    "name": "Nevada",
+    "code": "NV",
     "rule": "(^[0-9]{9,10}$)|(^[0-9]{12}$)|(^[X]{1}[0-9]{8}$)",
     "description": [
       "9 Numeric",
@@ -207,26 +267,34 @@
       "'X' + 8 Numeric"
     ]
   },
-  "NH": {
+  {
+    "name": "New Hampshire",
+    "code": "NH",
     "rule": "(^[0-9]{2}[A-Z]{3}[0-9]{5}$)|(^[A-Z]{3}[0-9]{8}$)",
     "description": [
       "2 Numeric + 3 Alpha + 5 Numeric"
     ]
   },
-  "NJ": {
+  {
+    "name": "New Jersey",
+    "code": "NJ",
     "rule": "^[A-Z]{1}[0-9]{14}$",
     "description": [
       "1 Alpha + 14 Numeric"
     ]
   },
-  "NM": {
+  {
+    "name": "New Mexico",
+    "code": "NM",
     "rule": "^[0-9]{8,9}$",
     "description": [
       "8 Numeric",
       "9 Numeric"
     ]
   },
-  "NY": {
+  {
+    "name": "New York",
+    "code": "NY",
     "rule": "(^[A-Z]{1}[0-9]{7}$)|(^[A-Z]{1}[0-9]{18}$)|(^[0-9]{8}$)|(^[0-9]{9}$)|(^[0-9]{16}$)|(^[A-Z]{8}$)",
     "description": [
       "1 Alpha + 7 Numeric",
@@ -237,20 +305,26 @@
       "8 Alpha"
     ]
   },
-  "NC": {
+  {
+    "name": "North Carolina",
+    "code": "NC",
     "rule": "^[0-9]{1,12}$",
     "description": [
       "1-12 Numeric"
     ]
   },
-  "ND": {
+  {
+    "name": "North Dakota",
+    "code": "ND",
     "rule": "(^[A-Z]{3}[0-9]{6}$)|(^[0-9]{9}$)",
     "description": [
       "3 Alpha + 6 Numeric",
       "9 Numeric"
     ]
   },
-  "OH": {
+  {
+    "name": "Ohio",
+    "code": "OH",
     "rule": "(^[A-Z]{1}[0-9]{4,8}$)|(^[A-Z]{2}[0-9]{3,7}$)|(^[0-9]{8}$)",
     "description": [
       "1 Alpha + 4-8 Numeric",
@@ -258,14 +332,18 @@
       "8 Numeric"
     ]
   },
-  "OK": {
+  {
+    "name": "Oklahoma",
+    "code": "OK",
     "rule": "(^[A-Z]{1}[0-9]{9}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 9 Numeric",
       "9 Numeric"
     ]
   },
-  "OR": {
+  {
+    "name": "Oregon",
+    "code": "OR",
     "rule": "(^[0-9]{1,9}$)|(^[AB][0-9]{6}$)",
     "description": [
       "1-9 Numeric",
@@ -273,65 +351,85 @@
       "B+6 Numeric"
     ]
   },
-  "PA": {
+  {
+    "name": "Palau",
+    "code": "PW",
     "rule": "^[0-9]{8}$",
     "description": [
       "8 Numeric"
     ]
   },
-  "PR": {
+  {
+    "name": "Puerto Rico",
+    "code": "PR",
     "rule": "(^[0-9]{9}$)|(^[0-9]{5,7}$)",
     "description": [
       "5-7 Numeric",
       "9 Numeric"
     ]
   },
-  "RI": {
+  {
+    "name": "Rhode Island",
+    "code": "RI",
     "rule": "^([0-9]{7,8}$)|(^[A-Z]{1}[0-9]{6}$)",
     "description": [
       "7-8 Numeric",
       "1 Alpha + 6 Numeric"
     ]
   },
-  "SC": {
+  {
+    "name": "South Carolina",
+    "code": "SC",
     "rule": "^[0-9]{5,11}$",
     "description": [
       "5-11 Numeric"
     ]
   },
-  "SD": {
+  {
+    "name": "South Dakota",
+    "code": "SD",
     "rule": "(^[0-9]{6,10}$)|(^[0-9]{12}$)",
     "description": [
       "6-10 Numeric",
       "12 Numeric"
     ]
   },
-  "TN": {
+  {
+    "name": "Tennessee",
+    "code": "TN",
     "rule": "^[0-9]{7,9}$",
     "description": [
       "7-9 Numeric"
     ]
   },
-  "TX": {
+  {
+    "name": "Texas",
+    "code": "TX",
     "rule": "^[0-9]{7,8}$",
     "description": [
       "7-8 Numeric"
     ]
   },
-  "UT": {
+  {
+    "name": "Utah",
+    "code": "UT",
     "rule": "^[0-9]{4,10}$",
     "description": [
       "4-10 Numeric"
     ]
   },
-  "VT": {
+  {
+    "name": "Vermont",
+    "code": "VT",
     "rule": "(^[0-9]{8}$)|(^[0-9]{7}[A]$)",
     "description": [
       "8 Numeric",
       "7 Numeric + 'A'"
     ]
   },
-  "VA": {
+  {
+    "name": "Virginia",
+    "code": "VA",
     "rule": "(^[A-Z]{1}[0-9]{8,11}$)|(^[0-9]{9}$)",
     "description": [
       "1 Alpha + 8 Numeric",
@@ -341,29 +439,36 @@
       "9 Numeric"
     ]
   },
-  "WA": {
+  {
+    "name": "Washington",
+    "code": "WA",
     "rule": "^(?=.{12}$)[A-Z]{1,7}[A-Z0-9\\*]{4,11}$",
     "description": [
       "1-7 Alpha + any combination of Alpha, Numeric, and * for a total of 12 characters"
     ]
   },
-  "WV": {
+  {
+    "name": "West Virginia",
+    "code": "WV",
     "rule": "(^[0-9]{7}$)|(^[A-Z]{1,2}[0-9]{5,6}$)",
     "description": [
       "7 Numeric",
       "1-2 Alpha + 5-6 Numeric"
     ]
   },
-  "WI": {
+  {
+    "name": "WI",
     "rule": "^[A-Z]{1}[0-9]{13}$",
     "description": [
       "1 Alpha + 13 Numeric"
     ]
   },
-  "WY": {
+  {
+    "name": "Wisconsin",
+    "code": "WI",
     "rule": "^[0-9]{9,10}$",
     "description": [
       "9-10 Numeric"
     ]
   }
-}
+]

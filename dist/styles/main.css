@@ -4029,7 +4029,7 @@ a.badge-pink.focus {
 
 .form-control:disabled,
 .form-control[readonly] {
-  background-color: #D0D0D0;
+  background-color: #FCFCFC;
   opacity: 1;
 }
 
@@ -6892,6 +6892,16 @@ form label.invalid-feedback {
   color: #888888;
   font-size: 1.125rem;
   line-height: 1.5rem;
+}
+
+.verify-form {
+  position: relative;
+}
+
+.verify-form .dateBirth {
+  position: absolute !important;
+  z-index: -9999;
+  opacity: 0;
 }
 
 .footer {

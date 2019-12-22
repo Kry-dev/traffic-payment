@@ -578,24 +578,52 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     $autocomplete.find('select').val('');
   });
 
+  function setDefaultSelect(idElement) {
+    var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var text = arguments.length > 2 ? arguments[2] : undefined;
+    var value = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
+    var selectElement = document.getElementById(idElement);
+    var firstDefaultOption = document.createElement('option');
+    selectElement.length = position;
+    firstDefaultOption.text = text;
+    firstDefaultOption.value = value;
+    selectElement.add(firstDefaultOption);
+    selectElement.selectedIndex = 0;
+    return selectElement;
+  } // function reset selected option in select to 1st option, with dafault value=""
+
+
+  function resetSelectElement(el) {
+    el.options.length = 1;
+    el.selectedIndex = 1; // first option is selected, or// -1 for no option selected
+  } // function to enable select field
+
+
+  function enableSelectElement(field) {
+    field.disabled = false;
+  } // function to disable select field
+
+
+  function disableSelectElement(field) {
+    field.disabled = true;
+  } // function to create option list to into select
+
+
+  function createOptionsList(obj, selectField) {
+    var optionCounty;
+
+    for (var i = 0; i < obj.length; i++) {
+      optionCounty = document.createElement('option');
+      optionCounty.text = obj[i].name;
+      optionCounty.value = obj[i].name;
+      selectField.add(optionCounty);
+    }
+  }
+
   function countyJSON() {
     // const сountyUrl = `${window.location.href}../data/county.json`;
     var сountyUrl = "../data/county.json"; // const сountyUrl = countyDATA;
     // create select fields for County/Court of Violation
-
-    function setDefaultSelect(idElement) {
-      var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      var text = arguments.length > 2 ? arguments[2] : undefined;
-      var value = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
-      var selectElement = document.getElementById(idElement);
-      var firstDefaultOption = document.createElement('option');
-      selectElement.length = position;
-      firstDefaultOption.text = text;
-      firstDefaultOption.value = value;
-      selectElement.add(firstDefaultOption);
-      selectElement.selectedIndex = 0;
-      return selectElement;
-    }
 
     var selectCounty = setDefaultSelect('county', 0, 'Select County');
     var selectCourt = setDefaultSelect('court', 0, 'Select Court');
@@ -618,36 +646,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
           return array[i].lea;
         }
       }
-    } // function reset selected option in select to 1st option, with dafault value=""
-
-
-    function resetSelectElement(el) {
-      el.options.length = 1;
-      el.selectedIndex = 1; // first option is selected, or// -1 for no option selected
-    } // function to enable select field
-
-
-    function enableSelectElement(field) {
-      field.disabled = false;
-    } // function to disable select field
-
-
-    function disableSelectElement(field) {
-      field.disabled = true;
-    } // function to create option list to into select
-
-
-    function createOptionsList(obj, selectField) {
-      var optionCounty;
-
-      for (var i = 0; i < obj.length; i++) {
-        optionCounty = document.createElement('option');
-        optionCounty.text = obj[i].name;
-        optionCounty.value = obj[i].name;
-        selectField.add(optionCounty);
-      }
     }
 
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#leaBox').hide();
     var request = new XMLHttpRequest(); // get data from сountyUrl (county.json) by AJAX request
 
     request.open('GET', сountyUrl, true);
@@ -680,6 +681,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
             resetSelectElement(selectCourt);
             enableSelectElement(selectCourt);
             LEAArray = getCourtValue(data, selectedCountyVal);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()("#leaBox").show();
             selectCourt.addEventListener('change', function () {
               var selectedCourtVal = selectCourt.value;
               var listLEAOptions = getLEAValue(LEAArray, selectedCourtVal); // if ((selectedCourtVal !== 0) || (selectedCourtVal !== '')) {
@@ -714,6 +716,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
           } else {
             disableSelectElement(selectCourt);
             disableSelectElement(selectLEA);
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()("#leaBox").hide();
           }
         });
       } else {
@@ -729,103 +732,82 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   }
 
   countyJSON(); //Init JSON county
-  // $('body').on('click', '#submit', (e) => {
-  //     e.preventDefault();
-  //     FormValidation(e);
-  // });
-  //
-  // $('#address').on('submit', (e) => {
-  //     e.preventDefault();
-  //     FormValidation(e);
-  // });
-  //
-  // function FormValidation(event) {
-  //     let isValid = false;
-  //     const $form = $('form#address');
-  //     const selectorsForValidation = $form.find('select, input, textarea');
-  //     const $selectorsForValidation = [...selectorsForValidation];
-  //     console.log($selectorsForValidation);
-  //
-  //     $selectorsForValidation.forEach((element) => {
-  //         const $element = $(element);
-  //         const elementId = $element.attr('id');
-  //         const $closestError = $element.closest('.form-group').find('.errorTxt');
-  //         console.warn(elementId);
-  //         console.log($element);
-  //         const elementValue = $element.val();
-  //
-  //         //example
-  //         if (!elementValue) {
-  //             console.error('element without value');
-  //             $closestError.html(`element without value`);
-  //             isValid = false;
-  //             return false; // stop and exit validation
-  //         }
-  //
-  //         // console.log('$element value', elementValue);
-  //         const elementValueLength = elementValue.length;
-  //         // console.log('$element value', elementValueLength);
-  //
-  //         if (elementValueLength <= 2) {
-  //             console.error('element lenght must be more that 2 chars....');
-  //             $closestError.html(`element lenght must be more that 2 chars....`);
-  //             isValid = false;
-  //             return false; // stop and exit validation
-  //         }
-  //         //phone
-  //         const $phone = $('#phone');
-  //         const phoneValue = $phone.val();
-  //         const phoneValueLength = phoneValue.length;
-  //         const phonePattern = new RegExp('^\\d\W+$'); // regexp pattern
-  //         console.log(phonePattern.test(phoneValue));
-  //         // $phone.val('Your phone number must be 10 digits');
-  //
-  //         if (phoneValueLength < 10) {
-  //             console.error('Your phone number must be 10 digits');
-  //             $closestError.html(`Your phone number must be 10 digits`);
-  //             isValid = false;
-  //             return false; // stop and exit validation
-  //         } else {
-  //             isValid = true;
-  //         }
-  //         //DOB select fields
-  //         const $month = $('month');
-  //         const monthVal = $month.val();
-  //         const $day = $('day');
-  //         const dayVal = $day.val();
-  //         const $year = $('year');
-  //         const $DOBVal ="";
-  //         const Today = new Date();
-  //         console.log(Today);
-  //         const minYear = Today.getYear() - 16 + 1900;
-  //         const maxYear = Today.getYear() - 100 + 1900;
-  //         // console.log('min year', minYear);
-  //         // console.log('max year', maxYear);
-  //         // example custom validation
-  //         const $postal_code = $('#postal_code');
-  //         const postal_code_value = $postal_code.val();
-  //         const postal_code_pattern = new RegExp('^\\d+$'); // regexp pattern
-  //         console.log(postal_code_pattern.test(postal_code_value));
-  //
-  //         if (postal_code_pattern.test(postal_code_value) === false) {
-  //             console.error('element must contain only numbers');
-  //             $closestError.html(`element must contain only numbers`);
-  //             isValid = false;
-  //             return false; // stop and exit validation
-  //         }
-  //         // if all validations is ok - set isValid == true
-  //         isValid == true;
-  //
-  //     });
-  //
-  //
-  //     if (!isValid) {
-  //         return false;
-  //     }
-  //
-  //     console.log('form valid, proceed submit data');
-  // }
-  //     $.validator.setDefaults({
+  // function Get Rejex State name from array rejex.json
+
+  function getLicenseRegex(element, object, keyText) {
+    if (Array.isArray(object)) {
+      for (var i = 0; i < object.length; i++) {
+        if (object[i].code === keyText) {
+          // let inputLisense;
+          // inputLisense = document.createElement('input');
+          // inputLisense.text = object[i].name;
+          // inputLisense.placeholder = object[i].description;
+          // inputLisense.value = object[i].name;
+          element.val("");
+          element.attr('data-rule-pattern', object[i].rule);
+          element.attr('placeholder', object[i].description); // return object[i].rule;
+        }
+      }
+    }
+  }
+
+  function licenseJSON() {
+    var licenseURL = "../data/regex.json";
+    var selectState = setDefaultSelect('license-state', 0, 'Select State');
+    var licenseNumber = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#license-number');
+    console.log(selectState);
+    console.log(licenseNumber);
+    var request = new XMLHttpRequest(); // get data from licenseUrl  (regex.json) by AJAX request
+
+    request.open('GET', licenseURL, true);
+
+    request.onload = function () {
+      if (request.status === 200) {
+        // function to create option list to into select
+        var createStatesList = function createStatesList(rejexObj, selectField) {
+          var optionCounty;
+
+          for (var i = 0; i < rejexObj.length; i++) {
+            optionCounty = document.createElement('option');
+            optionCounty.text = rejexObj[i].name;
+            optionCounty.value = rejexObj[i].code;
+            selectField.add(optionCounty);
+          }
+        };
+
+        var rejexObj = JSON.parse(request.responseText);
+        console.log(rejexObj);
+        createStatesList(rejexObj, selectState); //Build Select States options list
+        // add event when select County
+
+        selectState.addEventListener('change', function () {
+          var selectedStateVal = selectState.value;
+
+          if (selectedStateVal == "0") {
+            licenseNumber.val(""); // licenseNumber.attr('data-rule-pattern', object[i].rule);
+
+            licenseNumber.attr('placeholder', "e.g. DL05876");
+          } else if (selectedStateVal.length !== 0 && selectedStateVal !== "") {
+            getLicenseRegex(licenseNumber, rejexObj, selectState.value);
+          } else {
+            licenseNumber.val(""); // licenseNumber.attr('data-rule-pattern', object[i].rule);
+
+            licenseNumber.attr("placeholder", "e.g. DL05876");
+          }
+        });
+      } else {
+        console.log('there is no rejex.json file');
+      }
+    };
+
+    request.onerror = function () {
+      console.error('An error occurred fetching the JSON from ' + licenseURL);
+    };
+
+    request.send();
+  }
+
+  licenseJSON(); //     $.validator.setDefaults({
   //         debug: true,
   //         success: "valid"
   //     });
@@ -903,7 +885,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     console.log(result);
     console.log('dob validate bad');
     return result;
-  }, "Please select a valid Date of Birth");
+  }, "Please select a valid Date of Birth"); // let regexLicenseRegex = /^[a-z0-9]{8,32}$/ig;
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('regexLicense', function (value, element, parameter) {
+    var regexLicenseRegex = element.attr("data-rule-pattern");
+    console.log(element.attr("data-rule-pattern"));
+    return value.match(regexLicenseRegex);
+  }, '');
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address").validate({
     successClass: "valid-feedback",
     errorClass: "invalid-feedback",
@@ -966,7 +954,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         required: true
       },
       license_number: {
-        required: true
+        required: true // regexLicense : true,
+        // pattern: true
+
       }
     },
     groups: {
@@ -1027,27 +1017,55 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       } else {
         error.insertAfter(element);
       }
-    },
-    submitHandler: function submitHandler(form) {
-      // for demo
-      alert('valid form submitted'); // for demo
+    } // submitHandler: function (form){
+    //     alert('valid form submitted');
+    //     $("button[type='submit']").prop('disabled', false);
+    //     return false;
+    // }
 
-      return false; // for demo
-    }
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on('change', function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val(jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobDay"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobMonth"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobYear"] option:selected').val());
     console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
-  }); // let changeHandler = function () {
-  //     console.log ($.trim(this.value));
-  //     if ($.trim(this.value)){
-  //         $("button[type=submit]").removeAttr("disabled");
-  //     } else {
-  //         $("button[type=submit]").attr("disabled", "disabled");
-  //     }
-  // };
-  //
-  // $("input, select, textarea").keyup(changeHandler())​
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('input,select').on('blur keyup', function () {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address").valid()) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit').prop('disabled', false);
+    } else {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit').prop('disabled', 'disabled');
+    }
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('change keyup', function (e) {
+    // let Disabled = true;
+    // $("input[value=''], select option[value='']").each(function() {
+    //     let value = this.value;
+    //     // console.log(this);
+    //     // console.log(value);
+    //     if ((value)&&(value.trim() !='')) {
+    //         Disabled = false;
+    //     }else{
+    //         Disabled = true;
+    //         return false
+    //     }
+    // });
+    //
+    // if(Disabled){
+    //     $("button[type='submit']").prop("disabled", true);
+    //     // alert("false")
+    // }else{
+    //     $("button[type='submit']").prop("disabled", false);
+    //     alert("True")
+    //
+    // }
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("input[value=''], select option[value='']").on('blur', function () {
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()("form").valid()) {
+        alert("Form VALID"); // $("button[type='submit']").prop('disabled', false);
+      } else {// $("button[type='submit']").prop('disabled', 'disabled');
+        }
+    }); // if ($("input[value=''], select option[value='']").length > 0) {
+    //     console.log('some fields are empty!')
+    // }
+  });
 });
 
 /***/ }),

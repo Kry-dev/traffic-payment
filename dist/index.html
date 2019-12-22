@@ -69,18 +69,18 @@
                 <div class="form-group row">
                   <div class="col-6">
                     <label for="phone">Phone Number: *</label>
-                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="" required="required">
+                    <input class="form-control input-tel required" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="1234567899" required="required">
                   </div>
                   <div class="col-6">
                     <div class="row payment-DOB">
                       <label class="col-12">Date of Birth: *</label>
-                      <select class="form-control dob-field" id="date-month" name="dobMonth" required>
+                      <select class="form-control dob-field required" id="date-month" name="dobMonth" required>
                         <option value="" selected="selected" disabled="disabled">Month</option>
                       </select>
-                      <select class="form-control dob-field" id="date-day" name="dobDay" required>
+                      <select class="form-control dob-field required" id="date-day" name="dobDay" required>
                         <option value="" selected="selected" disabled="disabled">Day</option>
                       </select>
-                      <select class="form-control dob-field" id="date-year" name="dobYear" required>
+                      <select class="form-control dob-field required" id="date-year" name="dobYear" required>
                         <option value="" selected="selected" disabled="disabled">Year</option>
                       </select>
                       <input class="dateBirth" type="text" name="dateBirth" id="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000">
@@ -151,24 +151,24 @@
                 <h3 class="text-blue-dark">Citation Information</h3>
               </div>
               <div class="col-md-8">
-                <div class="form-group row">
+                <div class="form-group row required">
                   <div class="col-6 mb-4">
                     <label for="county">County of Violation: *</label>
-                    <select class="form-control custom-select" name="county" id="county" required></select>
+                    <select class="form-control required" name="county" id="county" required></select>
                   </div>
                   <div class="col-6 mb-4">
                     <label for="court">Court of Violation: *</label>
-                    <select class="form-control custom-select" name="court" id="court" disabled required></select>
+                    <select class="form-control required" name="court" id="court" disabled required></select>
                   </div>
-                  <div class="col-6 mb-4">
+                  <div class="col-6 mb-4" id="leaBox">
                     <label for="lea">Law Enforcement Agency (LEA): *</label>
-                    <select class="form-control custom-select" name="lea" id="lea" disabled required></select>
+                    <select class="form-control required" name="lea" id="lea" disabled required></select>
                   </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row required">
                   <div class="col-6">
                     <label for="case-number">Case Number: *</label>
-                    <input class="form-control custom-select" id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302"><i class="errorTxt"></i>
+                    <input class="form-control required" id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302"><i class="errorTxt"></i>
                   </div>
                   <div class="col-6">
                     <p class="font-italic"><em>
@@ -176,10 +176,10 @@
                         docket number.}</em></p>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-6 form-group">
+                <div class="row required">
+                  <div class="col-6 form-group custom-control">
                     <label for="license-state">Driver’s License State: *</label>
-                    <select class="form-control custom-select" name="license_state" id="license-state">
+                    <select class="form-control required" name="license_state" id="license-state">
                       <option value="" selected="selected">Select a State</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
@@ -236,7 +236,7 @@
                   </div>
                   <div class="col-6">
                     <label for="license-number">Driver’s License Number: *</label>
-                    <input class="form-control custom-select" type="text" id="license-number" name="license_number" placeholder="e.g. DL05876">
+                    <input class="form-control required" type="text" id="license-number" name="license_number" placeholder="e.g. DL05876" required>
                   </div>
                 </div>
               </div>
@@ -254,7 +254,7 @@
                     </p>
                   </div>
                   <div class="col-6">
-                    <button class="w-100 btn btn-danger" type="submit">Save Changes & Continue</button>
+                    <button class="w-100 btn btn-danger" id="submit" type="submit" disabled>Save Changes & Continue</button>
                   </div>
                 </div>
               </div>

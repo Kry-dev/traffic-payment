@@ -9,21 +9,21 @@
         .form-group.row
             .col-6
                 label(for='phone') Phone Number: *
-                input.form-control.input-tel(
+                input.form-control.input-tel.required(
                     id="phone",
                     name="phone",
                     type="tel",
                     placeholder="888 888-8888",
-                    value=""
+                    value="1234567899"
                     required="required")
             .col-6
                 .row.payment-DOB
                     label().col-12 Date of Birth: *
-                    select.form-control.dob-field(id="date-month",name="dobMonth" required)
+                    select.form-control.dob-field.required(id="date-month",name="dobMonth" required)
                         option(value="" selected="selected", disabled="disabled") Month
-                    select.form-control.dob-field(id="date-day",name="dobDay" required)
+                    select.form-control.dob-field.required(id="date-day",name="dobDay" required)
                         option(value="" selected="selected", disabled="disabled") Day
-                    select.form-control.dob-field(id="date-year",name="dobYear" required)
+                    select.form-control.dob-field.required(id="date-year",name="dobYear" required)
                         option(value="" selected="selected", disabled="disabled") Year
                     input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
         .form-group.row
@@ -34,38 +34,38 @@
     .col-md-2.offset-1
         h3.text-blue-dark Citation Information
     .col-md-8
-        .form-group.row
+        .form-group.row.required
             .col-6.mb-4
                 label(for='county') County of Violation: *
-                select.form-control.custom-select(
+                select.form-control.required(
                     name="county" id="county" required)
             .col-6.mb-4
                 label(for='court') Court of Violation: *
-                select.form-control.custom-select(
+                select.form-control.required(
                     name="court" id="court" disabled required)
-            .col-6.mb-4
+            #leaBox.col-6.mb-4
                 label(for='lea') Law Enforcement Agency (LEA): *
-                select.form-control.custom-select(
+                select.form-control.required(
                     name="lea" id="lea" disabled required)
-        .form-group.row
+        .form-group.row.required
             .col-6
                 label(for='case-number') Case Number: *
-                input.form-control.custom-select(id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302")
+                input.form-control.required(id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302")
                 i.errorTxt
             .col-6
                 p.font-italic
                     em
                         | If you have a citation number AND a case or docket number, we suggest using the case or
                         | docket number.}
-        .row
-            .col-6.form-group
+        .row.required
+            .col-6.form-group.custom-control
                 label(for='license-state') Driver’s License State: *
-                select.form-control.custom-select(name="license_state", id="license-state")
+                select.form-control.required(name="license_state", id="license-state")
                     option(value="" selected="selected") Select a State
                     +listOfStates
             .col-6
                 label(for='license-number') Driver’s License Number: *
-                input.form-control.custom-select(type="text",id="license-number" name="license_number" placeholder="e.g. DL05876")
+                input.form-control.required(type="text",id="license-number" name="license_number", placeholder="e.g. DL05876" , required)
 .row.payment-row.border-bottom-0
     .col-md-8.offset-3
         .form-group.row
@@ -77,7 +77,7 @@
                     | or errors in your information. If you require us to RESUBMIT your test results again, we will assess a
                     | $6.99 fee to reissue your certificate and resubmit your course results.
             .col-6
-                button.w-100.btn.btn-danger(type='submit') Save Changes & Continue
+                button#submit.w-100.btn.btn-danger(type='submit', disabled) Save Changes & Continue
 
 
 
