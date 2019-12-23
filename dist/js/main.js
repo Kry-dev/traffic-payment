@@ -293,38 +293,9 @@ __webpack_require__.r(__webpack_exports__);
 window.jQuery = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
- // require("jquery-validation");
-// require("jquery-validation/dist/additional-methods.js");
-// https://github.com/gas-buddy/usdl-regex
-// // https://ntsi.com/drivers-license-format/
-// require('../data/regex.json');
-// // let countyDATA = require('../data/county.json');
-// // let countyDataObj = JSON.parse(countyDATA);
-// import('../data/county.json').then(({default: countyDATA}) =>countyDATA);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  function isValidLicense(state, number) {
-    var key = (state || '').toUpperCase();
-
-    if (!regs[key]) {
-      throw new Error('Invalid state supplied');
-    }
-
-    var re = new RegExp(regs[state].rule, 'i');
-
-    if (re.test(number)) {
-      return true;
-    }
-
-    return false;
-  }
-
-  function isValidOrReturnDescription(state, number) {
-    return isValidLicense(state, number) || regs[state].description;
-  }
   /** INIT GOOGLE AUTOCOMPLEET */
-
-
   var placeSearch;
   var autocomplete;
   var componentForm = {
@@ -738,14 +709,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     if (Array.isArray(object)) {
       for (var i = 0; i < object.length; i++) {
         if (object[i].code === keyText) {
-          // let inputLisense;
-          // inputLisense = document.createElement('input');
-          // inputLisense.text = object[i].name;
-          // inputLisense.placeholder = object[i].description;
-          // inputLisense.value = object[i].name;
           element.val("");
+          element.attr('data-state', "");
           element.attr('data-rule-pattern', object[i].rule);
-          element.attr('placeholder', object[i].description); // return object[i].rule;
+          element.attr('placeholder', object[i].description);
+          element.attr('data-state', keyText); // return object[i].rule;
         }
       }
     }
@@ -755,8 +723,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     var licenseURL = "../data/regex.json";
     var selectState = setDefaultSelect('license-state', 0, 'Select State');
     var licenseNumber = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#license-number');
-    console.log(selectState);
-    console.log(licenseNumber);
     var request = new XMLHttpRequest(); // get data from licenseUrl  (regex.json) by AJAX request
 
     request.open('GET', licenseURL, true);
@@ -776,7 +742,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         };
 
         var rejexObj = JSON.parse(request.responseText);
-        console.log(rejexObj);
         createStatesList(rejexObj, selectState); //Build Select States options list
         // add event when select County
 
@@ -784,14 +749,12 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
           var selectedStateVal = selectState.value;
 
           if (selectedStateVal == "0") {
-            licenseNumber.val(""); // licenseNumber.attr('data-rule-pattern', object[i].rule);
-
+            licenseNumber.val("");
             licenseNumber.attr('placeholder', "e.g. DL05876");
           } else if (selectedStateVal.length !== 0 && selectedStateVal !== "") {
             getLicenseRegex(licenseNumber, rejexObj, selectState.value);
           } else {
-            licenseNumber.val(""); // licenseNumber.attr('data-rule-pattern', object[i].rule);
-
+            licenseNumber.val("");
             licenseNumber.attr("placeholder", "e.g. DL05876");
           }
         });
@@ -807,11 +770,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     request.send();
   }
 
-  licenseJSON(); //     $.validator.setDefaults({
-  //         debug: true,
-  //         success: "valid"
-  //     });
-
+  licenseJSON();
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod("dob", function (value, element) {
     var result = true;
     var ageMin = 16;
@@ -844,7 +803,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     console.log(isValidDate(value));
 
     if (calcDay != subDay || calcMonth != subMonth || calcYear != subYear) {
-      console.log(calcDay, subDay, calcMonth, subMonth, calcYear, subYear);
+      // console.log(calcDay ,subDay, calcMonth ,subMonth, calcYear,subYear);
       jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.messages.dob = "Please select a valid Date of Birth";
       result = false;
     }
@@ -885,13 +844,19 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     console.log(result);
     console.log('dob validate bad');
     return result;
-  }, "Please select a valid Date of Birth"); // let regexLicenseRegex = /^[a-z0-9]{8,32}$/ig;
+  }, "Please select a valid Date of Birth"); //regex
 
-  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod('regexLicense', function (value, element, parameter) {
-    var regexLicenseRegex = element.attr("data-rule-pattern");
-    console.log(element.attr("data-rule-pattern"));
-    return value.match(regexLicenseRegex);
-  }, '');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod("pattern", function (value, element) {
+    // let re = new RegExp($("#license-number").data("rule-pattern"));
+    var re = new RegExp(jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).attr('data-rule-pattern')); // // console.log(regexp);
+    // console.log(re);
+    // if(!value){
+    //     $.validator.messages.dob = "Please enter your Driver’s License Number";
+    // }
+
+    return this.optional(element) || re.test(value); // return this.optional(element) || new RegExp(regex).test(value);
+  }, "Please recheck your Driver’s License Number"); // $("#license-number").rules("add", { regexLicense: () });
+
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address").validate({
     successClass: "valid-feedback",
     errorClass: "invalid-feedback",
@@ -905,16 +870,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         phoneUS: true
       },
       dobMonth: {
-        required: true // dob: true
-
+        required: true
       },
       dobDay: {
-        required: true // dob: true
-
+        required: true
       },
       dobYear: {
-        required: true // dob: true
-
+        required: true
       },
       dateBirth: {
         required: true,
@@ -954,9 +916,8 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         required: true
       },
       license_number: {
-        required: true // regexLicense : true,
-        // pattern: true
-
+        required: true,
+        pattern: true
       }
     },
     groups: {
@@ -1003,10 +964,10 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         required: "Please enter your Case Number"
       },
       license_state: {
-        required: "Please enter your Driver’s License Number"
+        required: "Please select your Driver’s License State"
       },
       license_number: {
-        required: true
+        required: "Please enter your Driver’s License Number"
       }
     },
     errorPlacement: function errorPlacement(error, element) {
@@ -1034,37 +995,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     } else {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit').prop('disabled', 'disabled');
     }
-  });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('change keyup', function (e) {
-    // let Disabled = true;
-    // $("input[value=''], select option[value='']").each(function() {
-    //     let value = this.value;
-    //     // console.log(this);
-    //     // console.log(value);
-    //     if ((value)&&(value.trim() !='')) {
-    //         Disabled = false;
-    //     }else{
-    //         Disabled = true;
-    //         return false
-    //     }
-    // });
-    //
-    // if(Disabled){
-    //     $("button[type='submit']").prop("disabled", true);
-    //     // alert("false")
-    // }else{
-    //     $("button[type='submit']").prop("disabled", false);
-    //     alert("True")
-    //
-    // }
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()("input[value=''], select option[value='']").on('blur', function () {
-      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()("form").valid()) {
-        alert("Form VALID"); // $("button[type='submit']").prop('disabled', false);
-      } else {// $("button[type='submit']").prop('disabled', 'disabled');
-        }
-    }); // if ($("input[value=''], select option[value='']").length > 0) {
-    //     console.log('some fields are empty!')
-    // }
   });
 });
 
