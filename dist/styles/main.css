@@ -3800,12 +3800,12 @@ a.badge-pink.focus {
 }
 
 .navbar-light .navbar-brand {
-  color: rgba(0, 0, 0, 0.9);
+  color: #48B0F7;
 }
 
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: #3A8FC8;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -6561,12 +6561,14 @@ form label.invalid-feedback {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   min-height: 100px;
   display: flex;
+  position: relative;
 }
 
 .header .navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0;
 }
 
 .header .navbar-collapsde {
@@ -6583,6 +6585,10 @@ form label.invalid-feedback {
   font-weight: 600;
   text-transform: uppercase;
   padding: 0.5rem 1.25rem !important;
+}
+
+.header .navbar-toggler {
+  border: 0;
 }
 
 .header .multi-steps {
@@ -6618,6 +6624,10 @@ form label.invalid-feedback {
 
 .payment-DOB {
   position: relative;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .payment-DOB label {
@@ -6638,6 +6648,7 @@ form label.invalid-feedback {
 }
 
 .payment-DOB .dob-field {
+  display: flex;
   flex: 0 0 31.33333%;
   max-width: 33.33333%;
 }
@@ -8667,7 +8678,7 @@ form label.invalid-feedback {
   }
 
   .container {
-    max-width: 720px;
+    max-width: 768px;
   }
 
   .col-md {
@@ -9545,7 +9556,7 @@ form label.invalid-feedback {
   }
 
   .container {
-    max-width: 960px;
+    max-width: 992px;
   }
 
   .col-lg {
@@ -10722,6 +10733,60 @@ form label.invalid-feedback {
   .table-responsive-lg > .table-bordered {
     border: 0;
   }
+
+  .header .container {
+    padding: 0;
+  }
+
+  .header .navbar {
+    padding: 0 15px;
+  }
+
+  .header .multi-steps {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .header .navbar-collapse {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    min-height: 30vh;
+    background: #fff;
+    z-index: 1030;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+
+  .header .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header .nav-item {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .payment-DOB .dob-field + .dob-field {
+    margin-left: 0;
+  }
+
+  .payment-DOB .dob-field {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: .5rem;
+  }
+
+  .payment-DOB .dob-field + .dob-field {
+    flex: 0 0 49.4%;
+    max-width: 49.4%;
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -10740,6 +10805,14 @@ form label.invalid-feedback {
 
   .table-responsive-md > .table-bordered {
     border: 0;
+  }
+
+  .multi-steps-list {
+    max-width: 205px;
+  }
+
+  .multi-steps-list span {
+    display: none;
   }
 }
 

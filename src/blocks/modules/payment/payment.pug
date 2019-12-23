@@ -1,73 +1,72 @@
 .row.payment-row
-    .col-md-2.offset-1
+    .col-xl-2.offset-xl-1.col-lg-2.col-md-12
         h3.text-blue-dark Personal Information
-    .col-md-8
+    .col-xl-8.col-lg-10.col-md-12
         .form-group.mb-4
             label Full Name
             p   Derrik Sun
                 include ../locked/locked
         .form-group.row
-            .col-6
+            .col-xl-6.col-md-12.mb-4
                 label(for='phone') Phone Number: *
-                input.form-control.input-tel.required(
+                input.form-control.input-tel(
                     id="phone",
                     name="phone",
                     type="tel",
                     placeholder="888 888-8888",
                     value="2234567899"
                     required="required")
-            .col-6
+            .col-xl-6.col-md-12
                 .row.payment-DOB
-                    label().col-12 Date of Birth: *
-                    select.form-control.dob-field.required(id="date-month",name="dobMonth" required)
+                    label.w-100 Date of Birth: *
+                    select.form-control.dob-field(id="date-month",name="dobMonth" required)
                         option(value="" selected="selected", disabled="disabled") Month
-                    select.form-control.dob-field.required(id="date-day",name="dobDay" required)
+                    select.form-control.dob-field(id="date-day",name="dobDay" required)
                         option(value="" selected="selected", disabled="disabled") Day
-                    select.form-control.dob-field.required(id="date-year",name="dobYear" required)
+                    select.form-control.dob-field(id="date-year",name="dobYear" required)
                         option(value="" selected="selected", disabled="disabled") Year
                     input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
         .form-group.row
-            .col-md-9
+            .col-xl-9.col-lg-10.col-md-12
                 include ../adress-modal/adress-modal
 
 .row.payment-row.border-bottom-0
-    .col-md-2.offset-1
+    .col-xl-2.offset-xl-1.col-lg-2.col-md-12
         h3.text-blue-dark Citation Information
-    .col-md-8
-        .form-group.row.required
-            .col-6.mb-4
+    .col-xl-8.col-lg-10.col-md-12
+        .form-group.row
+            .col-sm-6.mb-4
                 label(for='county') County of Violation: *
-                select.form-control.required(
+                select.form-control(
                     name="county" id="county" required)
-            .col-6.mb-4
+            .col-sm-6.mb-4
                 label(for='court') Court of Violation: *
-                select.form-control.required(
+                select.form-control(
                     name="court" id="court" disabled required)
-            #leaBox.col-6.mb-4
+            #leaBox.col-sm-6.mb-4
                 label(for='lea') Law Enforcement Agency (LEA): *
-                select.form-control.required(
+                select.form-control(
                     name="lea" id="lea" disabled required)
-        .form-group.row.required
-            .col-6
+        .form-group.row
+            .col-sm-6.mb-3
                 label(for='case-number') Case Number: *
-                input.form-control.required(id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302")
-                i.errorTxt
-            .col-6
+                input.form-control(id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302")
+            .col-sm-6
                 p.font-italic
                     em
                         | If you have a citation number AND a case or docket number, we suggest using the case or
                         | docket number.}
-        .row.required
-            .col-6.form-group.custom-control
+        .row
+            .col-sm-6.form-group.custom-control
                 label(for='license-state') Driver’s License State: *
-                select.form-control.required(name="license_state", id="license-state")
+                select.form-control(name="license_state", id="license-state")
                     option(value="" selected="selected") Select a State
                     +listOfStates
-            .col-6
+            .col-sm-6
                 label(for='license-number') Driver’s License Number: *
-                input.form-control.required(type="text",id="license-number" name="license_number", placeholder="e.g. DL05876" , required)
+                input.form-control(type="text",id="license-number" name="license_number", placeholder="e.g. DL05876" , required)
 .row.payment-row.border-bottom-0
-    .col-md-8.offset-3
+    .col-xl-8.offset-xl-3.col-md-12
         .form-group.row
             .col-12
                 p.text-danger Important!
@@ -76,7 +75,7 @@
                     | course results to the DMV and Court, but the submission may not be accepted if you have unpaid court fees
                     | or errors in your information. If you require us to RESUBMIT your test results again, we will assess a
                     | $6.99 fee to reissue your certificate and resubmit your course results.
-            .col-6
+            .col-sm-6
                 button#submit.w-100.btn.btn-danger(type='submit', disabled) Save Changes & Continue
 
 

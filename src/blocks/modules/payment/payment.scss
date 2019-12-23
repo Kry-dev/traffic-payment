@@ -12,6 +12,10 @@
     }
     &-DOB {
         position: relative;
+        padding: 0 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         label {
             display: block;
             width: 100%;
@@ -27,13 +31,29 @@
             }
         }
         .dob-field {
+            display: flex;
             flex: 0 0 31.33333%;
             max-width: 33.33333%;
             & + .dob-field {
                 margin-left: .5rem;
+                @include media-breakpoint-down(md){
+                    margin-left: 0;
+                }
             }
             &.invalid-feedback {
                 position: relative;
+            }
+        }
+        @include media-breakpoint-down(md){
+            
+            .dob-field{
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: .5rem;
+            }
+            .dob-field + .dob-field {
+                flex: 0 0 49.4%;
+                max-width: 49.4%;
             }
         }
     }

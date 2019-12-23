@@ -102,8 +102,8 @@ $theme-colors: map-merge(
 
 $container-max-widths: (
         sm: 540px,
-        md: 720px,
-        lg: 960px,
+        md: 768px,
+        lg: 992px,
         xl: 1170px
 );
 
@@ -229,6 +229,8 @@ $nav-link-height: $font-size-base;
 $navbar-brand-height: 1;
 //$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2;
 
+$navbar-light-brand-color:                $primary ;
+$navbar-light-brand-hover-color:          $blue-dark ;
 
 $component-active-bg: theme-color("primary");
 // Buttons + Forms

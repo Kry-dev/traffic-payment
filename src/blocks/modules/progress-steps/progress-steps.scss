@@ -64,4 +64,10 @@
             }
         }
     }
+    @include media-breakpoint-down(sm) {
+        max-width: 205px;
+        span {
+            display: none;
+        }
+    }
 }
