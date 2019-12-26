@@ -227,18 +227,35 @@ $(document).ready(function() {
         $("#dateBirth").val($('[name="dobDay"] option:selected').val()+"/"+$('[name="dobMonth"] option:selected').val()+"/"+$('[name="dobYear"] option:selected').val());
         console.log($("#dateBirth").val());
     });
-    function changeHandler(){
-        console.log ($.trim(this.value));
-        if ($.trim(this.value)){
-            $("button[type=submit]").removeAttr("disabled");
-        } else {
-            $("button[type=submit]").attr("disabled", "disabled");
-        }
+    function buttonStatus() {
+        let buttonDisable = function() {
+                $('#submit').attr('disabled', true)
+            },
+            buttonEnable = function() {
+                $('#submit').attr('disabled', false);
+            };
+        
+        let elements = $('select').on('keyup change', function() {
+            let valid = false;
+            buttonDisable();
+            elements.each(function() {
+                let elm = $(this),
+                    val = elm.val();
+                if ((val != '0' && elm.is('select')) || (val != '' && elm.is('input'))) {
+                    valid = true;
+                    console.log(elm);
+                    return false;
+                }
+            });
+            
+            if(valid) {
+                buttonEnable()
+            }
+            else {
+                buttonDisable();
+            }
+        })
     }
-    //
-    // $('input, select, textarea').change(changeHandler())​
-    $('input, select, textarea').change(function() {
-        alert('Handler for .keyup() called.');
-        changeHandler();
-    });
+    
+    buttonStatus()
 });

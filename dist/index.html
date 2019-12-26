@@ -76,7 +76,7 @@
                 <div class="form-group row">
                   <div class="col-xl-6 col-md-12 mb-4">
                     <label for="phone">Phone Number: *</label>
-                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="2234567899" required="required">
+                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="" required="required">
                   </div>
                   <div class="col-xl-6 col-md-12">
                     <div class="row payment-DOB">
@@ -98,7 +98,7 @@
                   <div class="col-xl-9 col-lg-10 col-md-12"><!-- Search Field -->
                     <div class="locationField" id="locationField">
                       <label for="autocomplete">Address: *</label>
-                      <input class="form-control" name="str_address" value="888, Brannan Street" id="autocomplete" placeholder="Start typing full address" type="text">
+                      <input class="form-control" name="str_address" value="888, Brannan Street" id="autocomplete" placeholder="Start typing full address" type="text" required="required">
                       <button class="edit" id="action-edit"><i class="fa fa-pencil"></i></button>
                     </div>
                     <div class="payment-modal" id="autocomplete-edit">
@@ -106,13 +106,18 @@
                         <!--button.close(type='button', data-toggle="collapse", data-target="#address-collapse")-->
                         <!--    span(aria-hidden='true') ×-->
                         <div class="row mb-4"><!-- Street Address -->
-                          <div class="col-sm-6 pr-md-0">
-                            <label for="street_number">Street Number: *</label>
-                            <input class="form-control" id="street_number" type="text" placeholder="888" name="str_number" required="required">
+                          <div class="col-sm-12">
+                            <label for="street_number">Address line 1: *</label>
+                            <div class="street-line form-control">
+                              <input id="street_number" type="text" placeholder="888" name="str_number" required="required">
+                              <input id="route" type="text" placeholder="Brenann Street" name="str_name" required="required">
+                            </div>
                           </div>
-                          <div class="col-sm-6">
-                            <label for="route">Street Name: *</label>
-                            <input class="form-control" id="route" type="text" placeholder="Brenann Street" name="str_name" required="required">
+                        </div>
+                        <div class="row mb-4">
+                          <div class="col-sm-12">
+                            <label for="address_2">Address line 2:</label>
+                            <input class="form-control" id="address_2" type="text" name="address_2" placeholder="Address Line 2">
                           </div>
                         </div>
                         <div class="row mb-4">
@@ -120,7 +125,7 @@
                             <label for="locality">City: *</label>
                             <input class="form-control" id="locality" type="text" name="city" placeholder="San Fransisco" required="required">
                           </div>
-                          <div class="col-sm-6 pr-md-0">
+                          <div class="col-sm-6">
                             <label for="administrative_area_level_1">State: *</label>
                             <input class="form-control" id="administrative_area_level_1" name="state" required>
                           </div>
@@ -129,18 +134,14 @@
                           <div class="col-sm-6">
                             <label for="country">Country: *</label>
                             <input class="form-control" id="country" name="country" required>
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Doesn't look good!</div>
                           </div>
-                          <div class="col-sm-6 pr-md-0">
+                          <div class="col-sm-6">
                             <label for="postal_code">Postal code: *</label>
                             <input class="form-control" id="postal_code" required value="" name="postal_code" title="Enter valid ZIP 4-5 numbers">
-                            <div class="valid-feedback">Looks good!</div>
-                            <div class="invalid-feedback">Doesn't look good!</div>
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-sm-6 pr-md-0 mb-3">
+                          <div class="col-sm-6 mb-3">
                             <button class="w-100 btn btn-outline-secondary" id="action-reset">Clear Address</button>
                           </div>
                           <div class="col-sm-6">
@@ -175,12 +176,12 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3">
                     <label for="case-number">Case Number: *</label>
-                    <input class="form-control" id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302">
+                    <input class="form-control" id="case-number" value="" name="case_number" placeholder="e.g. 092769302">
                   </div>
                   <div class="col-sm-6">
                     <p class="font-italic"><em>
                         If you have a citation number AND a case or docket number, we suggest using the case or
-                        docket number.}</em></p>
+                        docket number.</em></p>
                   </div>
                 </div>
                 <div class="row">

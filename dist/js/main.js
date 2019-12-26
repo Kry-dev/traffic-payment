@@ -323,7 +323,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 
   function fillInAddress() {
     // Get the place details from the autocomplete object.
-    var place = autocomplete.getPlace();
+    var place = autocomplete.getPlace(); // Initialize fulladdress for when we combine street number and street name
+
+    var fullAddress = "";
 
     for (var component in componentForm) {
       document.getElementById(component).value = '';
@@ -339,7 +341,18 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       if (componentForm[addressType]) {
         var val = place.address_components[i][componentForm[addressType]];
         var element = document.getElementById(addressType);
-        element.value = val;
+        element.value = val; // switch(i){
+        //     case 0:
+        //         fullAddress= val;
+        //         fullAddress= fullAddress.concat(" ");
+        //         break;
+        //     case 1:
+        //         fullAddress= fullAddress.concat(val);
+        //         document.getElementById("street_address").value = fullAddress;
+        //         break;
+        //     default:
+        //         document.getElementById(addressType).value = val;
+        // }
 
         if (addressType == 'administrative_area_level_1' || addressType == 'country') {
           var valSecond = place.address_components[i].short_name;
@@ -515,8 +528,8 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
   $autocomplete.find('input').prop('disabled', true);
   $autocomplete.find('select').prop('disabled', true);
-  $autocomplete.addClass('disabled');
-  $autocomplete.hide('slow');
+  $autocomplete.addClass('disabled'); // $autocomplete.hide('slow');
+
   body.on('click', '#action-save', function (e) {
     if (!$autocomplete.hasClass('disabled')) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
@@ -882,6 +895,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         required: true,
         dob: true
       },
+      str_address: {
+        required: true
+      },
       str_number: {
         required: true
       },
@@ -921,6 +937,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       }
     },
     groups: {
+      street_line: "str_number str_name",
       birthday: "dobMonth dobDay dobYear dateBirth"
     },
     messages: {
@@ -930,14 +947,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         maxLength: "Your phone number must be 10 digits",
         phoneUS: "Enter valid phone number"
       },
-      str_address1: {
+      str_address: {
         required: "Please enter your current address"
       },
-      str_number: {
-        required: "Please enter your street number"
-      },
-      str_name: {
-        required: "Please enter your street name"
+      // str_number: {
+      //     required: "Please enter your street number",
+      // },
+      // str_name: {
+      //     required: "Please enter your street name",
+      // },
+      street_line: {
+        required: "Please enter your street number and name"
       },
       city: {
         required: "Please enter your City"
@@ -972,9 +992,12 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     },
     errorPlacement: function errorPlacement(error, element) {
       var name = element.prop("name");
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()(element).parent('div').addClass('field-error');
 
       if (name === "dobMonth" || name === "dobDay" || name === "dobYear") {
         error.insertAfter(".dateBirth");
+      } else if (name === "str_number" || name === "str_name") {
+        error.insertAfter(".street-address");
       } else {
         error.insertAfter(element);
       }

@@ -410,22 +410,37 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
   });
 
-  function changeHandler() {
-    console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default.a.trim(this.value));
+  function buttonStatus() {
+    var buttonDisable = function buttonDisable() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit').attr('disabled', true);
+    },
+        buttonEnable = function buttonEnable() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit').attr('disabled', false);
+    };
 
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default.a.trim(this.value)) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()("button[type=submit]").removeAttr("disabled");
-    } else {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()("button[type=submit]").attr("disabled", "disabled");
-    }
-  } //
-  // $('input, select, textarea').change(changeHandler())​
+    var elements = jquery__WEBPACK_IMPORTED_MODULE_0___default()('select').on('keyup change', function () {
+      var valid = false;
+      buttonDisable();
+      elements.each(function () {
+        var elm = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this),
+            val = elm.val();
 
+        if (val != '0' && elm.is('select') || val != '' && elm.is('input')) {
+          valid = true;
+          console.log(elm);
+          return false;
+        }
+      });
 
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('input, select, textarea').change(function () {
-    alert('Handler for .keyup() called.');
-    changeHandler();
-  });
+      if (valid) {
+        buttonEnable();
+      } else {
+        buttonDisable();
+      }
+    });
+  }
+
+  buttonStatus();
 });
 
 /***/ }),

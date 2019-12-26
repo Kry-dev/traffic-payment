@@ -35,7 +35,8 @@ $(document).ready(() => {
     function fillInAddress() {
         // Get the place details from the autocomplete object.
         const place = autocomplete.getPlace();
-        
+        // Initialize fulladdress for when we combine street number and street name
+        let fullAddress="";
         for (const component in componentForm) {
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;
@@ -50,16 +51,28 @@ $(document).ready(() => {
                 const val = place.address_components[i][componentForm[addressType]];
                 const element = document.getElementById(addressType);
                 element.value = val;
-                
+                // switch(i){
+                //     case 0:
+                //         fullAddress= val;
+                //         fullAddress= fullAddress.concat(" ");
+                //         break;
+                //     case 1:
+                //         fullAddress= fullAddress.concat(val);
+                //         document.getElementById("street_address").value = fullAddress;
+                //         break;
+                //     default:
+                //         document.getElementById(addressType).value = val;
+                // }
                 if ((addressType == 'administrative_area_level_1') || (addressType == 'country')) {
                     const valSecond = place.address_components[i].short_name;
                     element.setAttribute('data-code', valSecond);
                     element.setAttribute('data-name', val);
                 }
+                
+                
             }
         }
     }
-    
     function geolocate() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -224,7 +237,7 @@ $(document).ready(() => {
     $autocomplete.find('input').prop('disabled', true);
     $autocomplete.find('select').prop('disabled', true);
     $autocomplete.addClass('disabled');
-    $autocomplete.hide('slow');
+    // $autocomplete.hide('slow');
     body.on('click', '#action-save', (e) => {
         if (!$autocomplete.hasClass('disabled')) {
             $('#autocomplete').prop('disabled', true);
@@ -560,6 +573,9 @@ $(document).ready(() => {
                 required: true,
                 dob: true
             },
+            str_address:{
+                required: true,
+            },
             str_number: {
                 required: true,
             },
@@ -600,6 +616,7 @@ $(document).ready(() => {
             }
         },
         groups: {
+            street_line: "str_number str_name",
             birthday: "dobMonth dobDay dobYear dateBirth",
         },
         messages: {
@@ -609,14 +626,17 @@ $(document).ready(() => {
                 maxLength: "Your phone number must be 10 digits",
                 phoneUS: "Enter valid phone number"
             },
-            str_address1 : {
+            str_address : {
                 required: "Please enter your current address",
             },
-            str_number: {
-                required: "Please enter your street number",
-            },
-            str_name: {
-                required: "Please enter your street name",
+            // str_number: {
+            //     required: "Please enter your street number",
+            // },
+            // str_name: {
+            //     required: "Please enter your street name",
+            // },
+            street_line: {
+                required: "Please enter your street number and name"
             },
             city: {
                 required: "Please enter your City",
@@ -628,22 +648,22 @@ $(document).ready(() => {
                 required: 'Please select your County',
             },
             postal_code: {
-                required : "Please enter your zip code"
+                required : "Please enter your zip code",
             },
             county: {
-                required : "Please select a County"
+                required : "Please select a County",
             },
             court: {
-                required : "Please select a Court"
+                required : "Please select a Court",
             },
             lea: {
-                required : "Please select a LEA Code"
+                required : "Please select a LEA Code",
             },
             case_number: {
-                required : "Please enter your Case Number"
+                required : "Please enter your Case Number",
             },
             license_state: {
-                required : "Please select your Driver’s License State"
+                required : "Please select your Driver’s License State",
             },
             license_number: {
                 required : "Please enter your Driver’s License Number",
@@ -651,8 +671,11 @@ $(document).ready(() => {
         },
         errorPlacement: function(error, element) {
             let name = element.prop("name");
+            $(element).parent('div').addClass('field-error');
             if (name === "dobMonth" || name === "dobDay" || name === "dobYear") {
                 error.insertAfter(".dateBirth");
+            } else if (name === "str_number" || name === "str_name"){
+                error.insertAfter(".street-address");
             } else {
                 error.insertAfter(element);
             }

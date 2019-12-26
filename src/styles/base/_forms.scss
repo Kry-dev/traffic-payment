@@ -35,6 +35,33 @@ form label {
         text-align: right;
     }
 }
-.payment-DOB{
-
+.field-error {
+    position: relative;
+    
+    label.invalid-feedback{
+        width: 100%;
+        position: absolute;
+        right: 20px;
+        bottom: -20px;
+        margin: 0;
+    }
+    input.invalid-feedback{
+        position: inherit;
+        &:after{
+            display: none;
+        }
+    }
+    //&:after {
+    //    display: block;
+    //    content: "×";
+    //    position: absolute;
+    //    right: 20px;
+    //    bottom: 1rem;
+    //    text-align: center;
+    //    color: $danger;
+    //    background: rgba($danger, .4);
+    //    width: 24px;
+    //    height: 24px;
+    //    border-radius: 50%;
+    //}
 }

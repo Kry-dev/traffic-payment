@@ -6422,7 +6422,7 @@ p {
   border: 0;
   position: absolute;
   right: 5px;
-  bottom: 6px;
+  top: 35px;
 }
 
 .edit .fa {
@@ -6557,6 +6557,26 @@ form label.invalid-feedback {
   text-align: right;
 }
 
+.field-error {
+  position: relative;
+}
+
+.field-error label.invalid-feedback {
+  width: 100%;
+  position: absolute;
+  right: 20px;
+  bottom: -20px;
+  margin: 0;
+}
+
+.field-error input.invalid-feedback {
+  position: inherit;
+}
+
+.field-error input.invalid-feedback:after {
+  display: none;
+}
+
 .header {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   min-height: 100px;
@@ -6637,7 +6657,7 @@ form label.invalid-feedback {
 }
 
 .payment-DOB .dateBirth {
-  position: absolute;
+  position: absolute !important;
   top: 33px;
   z-index: -1;
   opacity: 0;
@@ -6728,6 +6748,29 @@ form label.invalid-feedback {
 
 .locationField {
   position: relative;
+}
+
+.street-line {
+  display: flex;
+  width: 100%;
+  padding: 0;
+}
+
+.street-line input {
+  display: inline-block;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.3125;
+  background: transparent;
+  margin: 0;
+}
+
+.street-line input:first-child {
+  width: 20%;
 }
 
 .content-sign {
@@ -10783,9 +10826,14 @@ form label.invalid-feedback {
     margin-bottom: .5rem;
   }
 
+  .payment-DOB .dob-field.field-error label.invalid-feedback {
+    bottom: -12px;
+  }
+
   .payment-DOB .dob-field + .dob-field {
     flex: 0 0 49.4%;
     max-width: 49.4%;
+    margin-bottom: 0;
   }
 }
 

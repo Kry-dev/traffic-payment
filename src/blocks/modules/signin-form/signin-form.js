@@ -41,4 +41,11 @@ $(document).ready(() => {
             }
         },
     });
+    $('input,select').on('blur keyup', function() {
+        if ($("#sign-in").valid()) {
+            $('#submit').prop('disabled', false);
+        } else {
+            $('#submit').prop('disabled', 'disabled');
+        }
+    });
 });
