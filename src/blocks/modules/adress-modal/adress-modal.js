@@ -97,10 +97,8 @@ $(document).ready(function() {
             }
             
         }).get();
-        // console.log(getVal);
         
         if (!$autocomplete.hasClass('disabled')) {
-            
             $('#autocomplete').prop('disabled', true);
             $autocomplete.find('input').prop('disabled', true);
             $autocomplete.find('select').prop('disabled', true);
@@ -112,14 +110,15 @@ $(document).ready(function() {
         }
     });
     
-    body.on('click', '#action-edit', (e) => {
+    // body.on('click', '#action-edit', (e) => {
+    $edit.on('click', (e) => {
+        e.preventDefault();
         if ($autocomplete.hasClass('disabled')) {
             $('#autocomplete').prop('disabled', false);
             $autocomplete.find('input').prop('disabled', false);
             $autocomplete.find('select').prop('disabled', false);
             $autocomplete.removeClass('disabled');
             $autocomplete.show('slow');
-            console.log($('#autocomplete').val());
         }
     });
     
@@ -130,7 +129,6 @@ $(document).ready(function() {
             $autocomplete.find('select').prop('disabled', false);
             $autocomplete.removeClass('disabled');
             $autocomplete.show('slow');
-            // console.log($('#autocomplete').val());
         }
         $('#autocomplete').val('');
         $autocomplete.find('input').val('');

@@ -76,7 +76,7 @@
                 <div class="form-group row">
                   <div class="col-xl-6 col-md-12 mb-4">
                     <label for="phone">Phone Number: *</label>
-                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="8888" required="required">
+                    <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="" required="required">
                   </div>
                   <div class="col-xl-6 col-md-12">
                     <div class="row payment-DOB">
@@ -98,7 +98,7 @@
                   <div class="col-xl-9 col-lg-10 col-md-12"><!-- Search Field -->
                     <div class="locationField" id="locationField">
                       <label for="autocomplete">Address: *</label>
-                      <input class="form-control" name="str_address" value="888, Brannan Street" id="autocomplete" placeholder="Start typing full address" type="text" required="required">
+                      <input class="form-control" name="str_address" value="888, Brannan Street, San Francisco, California, USA, 94103" id="autocomplete" placeholder="Start typing full address" type="text" required="required">
                       <button class="edit" id="action-edit"><i class="fa fa-pencil"></i></button>
                     </div>
                     <div class="payment-modal" id="autocomplete-edit">
@@ -109,8 +109,8 @@
                           <div class="col-sm-12">
                             <label for="street_number">Address line 1: *</label>
                             <div class="street-line form-control">
-                              <input id="street_number" type="text" placeholder="888" name="str_number" required="required">
-                              <input id="route" type="text" placeholder="Brenann Street" name="str_name" required="required">
+                              <input id="street_number" type="text" placeholder="888" value="888" name="str_number" required="required">
+                              <input id="route" type="text" placeholder="Brenann Street" value="Brenann Street" name="str_name" required="required">
                             </div>
                           </div>
                         </div>
@@ -123,21 +123,21 @@
                         <div class="row mb-4">
                           <div class="col-sm-6"><!-- City -->
                             <label for="locality">City: *</label>
-                            <input class="form-control" id="locality" type="text" name="city" placeholder="San Fransisco" required="required">
+                            <input class="form-control" id="locality" type="text" name="city" placeholder="San Fransisco" value="San Fransisco" required="required">
                           </div>
                           <div class="col-sm-6">
                             <label for="administrative_area_level_1">State: *</label>
-                            <input class="form-control" id="administrative_area_level_1" name="state" required>
+                            <input class="form-control" id="administrative_area_level_1" name="state" value="California" required>
                           </div>
                         </div><!-- State & Zip -->
                         <div class="row mb-4">
                           <div class="col-sm-6">
                             <label for="country">Country: *</label>
-                            <input class="form-control" id="country" name="country" required>
+                            <input class="form-control" id="country" name="country" value="USA" required>
                           </div>
                           <div class="col-sm-6">
                             <label for="postal_code">Postal code: *</label>
-                            <input class="form-control" id="postal_code" required value="" name="postal_code" title="Enter valid ZIP 4-5 numbers">
+                            <input class="form-control" id="postal_code" required value="94103" name="postal_code" title="Enter valid ZIP 4-5 numbers">
                           </div>
                         </div>
                         <div class="row">

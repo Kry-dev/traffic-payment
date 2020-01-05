@@ -260,7 +260,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       if (this.value != 0 || this.value != "") {
         return this.value; // $(this).val()
       }
-    }).get(); // console.log(getVal);
+    }).get();
 
     if (!$autocomplete.hasClass('disabled')) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
@@ -272,15 +272,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val(getVal);
       console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val());
     }
-  });
-  body.on('click', '#action-edit', function (e) {
+  }); // body.on('click', '#action-edit', (e) => {
+
+  $edit.on('click', function (e) {
+    e.preventDefault();
+
     if ($autocomplete.hasClass('disabled')) {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', false);
       $autocomplete.find('input').prop('disabled', false);
       $autocomplete.find('select').prop('disabled', false);
       $autocomplete.removeClass('disabled');
       $autocomplete.show('slow');
-      console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val());
     }
   });
   body.on('click', '#action-reset', function (e) {
@@ -289,7 +291,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       $autocomplete.find('input').prop('disabled', false);
       $autocomplete.find('select').prop('disabled', false);
       $autocomplete.removeClass('disabled');
-      $autocomplete.show('slow'); // console.log($('#autocomplete').val());
+      $autocomplete.show('slow');
     }
 
     jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val('');
@@ -811,11 +813,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     // }
 
     return this.optional(element) || re.test(value); // return this.optional(element) || new RegExp(regex).test(value);
-  }, "Please recheck your Driver’s License Number"); // $("#license-number").rules("add", { regexLicense: () });
-
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address1").validate({
-    onfocusout: true,
-    onsubmit: true,
+  }, "Please recheck your Driver’s License Number");
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address").validate({
+    // onkeyup: true,
+    // onfocusout: true,
+    // focusCleanup: true,
     successClass: "valid-feedback",
     errorClass: "invalid-feedback",
     ignore: ":hidden",
@@ -946,24 +948,44 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       } else {
         error.insertAfter(element);
       }
-    },
-    submitHandler: function submitHandler(form) {
-      alert('valid form submitted');
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()("button[type='submit']").prop('disabled', false);
-      return false;
-    }
+    } // submitHandler: function(form) { // <- pass 'form' argument in
+    //     alert('valid form submitted');
+    //     $("#submit").attr("disabled", false);
+    //     form.submit(); // <- use 'form' argument here.
+    // }
+
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on('change', function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val(jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobDay"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobMonth"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobYear"] option:selected').val());
     console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
-  }); // $('input,select').on('blur keyup', function() {
-  //     if ($("#address").valid()) {
-  //         $('#submit').prop('disabled', false);
-  //     } else {
-  //         $('#submit').prop('disabled', 'disabled');
-  //     }
-  // });
-  //
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").prop('disabled', true);
+
+  function checkInputs() {
+    var isValid = true;
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(':input').filter('[required]').each(function () {
+      if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() === '') {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").prop('disabled', true);
+        isValid = false;
+        return false;
+      }
+    });
+
+    if (isValid) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").prop('disabled', false);
+    }
+
+    return isValid;
+  }
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").click(function () {
+    alert(checkInputs());
+  }); //Enable or disable button based on if inputs are filled or not
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(':input').filter('[required]').on('change', function () {
+    console.log('click');
+    checkInputs();
+  });
 });
 
 /***/ }),

@@ -3,7 +3,7 @@
     label(for='autocomplete') Address: *
     input.form-control(
         name="str_address",
-        value="888, Brannan Street",
+        value="888, Brannan Street, San Francisco, California, USA, 94103",
         id="autocomplete",
         placeholder="Start typing full address",
         type="text",
@@ -23,12 +23,14 @@
                     input#street_number(
                         type='text',
                         placeholder='888',
+                        value='888',
                         name="str_number",
                         required="required"
                         )
                     input#route(
                         type='text',
                         placeholder='Brenann Street',
+                        value="Brenann Street"
                         name="str_name",
                         required="required"
                         )
@@ -47,20 +49,21 @@
                     type='text',
                     name="city",
                     placeholder='San Fransisco',
+                    value='San Fransisco',
                     required="required")
             .col-sm-6
                 label(for='administrative_area_level_1') State: *
-                input.form-control( id="administrative_area_level_1", name="state", required)
+                input.form-control( id="administrative_area_level_1", name="state", value="California", required)
         <!-- State & Zip -->
         .row.mb-4
 
             .col-sm-6
                 label(for='country') Country: *
-                input.form-control(id="country", name="country" required)
+                input.form-control(id="country", name="country", value="USA", required)
 
             .col-sm-6
                 label(for='postal_code') Postal code: *
-                input#postal_code.form-control(required, value="",name="postal_code", title="Enter valid ZIP 4-5 numbers" )
+                input#postal_code.form-control(required, value="94103",name="postal_code", title="Enter valid ZIP 4-5 numbers" )
 
         .row
             .col-sm-6.mb-3

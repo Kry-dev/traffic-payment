@@ -5,7 +5,6 @@ window.$ = $;
 import 'jquery-validation';
 import 'jquery-validation/dist/additional-methods';
 $(document).ready(() => {
-    
     /** INIT DATE FIELDS */
     function initializeDate() {
         const dateMonth = document.getElementById('date-month');
@@ -421,10 +420,10 @@ $(document).ready(() => {
             // return this.optional(element) || new RegExp(regex).test(value);
         }, "Please recheck your Driver’s License Number"
     );
-    // $("#license-number").rules("add", { regexLicense: () });
-    $("#address1").validate({
-        onfocusout: true,
-        onsubmit: true,
+    $("#address").validate({
+        // onkeyup: true,
+        // onfocusout: true,
+        // focusCleanup: true,
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
@@ -556,22 +555,39 @@ $(document).ready(() => {
                 error.insertAfter(element);
             }
         },
-        submitHandler: function (form){
-            alert('valid form submitted');
-            $("button[type='submit']").prop('disabled', false);
-            return false;
-        }
+        // submitHandler: function(form) { // <- pass 'form' argument in
+        //     alert('valid form submitted');
+        //     $("#submit").attr("disabled", false);
+        //     form.submit(); // <- use 'form' argument here.
+        // }
     });
     $(".dob-field").on('change',function(){
         $("#dateBirth").val($('[name="dobDay"] option:selected').val()+"/"+$('[name="dobMonth"] option:selected').val()+"/"+$('[name="dobYear"] option:selected').val());
         console.log($("#dateBirth").val());
     });
-    // $('input,select').on('blur keyup', function() {
-    //     if ($("#address").valid()) {
-    //         $('#submit').prop('disabled', false);
-    //     } else {
-    //         $('#submit').prop('disabled', 'disabled');
-    //     }
-    // });
-    //
+    $("#submit").prop('disabled', true);
+    function checkInputs() {
+        let isValid = true;
+        $(':input').filter('[required]').each(function() {
+            if ($(this).val() === '') {
+                $("#submit").prop('disabled', true);
+                isValid = false;
+                return false;
+            }
+        });
+        if(isValid) {$("#submit").prop('disabled', false)}
+        return isValid;
+    }
+    
+    $("#submit").click(function() {
+        alert(checkInputs());
+    });
+
+    //Enable or disable button based on if inputs are filled or not
+    $(':input').filter('[required]').on('change' ,function() {
+        console.log('click');
+        checkInputs();
+    })
+    
+    
 });
