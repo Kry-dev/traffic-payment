@@ -167,68 +167,135 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {// (function() {
-  //
-  //     var $inputAuto = $('#str_address1');
-  //
-  //     var addrComponents = {
-  //         streetNumber: {
-  //             display: 'short_name',
-  //             type: 'street_number'
-  //         },
-  //         streetName: {
-  //             display: 'long_name',
-  //             type: 'route'
-  //         },
-  //         cityName: {
-  //             display: 'long_name',
-  //             type: 'locality'
-  //         },
-  //         stateName: {
-  //             display: 'short_name',
-  //             type: 'administrative_area_level_1'
-  //         },
-  //         zipCode: {
-  //             display: 'short_name',
-  //             type: 'postal_code'
-  //         }
-  //     };
-  //
-  //     var autocomplete;
-  //     var autocompleteOptions = {
-  //         radius: 10,
-  //         types: ['geocode']
-  //     };
-  //
-  //
-  //     function initAutocomplete() {
-  //         autocomplete = new google.maps.places.Autocomplete($inputAuto[0], autocompleteOptions);
-  //         autocomplete.addListener('place_changed', setAddress);
-  //     };
-  //
-  //     function setAddress() {
-  //         var place = autocomplete.getPlace().address_components;
-  //
-  //         var streetAddr = [addrComponents.streetNumber, addrComponents.streetName];
-  //         var streetAddrDisplay = [];
-  //
-  //         // Add additional field values
-  //
-  //         place.forEach(function(placeComponent) {
-  //             streetAddr.forEach(function(streetAddrComponent) {
-  //                 if (placeComponent.types[0] === streetAddrComponent.type) {
-  //                     streetAddrDisplay.push(placeComponent[streetAddrComponent.display]);
-  //                 }
-  //                 // else if <additional field values>
-  //             });
-  //         });
-  //         var addrString = streetAddrDisplay.join(' ');
-  //         $inputAuto.val(addrString);
-  //     };
-  //
-  //     initAutocomplete();
-  //
-  // }());
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
+  /** INIT GOOGLE AUTOCOMPLEET */
+  var placeSearch;
+  var autocomplete;
+  var componentForm = {
+    street_number: 'short_name',
+    route: 'long_name',
+    locality: 'long_name',
+    administrative_area_level_1: 'long_name',
+    country: 'long_name',
+    postal_code: 'short_name'
+  };
+
+  function initialize() {
+    // Create the autocomplete object, restricting the search
+    // to geographical location types.
+    autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
+      types: ['geocode']
+    });
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+      fillInAddress();
+    });
+    var autocompleteinput = document.getElementById('autocomplete');
+    autocompleteinput.addEventListener('focus keyup', geolocate, true);
+  } // [START region_fillform]
+
+
+  function fillInAddress() {
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+    for (var component in componentForm) {
+      document.getElementById(component).value = '';
+      document.getElementById(component).disabled = false;
+    } // Get each component of the address from the place details
+    // and fill the corresponding field on the form.
+
+
+    for (var i = 0; i < place.address_components.length; i++) {
+      // console.log(place.address_components);
+      var addressType = place.address_components[i].types[0];
+
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        var element = document.getElementById(addressType);
+        element.value = val;
+
+        if (addressType == 'administrative_area_level_1' || addressType == 'country') {
+          var valSecond = place.address_components[i].short_name;
+          element.setAttribute('data-code', valSecond);
+          element.setAttribute('data-name', val);
+        }
+      }
+    }
+  }
+
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+
+  initialize();
+  var $save = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-save');
+  var $reset = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-reset');
+  var $edit = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-edit');
+  var $autocomplete = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete-edit');
+  var body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
+  var inputs = $autocomplete.find("input"); // let val = "";
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
+  console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val());
+  $autocomplete.find('input').prop('disabled', true);
+  $autocomplete.find('select').prop('disabled', true);
+  $autocomplete.addClass('disabled');
+  $autocomplete.hide('fast');
+  $autocomplete.on('click', function (e) {
+    var getVal = $autocomplete.serialize();
+    console.log(getVal);
+  });
+  $save.on('click', function (e) {
+    e.preventDefault();
+    var getVal = inputs.map(function () {
+      if (this.value != 0 || this.value != "") {
+        return this.value; // $(this).val()
+      }
+    }).get(); // console.log(getVal);
+
+    if (!$autocomplete.hasClass('disabled')) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
+      $autocomplete.find('input').prop('disabled', true);
+      $autocomplete.find('select').prop('disabled', true);
+      $autocomplete.addClass('disabled');
+      $autocomplete.hide('slow');
+      console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val());
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val(getVal);
+      console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val());
+    }
+  });
+  body.on('click', '#action-edit', function (e) {
+    if ($autocomplete.hasClass('disabled')) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', false);
+      $autocomplete.find('input').prop('disabled', false);
+      $autocomplete.find('select').prop('disabled', false);
+      $autocomplete.removeClass('disabled');
+      $autocomplete.show('slow');
+      console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val());
+    }
+  });
+  body.on('click', '#action-reset', function (e) {
+    if ($autocomplete.hasClass('disabled')) {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', false);
+      $autocomplete.find('input').prop('disabled', false);
+      $autocomplete.find('select').prop('disabled', false);
+      $autocomplete.removeClass('disabled');
+      $autocomplete.show('slow'); // console.log($('#autocomplete').val());
+    }
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val('');
+    $autocomplete.find('input').val('');
+    $autocomplete.find('select').val('');
+  });
 });
 
 /***/ }),
@@ -295,90 +362,7 @@ window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  /** INIT GOOGLE AUTOCOMPLEET */
-  var placeSearch;
-  var autocomplete;
-  var componentForm = {
-    street_number: 'short_name',
-    route: 'long_name',
-    locality: 'long_name',
-    administrative_area_level_1: 'long_name',
-    country: 'long_name',
-    postal_code: 'short_name'
-  };
-
-  function initialize() {
-    // Create the autocomplete object, restricting the search
-    // to geographical location types.
-    autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
-      types: ['geocode']
-    });
-    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-      fillInAddress();
-    });
-    var autocompleteinput = document.getElementById('autocomplete');
-    autocompleteinput.addEventListener('focus', geolocate, true);
-  } // [START region_fillform]
-
-
-  function fillInAddress() {
-    // Get the place details from the autocomplete object.
-    var place = autocomplete.getPlace(); // Initialize fulladdress for when we combine street number and street name
-
-    var fullAddress = "";
-
-    for (var component in componentForm) {
-      document.getElementById(component).value = '';
-      document.getElementById(component).disabled = false;
-    } // Get each component of the address from the place details
-    // and fill the corresponding field on the form.
-
-
-    for (var i = 0; i < place.address_components.length; i++) {
-      console.log(place.address_components);
-      var addressType = place.address_components[i].types[0];
-
-      if (componentForm[addressType]) {
-        var val = place.address_components[i][componentForm[addressType]];
-        var element = document.getElementById(addressType);
-        element.value = val; // switch(i){
-        //     case 0:
-        //         fullAddress= val;
-        //         fullAddress= fullAddress.concat(" ");
-        //         break;
-        //     case 1:
-        //         fullAddress= fullAddress.concat(val);
-        //         document.getElementById("street_address").value = fullAddress;
-        //         break;
-        //     default:
-        //         document.getElementById(addressType).value = val;
-        // }
-
-        if (addressType == 'administrative_area_level_1' || addressType == 'country') {
-          var valSecond = place.address_components[i].short_name;
-          element.setAttribute('data-code', valSecond);
-          element.setAttribute('data-name', val);
-        }
-      }
-    }
-  }
-
-  function geolocate() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var circle = new google.maps.Circle({
-          center: geolocation,
-          radius: position.coords.accuracy
-        });
-        autocomplete.setBounds(circle.getBounds());
-      });
-    }
-  }
-
-  initialize();
   /** INIT DATE FIELDS */
-
   function initializeDate() {
     var dateMonth = document.getElementById('date-month');
     var dateDay = document.getElementById('date-day');
@@ -520,47 +504,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   }
 
   PhoneZipVlidation();
-  var $save = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-save');
-  var $reset = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-reset');
-  var $edit = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#action-edit');
-  var $autocomplete = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete-edit');
-  var body = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body');
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
-  $autocomplete.find('input').prop('disabled', true);
-  $autocomplete.find('select').prop('disabled', true);
-  $autocomplete.addClass('disabled'); // $autocomplete.hide('slow');
-
-  body.on('click', '#action-save', function (e) {
-    if (!$autocomplete.hasClass('disabled')) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', true);
-      $autocomplete.find('input').prop('disabled', true);
-      $autocomplete.find('select').prop('disabled', true);
-      $autocomplete.addClass('disabled');
-      $autocomplete.hide('slow');
-    }
-  });
-  body.on('click', '#action-edit', function (e) {
-    if ($autocomplete.hasClass('disabled')) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', false);
-      $autocomplete.find('input').prop('disabled', false);
-      $autocomplete.find('select').prop('disabled', false);
-      $autocomplete.removeClass('disabled');
-      $autocomplete.show('slow');
-    }
-  });
-  body.on('click', '#action-reset', function (e) {
-    if ($autocomplete.hasClass('disabled')) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').prop('disabled', false);
-      $autocomplete.find('input').prop('disabled', false);
-      $autocomplete.find('select').prop('disabled', false);
-      $autocomplete.removeClass('disabled');
-      $autocomplete.show('slow');
-    }
-
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#autocomplete').val('');
-    $autocomplete.find('input').val('');
-    $autocomplete.find('select').val('');
-  });
 
   function setDefaultSelect(idElement) {
     var position = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -870,7 +813,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     return this.optional(element) || re.test(value); // return this.optional(element) || new RegExp(regex).test(value);
   }, "Please recheck your Driver’s License Number"); // $("#license-number").rules("add", { regexLicense: () });
 
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address").validate({
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address1").validate({
+    onfocusout: true,
+    onsubmit: true,
     successClass: "valid-feedback",
     errorClass: "invalid-feedback",
     ignore: ":hidden",
@@ -1001,24 +946,24 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       } else {
         error.insertAfter(element);
       }
-    } // submitHandler: function (form){
-    //     alert('valid form submitted');
-    //     $("button[type='submit']").prop('disabled', false);
-    //     return false;
-    // }
-
+    },
+    submitHandler: function submitHandler(form) {
+      alert('valid form submitted');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()("button[type='submit']").prop('disabled', false);
+      return false;
+    }
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on('change', function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val(jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobDay"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobMonth"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobYear"] option:selected').val());
     console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
-  });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()('input,select').on('blur keyup', function () {
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()("#address").valid()) {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit').prop('disabled', false);
-    } else {
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#submit').prop('disabled', 'disabled');
-    }
-  });
+  }); // $('input,select').on('blur keyup', function() {
+  //     if ($("#address").valid()) {
+  //         $('#submit').prop('disabled', false);
+  //     } else {
+  //         $('#submit').prop('disabled', 'disabled');
+  //     }
+  // });
+  //
 });
 
 /***/ }),
