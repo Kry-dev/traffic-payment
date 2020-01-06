@@ -561,31 +561,34 @@ $(document).ready(() => {
         //     form.submit(); // <- use 'form' argument here.
         // }
     });
-    $(".dob-field").on('change',function(){
+    $(".dob-field").on('blur change',function(){
         $("#dateBirth").val($('[name="dobDay"] option:selected').val()+"/"+$('[name="dobMonth"] option:selected').val()+"/"+$('[name="dobYear"] option:selected').val());
         console.log($("#dateBirth").val());
     });
     $("#submit").prop('disabled', true);
     function checkInputs() {
         let isValid = true;
-        $(':input').filter('[required]').each(function() {
+        // $('#address :input').filter('[required]').each(function() {
+        $('#address input:required').each(function() {
             if ($(this).val() === '') {
                 $("#submit").prop('disabled', true);
                 isValid = false;
+                console.log('submit disabled');
                 return false;
             }
         });
+        
         if(isValid) {$("#submit").prop('disabled', false)}
+        console.log('submit enabled');
         return isValid;
     }
     
-    $("#submit").click(function() {
-        alert(checkInputs());
-    });
+    // $("#submit").click(function() {
+    //     alert(All checkInputs());
+    // });
 
     //Enable or disable button based on if inputs are filled or not
-    $(':input').filter('[required]').on('change' ,function() {
-        console.log('click');
+    $('.form-control:required').on('change' ,function() {
         checkInputs();
     })
     

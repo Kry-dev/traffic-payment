@@ -955,18 +955,20 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     // }
 
   });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on('change', function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on('blur change', function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val(jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobDay"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobMonth"] option:selected').val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()('[name="dobYear"] option:selected').val());
     console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").prop('disabled', true);
 
   function checkInputs() {
-    var isValid = true;
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()(':input').filter('[required]').each(function () {
+    var isValid = true; // $('#address :input').filter('[required]').each(function() {
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#address input:required').each(function () {
       if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val() === '') {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").prop('disabled', true);
         isValid = false;
+        console.log('submit disabled');
         return false;
       }
     });
@@ -975,15 +977,15 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").prop('disabled', false);
     }
 
+    console.log('submit enabled');
     return isValid;
-  }
+  } // $("#submit").click(function() {
+  //     alert(All checkInputs());
+  // });
+  //Enable or disable button based on if inputs are filled or not
 
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").click(function () {
-    alert(checkInputs());
-  }); //Enable or disable button based on if inputs are filled or not
 
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()(':input').filter('[required]').on('change', function () {
-    console.log('click');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.form-control:required').on('change', function () {
     checkInputs();
   });
 });
