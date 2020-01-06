@@ -51,7 +51,7 @@
                     placeholder='San Fransisco',
                     value='San Fransisco',
                     required="required")
-            .col-sm-6
+            .col-sm-6.mt-4.mt-sm-0
                 label(for='administrative_area_level_1') State: *
                 input.form-control( id="administrative_area_level_1", name="state", value="California", required)
         <!-- State & Zip -->
@@ -61,12 +61,12 @@
                 label(for='country') Country: *
                 input.form-control(id="country", name="country", value="USA", required)
 
-            .col-sm-6
+            .col-sm-6.mt-4.mt-sm-0
                 label(for='postal_code') Postal code: *
                 input#postal_code.form-control(required, value="94103",name="postal_code", title="Enter valid ZIP 4-5 numbers" )
 
         .row
-            .col-sm-6.mb-3
+            .col-sm-6.mb-2
                 a.w-100.btn.btn-outline-secondary(id="action-reset") Clear Address
             .col-sm-6
                 a.w-100.btn.btn-danger(id="action-save") Save Changes

@@ -1,3 +1,6 @@
 .my-info {
     padding: 80px 0;
+    @include media-breakpoint-down(md){
+        padding: 92px 0 80px;
+    }
 }

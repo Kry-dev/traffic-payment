@@ -6,7 +6,7 @@
     &-warning,
     &-primary,
     &-success {
-        color: $white;
+        color: $white !important;
         box-shadow: none;
     }
     &:disabled,

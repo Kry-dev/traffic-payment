@@ -23,6 +23,7 @@ $blue-dark: #3A8FC8;
 $green: #12C0C5;
 $yellow: #FCB60C;
 $red: #FE8B7B;
+$red-error: #FF3C37;
 $pink: #FFD6D4;
 $modal-bg: #E2F3FF;
 $grays: ();
@@ -107,6 +108,7 @@ $container-max-widths: (
         xl: 1170px
 );
 
+$grid-gutter-width:           32px;
 // Body
 //
 // Settings for the `<body>` element.

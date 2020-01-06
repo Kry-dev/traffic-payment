@@ -53,7 +53,7 @@
           <div class="container">
             <div class="row my-info border-bottom">
               <div class="col-xl-2 offset-xl-1 col-lg-2 offset-lg-0">
-                <h2 class="mb-md-0">My Info</h2>
+                <h2 class="mb-3 mb-lg-0">My Info</h2>
               </div>
               <div class="col-xl-8 col-lg-10">
                 <p class="mb-md-0">
@@ -73,13 +73,13 @@
                     <button class="locked ml-4" type="button" tabindex="0" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="right" data-html="true" data-content="&lt;div class='tooltip' role='tooltip'&gt;&lt;div class='arrow'&gt;&lt;/div&gt;&lt;div class='tooltip-inner font-italic'&gt;This field is locked. Please &lt;a href='#' class='font-weight-bold'&gt;contact our customer service team&lt;/a&gt; if you wish to edit this field.&lt;/div&gt;&lt;/div&gt;"><img src="img/general/locked.png"><span>Locked</span></button>
                   </p>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xl-6 col-md-12 mb-4">
+                <div class="form-group row mb-4">
+                  <div class="col-xl-6 col-md-12">
                     <label for="phone">Phone Number: *</label>
                     <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="" required="required">
                   </div>
                   <div class="col-xl-6 col-md-12">
-                    <div class="row payment-DOB">
+                    <div class="row payment-DOB mt-4 mt-xl-0">
                       <label class="w-100">Date of Birth: *</label>
                       <select class="form-control dob-field" id="date-month" name="dobMonth" required>
                         <option value="" selected="selected" disabled="disabled">Month</option>
@@ -94,7 +94,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row mb-0">
                   <div class="col-xl-9 col-lg-10 col-md-12"><!-- Search Field -->
                     <div class="locationField" id="locationField">
                       <label for="autocomplete">Address: *</label>
@@ -125,7 +125,7 @@
                             <label for="locality">City: *</label>
                             <input class="form-control" id="locality" type="text" name="city" placeholder="San Fransisco" value="San Fransisco" required="required">
                           </div>
-                          <div class="col-sm-6">
+                          <div class="col-sm-6 mt-4 mt-sm-0">
                             <label for="administrative_area_level_1">State: *</label>
                             <input class="form-control" id="administrative_area_level_1" name="state" value="California" required>
                           </div>
@@ -135,13 +135,13 @@
                             <label for="country">Country: *</label>
                             <input class="form-control" id="country" name="country" value="USA" required>
                           </div>
-                          <div class="col-sm-6">
+                          <div class="col-sm-6 mt-4 mt-sm-0">
                             <label for="postal_code">Postal code: *</label>
                             <input class="form-control" id="postal_code" required value="94103" name="postal_code" title="Enter valid ZIP 4-5 numbers">
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-sm-6 mb-3"><a class="w-100 btn btn-outline-secondary" id="action-reset">Clear Address</a></div>
+                          <div class="col-sm-6 mb-2"><a class="w-100 btn btn-outline-secondary" id="action-reset">Clear Address</a></div>
                           <div class="col-sm-6"><a class="w-100 btn btn-danger" id="action-save">Save Changes</a></div>
                         </div>
                       </div>
@@ -245,9 +245,9 @@
                 </div>
               </div>
             </div>
-            <div class="row payment-row border-bottom-0">
+            <div class="row payment-row border-bottom-0 pt-0">
               <div class="col-xl-8 offset-xl-3 col-md-12">
-                <div class="form-group row">
+                <div class="form-group row mb-0">
                   <div class="col-12">
                     <p class="text-danger">Important!</p>
                     <p class="mb-5">
@@ -257,7 +257,7 @@
                       $6.99 fee to reissue your certificate and resubmit your course results.
                     </p>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-md-6 col-sm-12">
                     <button class="w-100 btn btn-danger" id="submit" type="submit">Save Changes & Continue</button>
                     <!--button#submit.w-100.btn.btn-danger(type='submit', disabled) Save Changes & Continue-->
                   </div>

@@ -1761,16 +1761,16 @@ a.text-pink:focus {
 
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 16px;
+  padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
 }
 
 .container-fluid {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 16px;
+  padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -1778,8 +1778,8 @@ a.text-pink:focus {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  margin-right: -16px;
+  margin-left: -16px;
 }
 
 .no-gutters {
@@ -1865,8 +1865,8 @@ a.text-pink:focus {
 .col-xl-auto {
   position: relative;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 16px;
+  padding-left: 16px;
 }
 
 .col {
@@ -5306,7 +5306,7 @@ textarea.form-control.is-invalid {
 }
 
 .card-deck .card {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .card-group {
@@ -5315,7 +5315,7 @@ textarea.form-control.is-invalid {
 }
 
 .card-group > .card {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .card-columns .card {
@@ -6406,7 +6406,7 @@ p {
 .btn-warning,
 .btn-primary,
 .btn-success {
-  color: #fff;
+  color: #fff !important;
   box-shadow: none;
 }
 
@@ -6529,7 +6529,7 @@ select2 select2-container.select2-container--default.select2-container--above se
   display: block;
   font-size: 1.125rem;
   margin-top: 0;
-  border-color: #FE8B7B;
+  border-color: #FF3C37;
   position: relative;
 }
 
@@ -6538,7 +6538,7 @@ select2 select2-container.select2-container--default.select2-container--above se
   content: "×";
   position: absolute;
   right: 1rem;
-  color: #FE8B7B;
+  color: #FF3C37;
 }
 
 .form-control:disabled {
@@ -6551,9 +6551,9 @@ form label {
 }
 
 form label.invalid-feedback {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.125rem;
-  color: #FE8B7B;
+  color: #FF3C37;
   text-align: right;
 }
 
@@ -6696,6 +6696,7 @@ form label.invalid-feedback {
   font-weight: 100;
   font-style: italic;
   font-size: 0.9375rem;
+  color: #585858;
 }
 
 .payment p em .fa,
@@ -7999,17 +8000,17 @@ form label.invalid-feedback {
 
   .card-deck {
     flex-flow: row wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-right: -16px;
+    margin-left: -16px;
   }
 
   .card-deck .card {
     display: flex;
     flex: 1 0 0%;
     flex-direction: column;
-    margin-right: 15px;
+    margin-right: 16px;
     margin-bottom: 0;
-    margin-left: 15px;
+    margin-left: 16px;
   }
 
   .card-group {
@@ -10816,6 +10817,14 @@ form label.invalid-feedback {
     text-align: center;
   }
 
+  .my-info {
+    padding: 92px 0 80px;
+  }
+
+  .payment-row .text-blue-dark {
+    margin-bottom: 40px;
+  }
+
   .payment-DOB .dob-field + .dob-field {
     margin-left: 0;
   }
@@ -10835,6 +10844,11 @@ form label.invalid-feedback {
     max-width: 49.4%;
     margin-bottom: 0;
   }
+
+  .payment-modal {
+    margin: 1.5rem auto 0;
+    padding: 2rem;
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -10853,6 +10867,10 @@ form label.invalid-feedback {
 
   .table-responsive-md > .table-bordered {
     border: 0;
+  }
+
+  .payment-row {
+    padding: 24px 0 64px;
   }
 
   .multi-steps-list {

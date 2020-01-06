@@ -6,8 +6,8 @@
             label Full Name
             p   Derrik Sun
                 include ../locked/locked
-        .form-group.row
-            .col-xl-6.col-md-12.mb-4
+        .form-group.row.mb-4
+            .col-xl-6.col-md-12
                 label(for='phone') Phone Number: *
                 input.form-control.input-tel(
                     id="phone",
@@ -17,7 +17,7 @@
                     value="",
                     required="required")
             .col-xl-6.col-md-12
-                .row.payment-DOB
+                .row.payment-DOB.mt-4.mt-xl-0
                     label.w-100 Date of Birth: *
                     select.form-control.dob-field(id="date-month",name="dobMonth" required)
                         option(value="" selected="selected", disabled="disabled") Month
@@ -26,7 +26,7 @@
                     select.form-control.dob-field(id="date-year",name="dobYear" required)
                         option(value="" selected="selected", disabled="disabled") Year
                     input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
-        .form-group.row
+        .form-group.row.mb-0
             .col-xl-9.col-lg-10.col-md-12
                 include ../adress-modal/adress-modal
 
@@ -65,9 +65,9 @@
             .col-sm-6
                 label(for='license-number') Driver’s License Number: *
                 input.form-control(type="text",id="license-number" name="license_number", placeholder="e.g. DL05876" , required)
-.row.payment-row.border-bottom-0
+.row.payment-row.border-bottom-0.pt-0
     .col-xl-8.offset-xl-3.col-md-12
-        .form-group.row
+        .form-group.row.mb-0
             .col-12
                 p.text-danger Important!
                 p.mb-5
@@ -75,7 +75,7 @@
                     | course results to the DMV and Court, but the submission may not be accepted if you have unpaid court fees
                     | or errors in your information. If you require us to RESUBMIT your test results again, we will assess a
                     | $6.99 fee to reissue your certificate and resubmit your course results.
-            .col-sm-6
+            .col-md-6.col-sm-12
                 button#submit.w-100.btn.btn-danger(type='submit', ) Save Changes & Continue
                 //button#submit.w-100.btn.btn-danger(type='submit', disabled) Save Changes & Continue
 

@@ -520,7 +520,7 @@ $(document).ready(() => {
                 required: "Please enter your State",
             },
             country: {
-                required: 'Please select your County',
+                required: 'Please select your Country',
             },
             postal_code: {
                 required : "Please enter your zip code",

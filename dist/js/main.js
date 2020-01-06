@@ -913,7 +913,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         required: "Please enter your State"
       },
       country: {
-        required: 'Please select your County'
+        required: 'Please select your Country'
       },
       postal_code: {
         required: "Please enter your zip code"

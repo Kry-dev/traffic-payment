@@ -3,14 +3,14 @@
         display: block;
         font-size: 1.125rem;
         margin-top: 0;
-        border-color: $danger;
+        border-color: $red-error;
         position: relative;
         &:after {
             display: inline-block;
             content: "×";
             position: absolute;
             right: 1rem;
-            color: $danger;
+            color: $red-error;
             
         }
     }
@@ -29,9 +29,9 @@ form label {
     }
     &.invalid-feedback{
         //position: absolute;
-        font-size: 0.875rem;
+        font-size: 0.9375rem;
         line-height: 1.125rem;
-        color: $danger;
+        color: $red-error;
         text-align: right;
     }
 }

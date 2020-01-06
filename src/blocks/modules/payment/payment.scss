@@ -2,6 +2,14 @@
     &-row {
         padding: 24px 0 80px;
         border-bottom: 1px solid $border-color;
+        .text-blue-dark {
+            @include media-breakpoint-down(md){
+                margin-bottom: 40px;
+            }
+        }
+        @include media-breakpoint-down(sm){
+            padding: 24px 0 64px;
+        }
     }
     label {
         font-family: $label-font-family;
@@ -67,6 +75,10 @@
         background: $modal-bg;
         margin: 2rem auto ;
         padding: 2rem 2rem 80px;
+        @include media-breakpoint-down(md){
+            margin: 1.5rem auto 0;
+            padding: 2rem;
+        }
     }
     p em,
     p i,
@@ -75,6 +87,7 @@
         font-weight: 100;
         font-style: italic;
         font-size: 0.9375rem;
+        color: $body-color;
         .fa {
             font-family: FontAwesome;
         }
