@@ -293,6 +293,19 @@ $(document).ready(() => {
             }
         }
     }
+    function forceKeyPressUppercase(e) {
+        let charInput = e.keyCode;
+        if((charInput >= 97) && (charInput <= 122)) { // lowercase
+            if(!e.ctrlKey && !e.metaKey && !e.altKey) { // no modifier key
+                let newChar = charInput - 32;
+                let start = e.target.selectionStart;
+                let end = e.target.selectionEnd;
+                e.target.value = e.target.value.substring(0, start) + String.fromCharCode(newChar) + e.target.value.substring(end);
+                e.target.setSelectionRange(start+1, start+1);
+                e.preventDefault();
+            }
+        }
+    }
     function licenseJSON (){
         const licenseURL = `../data/regex.json`;
         const selectState = setDefaultSelect('license-state', 0, 'Select State');
@@ -322,6 +335,7 @@ $(document).ready(() => {
                         licenseNumber.attr('placeholder', "e.g. DL05876");
                     } else if ((selectedStateVal.length !== 0)&&(selectedStateVal !== "")) {
                         getLicenseRegex( licenseNumber, rejexObj, selectState.value);
+                        document.getElementById("license-number").addEventListener("keypress", forceKeyPressUppercase, false);
                     } else {
                         licenseNumber.val("");
                         licenseNumber.attr("placeholder", "e.g. DL05876");

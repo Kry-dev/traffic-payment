@@ -65,6 +65,15 @@
             .col-sm-6
                 label(for='license-number') Driver’s License Number: *
                 input.form-control(type="text",id="license-number" name="license_number", placeholder="e.g. DL05876" , required)
+        .row
+            .col-sm-6.form-group.custom-control
+                label(for='license-state') License Type: *
+                select.form-control(name="license_type", id="license-type", required="required")
+                    option(value="C" selected="selected") Class C - Non-Commercial
+                    option(value="B") Class B - Commercial
+                    option(value="A") Class A - Trailer Buses
+                    option(value="M1") Class M1 - 2-Wheel Motorcycles
+                    option(value="M2") Class M2 - Motorized Bicycles
 .row.payment-row.border-bottom-0.pt-0
     .col-xl-8.offset-xl-3.col-md-12
         .form-group.row.mb-0
