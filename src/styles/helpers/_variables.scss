@@ -246,7 +246,7 @@ $input-btn-font-size: $font-size-base;
 $input-btn-line-height: 1;
 
 $input-btn-focus-width: .2rem;
-$input-btn-focus-color: rgba($component-active-bg, .25);
+$input-btn-focus-color: rgba($primary, .12);
 $input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color;
 $input-btn-border-width: $border-width;
 
@@ -398,3 +398,7 @@ $popover-arrow-height:              .5rem;
 $popover-arrow-color:               $popover-bg;
 
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05);
+
+$box-shadow-sm:               0 .125rem .25rem rgba($black, .075);
+$box-shadow:                  0 .5rem 1rem rgba($black, .15);
+$box-shadow-lg:               0 1rem 3rem rgba($black, .175);

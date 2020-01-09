@@ -40,7 +40,8 @@
             right: 0;
             bottom: -25px;
             &:before{
-                display: inline-block;
+                // display: inline-block;
+                display: none;
                 content: "×";
                 position: absolute;
                 right: 1rem;
@@ -54,15 +55,18 @@
         justify-content: center;
         align-content: center;
         position: absolute;
-        right: 0;
+        right: 4px;
         bottom: 0;
-        padding: 10px 0;
+        padding: 10px 0px;
         width: 40px;
-        height: 40px;
+        font-size: 25px;
         color: #D0D0D0;
         &:focus,
         &:hover {
             cursor: pointer;
         }
+    }
+    @include media-breakpoint-down(sm){
+        padding: 1rem;
     }
 }
