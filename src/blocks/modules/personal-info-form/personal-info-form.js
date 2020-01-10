@@ -115,7 +115,7 @@ $(document).ready(() => {
     initializeDate();
     
     /** INIT PHONE AND ZIP FIELDS EDIT */
-    function PhoneZipVlidation() {
+    function PhoneValidation() {
         document.getElementById("phone").addEventListener("input", (e) => {
             const x = e.target.value.replace(/\D/g, "").match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
             e.target.value = !x[2] ? x[1] : `${x[1]}${x[2]}${x[3] ? `${x[3]}` : ""}`;
@@ -138,7 +138,7 @@ $(document).ready(() => {
         });
     }
     
-    PhoneZipVlidation();
+    PhoneValidation();
     
     // function to create option list to into select
     $.validator.addMethod("dob", function (value, element) {
@@ -212,11 +212,7 @@ $(document).ready(() => {
         return result;
     },
     "Please select a valid Date of Birth");
-    //regex
     $("#personal").validate({
-        // onkeyup: true,
-        // onfocusout: true,
-        // focusCleanup: true,
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
@@ -283,18 +279,11 @@ $(document).ready(() => {
                 error.insertAfter(element);
             }
         },
-        // submitHandler: function(form) { // <- pass 'form' argument in
-        //     alert('valid form submitted');
-        //     $("#submit").attr("disabled", false);
-        //     form.submit(); // <- use 'form' argument here.
-        // }
     });
     $(".dob-field").on("blur change", function () {
         $("#dateBirth").val($("[name=\"dobDay\"] option:selected").val() + "/" + $("[name=\"dobMonth\"] option:selected").val() + "/" + $("[name=\"dobYear\"] option:selected").val());
         console.log($("#dateBirth").val());
     });
-    // $("#submit").prop("disabled", true);
-    //
     const inputSelector = ":input[required]:visible";
     function checkForm() {
         // here, "this" is an input element

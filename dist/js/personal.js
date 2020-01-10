@@ -293,7 +293,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   initializeDate();
   /** INIT PHONE AND ZIP FIELDS EDIT */
 
-  function PhoneZipVlidation() {
+  function PhoneValidation() {
     document.getElementById("phone").addEventListener("input", function (e) {
       var x = e.target.value.replace(/\D/g, "").match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
       e.target.value = !x[2] ? x[1] : "".concat(x[1]).concat(x[2]).concat(x[3] ? "".concat(x[3]) : "");
@@ -315,7 +315,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     });
   }
 
-  PhoneZipVlidation(); // function to create option list to into select
+  PhoneValidation(); // function to create option list to into select
 
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.validator.addMethod("dob", function (value, element) {
     var result = true;
@@ -390,12 +390,8 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     console.log(result);
     console.log("dob validate bad");
     return result;
-  }, "Please select a valid Date of Birth"); //regex
-
+  }, "Please select a valid Date of Birth");
   jquery__WEBPACK_IMPORTED_MODULE_0___default()("#personal").validate({
-    // onkeyup: true,
-    // onfocusout: true,
-    // focusCleanup: true,
     successClass: "valid-feedback",
     errorClass: "invalid-feedback",
     ignore: ":hidden",
@@ -460,19 +456,12 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       } else {
         error.insertAfter(element);
       }
-    } // submitHandler: function(form) { // <- pass 'form' argument in
-    //     alert('valid form submitted');
-    //     $("#submit").attr("disabled", false);
-    //     form.submit(); // <- use 'form' argument here.
-    // }
-
+    }
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".dob-field").on("blur change", function () {
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val(jquery__WEBPACK_IMPORTED_MODULE_0___default()("[name=\"dobDay\"] option:selected").val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()("[name=\"dobMonth\"] option:selected").val() + "/" + jquery__WEBPACK_IMPORTED_MODULE_0___default()("[name=\"dobYear\"] option:selected").val());
     console.log(jquery__WEBPACK_IMPORTED_MODULE_0___default()("#dateBirth").val());
-  }); // $("#submit").prop("disabled", true);
-  //
-
+  });
   var inputSelector = ":input[required]:visible";
 
   function checkForm() {
