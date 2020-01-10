@@ -6,6 +6,7 @@ module.exports = {
         signin: "./src/js/import/pages/sign-in.js",
         signup: "./src/js/import/pages/sign-up.js",
         verify: "./src/js/import/pages/verify.js",
+        personal: "./src/js/import/pages/personal-info.js",
     },
 
     output: {

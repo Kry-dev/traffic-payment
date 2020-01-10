@@ -65,3 +65,36 @@ form label {
     //    border-radius: 50%;
     //}
 }
+.custom-control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &-label {
+        padding-left: 1rem;
+        &:before {
+            top: -0.25rem;
+        }
+        &:before ,
+        &:after {
+            top: -0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+    .custom-control-input:checked ~ .custom-control-label::after,
+    input[type="checkbox"]:checked + label:after{
+        background-color: $danger;
+    }
+    &.field-error {
+        .custom-control-label {
+            &:before {
+                border-color: $red-error;
+            }
+        }
+        label.invalid-feedback{
+            text-align: left;
+            padding-left: 1.5rem;
+        }
+    }
+}

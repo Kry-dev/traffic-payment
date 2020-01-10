@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Please Verify Your Identity</title>
+    <meta name="theme-color" content="#fff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="16x16" href="img/favicons/favicon-16x16.png" type="image/png">
+    <link rel="icon" sizes="32x32" href="img/favicons/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="img/favicons/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="img/favicons/apple-touch-icon-1024x1024.png">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header border-bottom">
+        <div class="container my-auto">
+          <nav class="navbar navbar-light navbar-expand-lg"><a class="navbar-brand brand" href="/">BEST ONLINE<br>TRAFFIC SCHOOL</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#">BACK TO HOMEPAGE</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <main class="content content-personal" role="main">
+        <section class="personal">
+          <div class="container">
+            <div class="row personal-descr">
+              <div class="col-lg-8 offset-lg-2">
+                <h2 class="presonal-title text-blue-dark mb-4">Personal Information</h2>
+                <p class="presonal-descr"> Best Online Traffic School is licensed by the DMV and accepted by <strong>EVERY</strong> county and court in the state of California. We will electronically submit your results to the court and DMV upon course completion on the same day.</p>
+                <p class="presonal-descr"> Your ticket citation information can be entered under My Profile or at Check Out after you complete the course.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-8 offset-lg-2">
+                <form class="personal-form" id="personal" action="#" method="POST">
+                  <div class="form-group row mb-4">
+                    <div class="col-xl-6 col-md-12">
+                      <label for="first_name">First Name: *</label>
+                      <input class="form-control input-tel" id="first_name" name="first_name" type="text" placeholder="" value="" required="required">
+                    </div>
+                    <div class="col-xl-6 col-md-12 mt-3 mt-xl-0">
+                      <label for="last_name">Last Name: *</label>
+                      <input class="form-control input-tel" id="last_name" name="last_name" type="text" placeholder="" value="" required="required">
+                    </div>
+                  </div>
+                  <div class="form-group row mb-4">
+                    <div class="col-xl-6 col-md-12">
+                      <label for="phone">Phone Number: *</label>
+                      <input class="form-control input-tel" id="phone" name="phone" type="tel" placeholder="888 888-8888" value="" required="required">
+                    </div>
+                    <div class="col-xl-6 col-md-12">
+                      <div class="row payment-DOB mt-4 mt-xl-0">
+                        <label class="w-100">Date of Birth: *</label>
+                        <select class="form-control dob-field" id="date-month" name="dobMonth" required="required">
+                          <option value="" selected="selected" disabled="disabled">Month</option>
+                        </select>
+                        <select class="form-control dob-field" id="date-day" name="dobDay" required="required">
+                          <option value="" selected="selected" disabled="disabled">Day</option>
+                        </select>
+                        <select class="form-control dob-field" id="date-year" name="dobYear" required="required">
+                          <option value="" selected="selected" disabled="disabled">Year</option>
+                        </select>
+                        <input class="dateBirth" type="text" name="dateBirth" id="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group my-5">
+                    <div class="custom-control custom-checkbox">
+                      <input class="form-control custom-control-input" id="read-privacy" type="checkbox" name="read_privacy" required="required">
+                      <label class="custom-control-label" for="read-privacy">
+                        <p class="mb-0">I have read and I accept the Privacy Policy and Terms of Service.</p>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-xl-6 col-md-12">
+                      <button class="btn btn-danger w-100 mb-3" id="submit" type="submit">Start The Course</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer mt-auto">
+        <div class="container">
+          <p class="text-center"><em>© 2019 Best Online Traffic School. All Rights Reserved.</em></p>
+        </div>
+      </footer>
+    </div>
+    <script src="js/personal.js"></script>
+    <script src="js/vendor.js"></script>
+  </body>
+</html>

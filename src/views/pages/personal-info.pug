@@ -1,0 +1,15 @@
+extends ../layouts/default
+include ../helpers/mixins
+block variables
+    - const title = "Please Verify Your Identity";
+
+block content
+    .wrapper
+        include ../../blocks/modules/signin-header/signin-header
+        main.content.content-personal(role="main")
+            include ../../blocks/modules/personal-info/personal-info
+
+        include ../../blocks/modules/footer/footer
+block scripts
+    script(src="js/personal.js")
+    script(src="js/vendor.js")

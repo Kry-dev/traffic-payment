@@ -6895,6 +6895,10 @@ body {
   padding: 120px 0;
 }
 
+.wrapper .content-personal {
+  padding: 0 0 120px 0;
+}
+
 .content {
   flex: 1 0 auto;
 }
@@ -7074,6 +7078,42 @@ form label.invalid-feedback {
 
 .field-error input.invalid-feedback:after {
   display: none;
+}
+
+.custom-control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-control-label {
+  padding-left: 1rem;
+}
+
+.custom-control-label:before {
+  top: -0.25rem;
+}
+
+.custom-control-label:before,
+.custom-control-label:after {
+  top: -0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label::after,
+.custom-control input[type="checkbox"]:checked + label:after {
+  background-color: #FE8B7B;
+}
+
+.custom-control.field-error .custom-control-label:before {
+  border-color: #FF3C37;
+}
+
+.custom-control.field-error label.invalid-feedback {
+  text-align: left;
+  padding-left: 1.5rem;
 }
 
 .header {
@@ -7539,6 +7579,10 @@ form label.invalid-feedback {
 
 .multi-steps-list > li.active ~ li:after {
   background-color: #D0D0D0;
+}
+
+.personal-descr {
+  padding: 80px 0 64px;
 }
 
 .footer {

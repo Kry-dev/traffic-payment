@@ -1,0 +1,52 @@
+form#personal.personal-form(action="#", method="POST")
+    .form-group.row.mb-4
+        .col-xl-6.col-md-12
+            label(for='first_name') First Name: *
+            input.form-control.input-tel(
+                id="first_name",
+                name="first_name",
+                type="text",
+                placeholder="",
+                value="",
+                required="required")
+        .col-xl-6.col-md-12.mt-3.mt-xl-0
+            label(for='last_name') Last Name: *
+            input.form-control.input-tel(
+                id="last_name",
+                name="last_name",
+                type="text",
+                placeholder="",
+                value="",
+                required="required")
+    .form-group.row.mb-4
+        .col-xl-6.col-md-12
+            label(for='phone') Phone Number: *
+            input.form-control.input-tel(
+                id="phone",
+                name="phone",
+                type="tel",
+                placeholder="888 888-8888",
+                value="",
+                required="required")
+        .col-xl-6.col-md-12
+            .row.payment-DOB.mt-4.mt-xl-0
+                label.w-100 Date of Birth: *
+                select.form-control.dob-field(id="date-month",name="dobMonth" required="required")
+                    option(value="" selected="selected", disabled="disabled") Month
+                select.form-control.dob-field(id="date-day",name="dobDay" required="required")
+                    option(value="" selected="selected", disabled="disabled") Day
+                select.form-control.dob-field(id="date-year",name="dobYear" required="required")
+                    option(value="" selected="selected", disabled="disabled") Year
+                input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
+
+    .form-group.my-5
+        .custom-control.custom-checkbox
+            input#read-privacy.form-control.custom-control-input(type='checkbox', name="read_privacy", required="required")
+            label.custom-control-label(for='read-privacy')
+                p.mb-0 I have read and I accept the Privacy Policy and Terms of Service.
+
+    .form-group.row
+        .col-xl-6.col-md-12
+            button#submit.btn.btn-danger.w-100.mb-3(type='submit') Start The Course
+
+
