@@ -1,11 +1,11 @@
 extends ../layouts/default
 include ../helpers/mixins
 block variables
-    - const title = "Please Verify Your Identity";
+    - const title = "Personal Information";
 
 block content
     .wrapper
-        include ../../blocks/modules/signin-header/signin-header
+        include ../../blocks/modules/personal-header/personal-header
         main.content.content-personal(role="main")
             include ../../blocks/modules/personal-info/personal-info
 

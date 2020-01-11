@@ -1,0 +1,16 @@
+header.header.border-bottom
+    .container.my-auto
+        nav.navbar.navbar-light.navbar-expand-lg
+            include ../logo/logo
+
+            .multi-steps.m-auto
+                include ../personal-progress-steps/personal-progress-steps
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarNav.collapse.navbar-collapse
+                ul.navbar-nav.ml-auto
+                    li.nav-item
+                        a.nav-link(href='#') Logout
+
+
+
