@@ -2,7 +2,7 @@
     min-width: 430px;
     margin: 0 auto;
 }
-.multi-steps-list{
+.multi-steps-list {
     display: table;
     table-layout: fixed;
     width: 100%;
@@ -17,12 +17,13 @@
         color: $gray-200;
         font-family: "Roboto", sans-serif;
         font-size: 1rem;
+        z-index: 1;
         &:before{
             content: counter(my-awesome-counter);
             display: block;
             margin: 0 auto;
-            width: 36px;
-            height: 36px;
+            width: 37px;
+            height: 37px;
             line-height: 28px;
             text-align: center;
             font-weight: bold;

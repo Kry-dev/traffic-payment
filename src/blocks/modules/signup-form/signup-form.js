@@ -4,7 +4,7 @@ window.$ = $;
 import 'jquery-validation';
 $(document).ready(() => {
     $(".toggle-password").on('click', function() {
-        console.log('click');
+        console.log("click");
         $(this).toggleClass("fa-eye fa-eye-slash");
         let input = $($(this).attr("toggle"));
         console.log(input);
@@ -14,32 +14,52 @@ $(document).ready(() => {
             input.attr("type", "password");
         }
     });
-    
-    $("#signUp").validate({
+    $("#sign-up").validate({
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
         rules: {
-            signUp_email: {required: true,},
-            signUp_pass: {required: true,}
+            signup_email: {required: true,},
+            signup_pass: {
+                required: true,
+                minlength:6,
+            }
         },
         groups: {
             signup: "signUp_email signUp_pass",
         },
         messages: {
-            signUp_email: {
+            signup_email: {
                 required: "Incorrect username or password."
             },
-            signUp_pass: {
-                required: "Incorrect username or password."
+            signup_pass: {
+                required: "Incorrect username or password.",
+                minlength: "Your password must be at least 6 characters"
             }
         },
         errorPlacement: function(error, element) {
-            if (element.attr("name") === "signUp_email" || element.attr("name") === "signUp_pass") {
-                error.insertAfter("#signUp_pass");
+            if (element.attr("name") === "signup_email" || element.attr("name") === "signup_pass") {
+                error.insertAfter("#signup_pass");
             } else {
                 error.insertAfter(element);
             }
         },
     });
+    const inputSelector = ":input[required]:visible";
+    function checkForm() {
+        // here, "this" is an input element
+        let isValidForm = true;
+        $(this.form).find(inputSelector).each(function() {
+            if (!this.value.trim()) {
+                isValidForm = false;
+            }
+        });
+        $(this.form).find("#submit").prop("disabled", !isValidForm);
+        return isValidForm;
+    }
+    $("#submit").closest("form").submit(function() {// in a user hacked to remove "disabled" attribute, also monitor the submit event
+        // launch checkForm for the first encountered input,
+        // use its return value to prevent default if form is not valid
+        return checkForm.apply($(this).find(":input")[0]);
+    }).find(inputSelector).keyup(checkForm).keyup();
 });

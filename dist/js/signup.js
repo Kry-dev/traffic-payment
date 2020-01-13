@@ -174,7 +174,7 @@ window.$ = jquery__WEBPACK_IMPORTED_MODULE_0___default.a;
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".toggle-password").on('click', function () {
-    console.log('click');
+    console.log("click");
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).toggleClass("fa-eye fa-eye-slash");
     var input = jquery__WEBPACK_IMPORTED_MODULE_0___default()(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr("toggle"));
     console.log(input);
@@ -185,37 +185,59 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       input.attr("type", "password");
     }
   });
-  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#signUp").validate({
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#sign-up").validate({
     successClass: "valid-feedback",
     errorClass: "invalid-feedback",
     ignore: ":hidden",
     rules: {
-      signUp_email: {
+      signup_email: {
         required: true
       },
-      signUp_pass: {
-        required: true
+      signup_pass: {
+        required: true,
+        minlength: 6
       }
     },
     groups: {
       signup: "signUp_email signUp_pass"
     },
     messages: {
-      signUp_email: {
+      signup_email: {
         required: "Incorrect username or password."
       },
-      signUp_pass: {
-        required: "Incorrect username or password."
+      signup_pass: {
+        required: "Incorrect username or password.",
+        minlength: "Your password must be at least 6 characters"
       }
     },
     errorPlacement: function errorPlacement(error, element) {
-      if (element.attr("name") === "signUp_email" || element.attr("name") === "signUp_pass") {
-        error.insertAfter("#signUp_pass");
+      if (element.attr("name") === "signup_email" || element.attr("name") === "signup_pass") {
+        error.insertAfter("#signup_pass");
       } else {
         error.insertAfter(element);
       }
     }
   });
+  var inputSelector = ":input[required]:visible";
+
+  function checkForm() {
+    // here, "this" is an input element
+    var isValidForm = true;
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.form).find(inputSelector).each(function () {
+      if (!this.value.trim()) {
+        isValidForm = false;
+      }
+    });
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.form).find("#submit").prop("disabled", !isValidForm);
+    return isValidForm;
+  }
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()("#submit").closest("form").submit(function () {
+    // in a user hacked to remove "disabled" attribute, also monitor the submit event
+    // launch checkForm for the first encountered input,
+    // use its return value to prevent default if form is not valid
+    return checkForm.apply(jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find(":input")[0]);
+  }).find(inputSelector).keyup(checkForm).keyup();
 });
 
 /***/ }),
