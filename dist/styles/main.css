@@ -7586,9 +7586,7 @@ form label.invalid-feedback {
 }
 
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   width: 100%;
   border-top: 1px solid #585858;
   padding: 1rem 0;
