@@ -180,8 +180,8 @@
                         docket number.</em></p>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-6 form-group custom-control">
+                <div class="form-group row">
+                  <div class="col-sm-6">
                     <label for="license-state">Driver’s License State: *</label>
                     <select class="form-control" name="license_state" id="license-state">
                       <option value="" selected="selected">Select a State</option>
@@ -243,18 +243,15 @@
                     <input class="form-control" type="text" id="license-number" name="license_number" placeholder="e.g. DL05876" required>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-6 form-group custom-control">
-                    <label for="license-state">License Type: *</label>
-                    <select class="form-control" name="license_type" id="license-type" required="required">
-                      <option value="C" selected="selected">Class C - Non-Commercial</option>
-                      <option value="B">Class B - Commercial</option>
-                      <option value="A">Class A - Trailer Buses</option>
-                      <option value="M1">Class M1 - 2-Wheel Motorcycles</option>
-                      <option value="M2">Class M2 - Motorized Bicycles</option>
-                    </select>
-                  </div>
-                </div>
+                <!--.row-->
+                <!--    .col-sm-6.form-group.custom-control-->
+                <!--        label(for='license-state') License Type: *-->
+                <!--        select.form-control(name="license_type", id="license-type", required="required")-->
+                <!--            option(value="C" selected="selected") Class C - Non-Commercial-->
+                <!--            option(value="B") Class B - Commercial-->
+                <!--            option(value="A") Class A - Trailer Buses-->
+                <!--            option(value="M1") Class M1 - 2-Wheel Motorcycles-->
+                <!--            option(value="M2") Class M2 - Motorized Bicycles-->
               </div>
             </div>
             <div class="row payment-row border-bottom-0 pt-0">
@@ -287,7 +284,15 @@
       </footer>
     </div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGMYS-RP5r37u2t6ToQDKxyjerY-jDZj8&amp;libraries=places"></script>
-    <script src="js/main.js"></script>
-    <script src="js/vendor.js"></script>
+    <!--script(src="js/main.js")-->
+    <!--script(src="js/vendor.js")-->
+    <script src="/scripts/vendor/jquery.min.js"></script>
+    <!--script(src="/scripts/vendor/popper.min.js")-->
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="/scripts/vendor/bootstrap.min.js"></script>
+    <script src="/scripts/vendor/jquery.validate.js"></script>
+    <script src="/scripts/vendor/additional-methods.js"></script>
+    <script src="/scripts/main/recheck.js"></script>
+    <script src="/scripts/main/adress-modal.js"></script>
   </body>
 </html>
