@@ -17,18 +17,19 @@ $(document).ready(() => {
             opt.innerHTML = i;
             dateYear.appendChild(opt);
         }
-        const aMonth = ['January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
+        const aMonth = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
         ];
         const nMonths = 12;
         for (let i = 1; i <= nMonths; i++) {
@@ -38,20 +39,20 @@ $(document).ready(() => {
             if(i < 10){
                 opt.innerHTML = "0"+ i;
                 opt.value = "0"+ i;
-                opt.setAttribute('value',"0"+ i);
-                opt.setAttribute('data-number',"0"+ i);
+                opt.setAttribute("value","0"+ i);
+                opt.setAttribute("data-number","0"+ i);
                 dateMonth.appendChild(opt);
             }else {
                 opt.innerHTML = i;
                 opt.value = i;
-                opt.setAttribute('data-number', i);
+                opt.setAttribute("data-number", i);
                 dateMonth.appendChild(opt);
             }
         }
         
         const nDays = 31;
         for (let i = 1; i <= nDays; i++) {
-            const opt = document.createElement('option');
+            const opt = document.createElement("option");
             
             if(i < 10){
                 opt.innerHTML = "0"+ i;
@@ -596,9 +597,9 @@ $(document).ready(() => {
     // });
 
     //Enable or disable button based on if inputs are filled or not
-    $('.form-control:required').on('change' ,function() {
+    $(".form-control:required").on("change" ,function() {
         checkInputs();
-    })
+    });
     
-    
+    $(".locked").popover();
 });
