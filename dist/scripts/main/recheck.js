@@ -172,7 +172,7 @@ $(document).ready(() => {
     }
     function countyJSON() {
         // const сountyUrl = `${window.location.href}../data/county.json`;
-        const сountyUrl = `../data/county.json`;
+        const сountyUrl = `data/county.json`;
         // const сountyUrl = countyDATA;
         // create select fields for County/Court of Violation
         
@@ -301,7 +301,7 @@ $(document).ready(() => {
         }
     }
     function licenseJSON (){
-        const licenseURL = `../data/regex.json`;
+        const licenseURL = `data/regex.json`;
         const selectState = setDefaultSelect('license-state', 0, 'Select State');
         const licenseNumber = $('#license-number');
         const request = new XMLHttpRequest();
