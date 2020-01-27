@@ -14,32 +14,28 @@ $(document).ready(() => {
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
-        rules: {
-            signup_email: {required: true,},
-            signup_pass: {
-                required: true,
-                minlength:6,
-            }
-        },
-        groups: {
-            signup: "signUp_email signUp_pass",
-        },
-        messages: {
-            signup_email: {
-                required: "Incorrect username or password."
-            },
-            signup_pass: {
-                required: "Incorrect username or password.",
-                minlength: "Your password must be at least 6 characters"
-            }
-        },
         errorPlacement: function(error, element) {
-            if (element.attr("name") === "signup_email" || element.attr("name") === "signup_pass") {
+            if (element.attr("id") === "signup_email" || element.attr("id") === "signup_pass") {
                 error.insertAfter("#signup_pass");
             } else {
                 error.insertAfter(element);
             }
         },
+    });
+    $("#signup_email").rules("add", {
+        required: true,
+        messages: {
+            required : "Incorrect username or password.",
+            
+        }
+    });
+    $("#signup_pass").rules("add", {
+        required: true,
+        minlength: 6,
+        messages: {
+            required : "Incorrect username or password.",
+            minlength: "Your password must be at least 6 characters"
+        }
     });
     const inputSelector = ":input[required]:visible";
     function checkForm() {
