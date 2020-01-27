@@ -1,39 +1,27 @@
 $(document).ready(() => {
+    console.log("scripts load !!!!");
+    $(".locked").popover();
     /** INIT DATE FIELDS */
     function initializeDate() {
-        const dateMonth = document.getElementById('date-month');
-        const dateDay = document.getElementById('date-day');
-        const dateYear = document.getElementById('date-year');
+        const dateMonth = document.getElementById("date-month");
+        const dateDay = document.getElementById("date-day");
+        const dateYear = document.getElementById("date-year");
         
         const Today = new Date();
-        
         const minYear = Today.getYear() - 16 + 1900;
         const maxYear = Today.getYear() - 100 + 1900;
-        // console.log('min year', minYear);
-        // console.log('max year', maxYear);
+        
         for (let i = minYear; i >= maxYear; i--) {
-            const opt = document.createElement('option');
+            const opt = document.createElement("option");
             opt.value = i;
             opt.innerHTML = i;
             dateYear.appendChild(opt);
         }
-        const aMonth = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-        ];
+        
         const nMonths = 12;
+        
         for (let i = 1; i <= nMonths; i++) {
-            const opt = document.createElement('option');
+            const opt = document.createElement("option");
             
             
             if(i < 10){
@@ -42,7 +30,7 @@ $(document).ready(() => {
                 opt.setAttribute("value","0"+ i);
                 opt.setAttribute("data-number","0"+ i);
                 dateMonth.appendChild(opt);
-            }else {
+            } else {
                 opt.innerHTML = i;
                 opt.value = i;
                 opt.setAttribute("data-number", i);
@@ -51,47 +39,48 @@ $(document).ready(() => {
         }
         
         const nDays = 31;
+        
         for (let i = 1; i <= nDays; i++) {
             const opt = document.createElement("option");
             
             if(i < 10){
                 opt.innerHTML = "0"+ i;
                 opt.value = "0"+ i;
-                opt.setAttribute('value',"0"+ i);
-                opt.setAttribute('data-number',"0"+ i);
+                opt.setAttribute("value","0"+ i);
+                opt.setAttribute("data-number","0"+ i);
             } else {
                 opt.value = i;
                 opt.innerHTML = i;
-                opt.setAttribute('value', i);
-                opt.setAttribute('data-number', i);
+                opt.setAttribute("value", i);
+                opt.setAttribute("data-number", i);
             }
             dateDay.appendChild(opt);
         }
         
-        dateMonth.addEventListener('change', changeDateCount, true);
-        dateYear.addEventListener('change', changeDateCount, true);
-        dateDay.addEventListener('change', changeDateDay, true);
+        dateMonth.addEventListener("change", changeDateCount, true);
+        dateYear.addEventListener("change", changeDateCount, true);
+        dateDay.addEventListener("change", changeDateDay, true);
         
         function changeDateCount(event) {
-            const dateDay = document.getElementById('date-day');
-            const selectedYear = document.getElementById('date-year').value;
-            const selectedMonthElement = document.getElementById('date-month');
-            const selectedMonth = selectedMonthElement.options[selectedMonthElement.selectedIndex].getAttribute('value');
+            const dateDay = document.getElementById("date-day");
+            const selectedYear = document.getElementById("date-year").value;
+            const selectedMonthElement = document.getElementById("date-month");
+            const selectedMonth = selectedMonthElement.options[selectedMonthElement.selectedIndex].getAttribute("value");
             if (selectedYear && selectedMonth) {
                 const daysInMoth = getDaysInMonth(selectedMonth, selectedYear);
-                dateDay.innerHTML = '';
+                dateDay.innerHTML = "";
                 for (let i = 1; i <= daysInMoth; i++) {
-                    const opt = document.createElement('option');
+                    const opt = document.createElement("option");
                     if(i < 10){
                         opt.innerHTML = "0"+ i;
                         opt.value = "0"+ i;
-                        opt.setAttribute('value',"0"+ i);
-                        opt.setAttribute('data-number',"0"+ i);
+                        opt.setAttribute("value","0"+ i);
+                        opt.setAttribute("data-number","0"+ i);
                     } else {
                         opt.value = i;
                         opt.innerHTML = i;
-                        opt.setAttribute('value', i);
-                        opt.setAttribute('data-number', i);
+                        opt.setAttribute("value", i);
+                        opt.setAttribute("data-number", i);
                     }
                     dateDay.appendChild(opt);
                 }
@@ -113,21 +102,21 @@ $(document).ready(() => {
     
     /** INIT PHONE AND ZIP FIELDS EDIT */
     function PhoneZipVlidation() {
-        document.getElementById('phone').addEventListener('input', (e) => {
-            const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : `${x[1]}${x[2]}${x[3] ? `${x[3]}` : ''}`;
+        const phone = document.getElementById("phoneNumber");
+        phone.addEventListener("input", (e) => {
+            const x = e.target.value.replace(/\D/g, "").match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : `${x[1]}${x[2]}${x[3] ? `${x[3]}` : ""}`;
         });
         
-        const phone = document.getElementById('phone');
-        const postalCode = document.getElementById('postal_code');
+        const postalCode = document.getElementById("postal_code");
         
-        postalCode.addEventListener('change', (() => {
-            const postalCode = document.getElementById('postal_code');
-            postalCode.value = postalCode.value.replace(/[^0-9]/g, '');
+        postalCode.addEventListener("change", (() => {
+            const postalCode = document.getElementById("postal_code");
+            postalCode.value = postalCode.value.replace(/[^0-9]/g, "");
         }));
         
-        postalCode.addEventListener('keyup', (e) => {
-            let val = postalCode.value.replace(/\D/g, '');
+        postalCode.addEventListener("keyup", (e) => {
+            let val = postalCode.value.replace(/\D/g, "");
             if (val.length > 5) {
                 val = val.slice(0, 5);
                 postalCode.value = val;
@@ -138,9 +127,9 @@ $(document).ready(() => {
     
     PhoneZipVlidation();
     
-    function setDefaultSelect(idElement, position = 0, text, value = '') {
+    function setDefaultSelect(idElement, position = 0, text, value = "") {
         const selectElement = document.getElementById(idElement);
-        const firstDefaultOption = document.createElement('option');
+        const firstDefaultOption = document.createElement("option");
         selectElement.length = position;
         firstDefaultOption.text = text;
         firstDefaultOption.value = value;
@@ -165,7 +154,7 @@ $(document).ready(() => {
     function createOptionsList(obj, selectField) {
         let optionCounty;
         for (let i = 0; i < obj.length; i++) {
-            optionCounty = document.createElement('option');
+            optionCounty = document.createElement("option");
             optionCounty.text = obj[i].name;
             optionCounty.value = obj[i].name;
             selectField.add(optionCounty);
@@ -177,9 +166,9 @@ $(document).ready(() => {
         // const сountyUrl = countyDATA;
         // create select fields for County/Court of Violation
         
-        const selectCounty = setDefaultSelect('county', 0, 'Select County');
-        const selectCourt = setDefaultSelect('court', 0, 'Select Court');
-        const selectLEA = setDefaultSelect('lea', 0, 'Select LEA');
+        const selectCounty = setDefaultSelect("county", 0, "Select County");
+        const selectCourt = setDefaultSelect("court", 0, "Select Court");
+        const selectLEA = setDefaultSelect("lea", 0, "Select LEA");
         // function Get Court name from array county.json
         function getCourtValue(obj, keyText) {
             if (Array.isArray(obj)) {
@@ -200,10 +189,10 @@ $(document).ready(() => {
             }
         }
         
-        $('#leaBox').hide();
+        $("#leaBox").hide();
         const request = new XMLHttpRequest();
         // get data from сountyUrl (county.json) by AJAX request
-        request.open('GET', сountyUrl, true);
+        request.open("GET", сountyUrl, true);
         request.onload = function () {
             if (request.status === 200) {
                 const data = JSON.parse(request.responseText);
@@ -211,34 +200,34 @@ $(document).ready(() => {
                 let courtArray = [];
                 let LEAArray = [];
                 // add event when select County
-                selectCounty.addEventListener('change', function () {
+                selectCounty.addEventListener("change", function () {
                     const selectedCountyVal = selectCounty.value;
                     resetSelectElement(selectCourt);
                     enableSelectElement(selectCourt); //enable select id = "court"
-                    if ((selectedCountyVal.length !== 0) && (selectCounty.value !== 'Los Angeles')) {
+                    if ((selectedCountyVal.length !== 0) && (selectCounty.value !== "Los Angeles")) {
                         disableSelectElement(selectLEA);
                         courtArray = getCourtValue(data, selectedCountyVal); // get court array from json
                         //build select options for court select filed
                         for (let i = 0; i < courtArray.length; i++) {
-                            const optionCourt = document.createElement('option');
+                            const optionCourt = document.createElement("option");
                             optionCourt.text = courtArray[i];
                             optionCourt.value = courtArray[i];
                             selectCourt.add(optionCourt);
                         }
-                    } else if (selectCounty.value == 'Los Angeles') {
+                    } else if (selectCounty.value == "Los Angeles") {
                         resetSelectElement(selectCourt);
                         enableSelectElement(selectCourt);
                         LEAArray = getCourtValue(data, selectedCountyVal);
                         $("#leaBox").show();
-                        selectCourt.addEventListener('change', function () {
+                        selectCourt.addEventListener("change", function () {
                             const selectedCourtVal = selectCourt.value;
                             let listLEAOptions = getLEAValue(LEAArray, selectedCourtVal);
-                            // if ((selectedCourtVal !== 0) || (selectedCourtVal !== '')) {
+                            // if ((selectedCourtVal !== 0) || (selectedCourtVal !== "")) {
                             if (selectedCourtVal.length !== 0) {
                                 resetSelectElement(selectLEA);
                                 enableSelectElement(selectLEA);
                                 for (let i = 0; i < listLEAOptions.length; i++) {
-                                    let optionCourt = document.createElement('option');
+                                    let optionCourt = document.createElement("option");
                                     optionCourt.text = listLEAOptions[i];
                                     optionCourt.value = listLEAOptions[i];
                                     selectLEA.add(optionCourt);
@@ -250,8 +239,8 @@ $(document).ready(() => {
                         });
                         
                         for (let i = 0; i < LEAArray.length; i++) { //build select options for court select filed
-                            const optionCourt = document.createElement('option');
-                            const optionLEA = document.createElement('option');
+                            const optionCourt = document.createElement("option");
+                            const optionLEA = document.createElement("option");
                             optionCourt.text = LEAArray[i].courtName;
                             optionCourt.value = LEAArray[i].courtName;
                             optionLEA.text = LEAArray[i].lea;
@@ -264,11 +253,11 @@ $(document).ready(() => {
                     }
                 });
             } else {
-                console.log('there is no county.json file');
+                console.log("there is no county.json file");
             }
         };
         request.onerror = function() {
-            console.error('An error occurred fetching the JSON from ' + сountyUrl);
+            console.error("An error occurred fetching the JSON from " + сountyUrl);
         };
         request.send();
     }
@@ -279,10 +268,10 @@ $(document).ready(() => {
             for (let i = 0; i < object.length; i++) {
                 if (object[i].code === keyText) {
                     element.val("");
-                    element.attr('data-state', "");
-                    element.attr('data-rule-pattern', object[i].rule);
-                    element.attr('placeholder', object[i].description);
-                    element.attr('data-state', keyText);
+                    element.attr("data-state", "");
+                    element.attr("data-rule-pattern", object[i].rule);
+                    element.attr("placeholder", object[i].description);
+                    element.attr("data-state", keyText);
                     // return object[i].rule;
                 }
             }
@@ -303,11 +292,11 @@ $(document).ready(() => {
     }
     function licenseJSON (){
         const licenseURL = `data/regex.json`;
-        const selectState = setDefaultSelect('license-state', 0, 'Select State');
-        const licenseNumber = $('#license-number');
+        const selectState = setDefaultSelect("license-state", 0, "Select State");
+        const licenseNumber = $("#license-number");
         const request = new XMLHttpRequest();
         // get data from licenseUrl  (regex.json) by AJAX request
-        request.open('GET', licenseURL, true);
+        request.open("GET", licenseURL, true);
         request.onload = function () {
             if (request.status === 200) {
                 const rejexObj = JSON.parse(request.responseText);
@@ -315,7 +304,7 @@ $(document).ready(() => {
                 function createStatesList(rejexObj, selectField) {
                     let optionCounty;
                     for (let i = 0; i < rejexObj.length; i++) {
-                        optionCounty = document.createElement('option');
+                        optionCounty = document.createElement("option");
                         optionCounty.text = rejexObj[i].name;
                         optionCounty.value = rejexObj[i].code;
                         selectField.add(optionCounty);
@@ -323,11 +312,11 @@ $(document).ready(() => {
                 }
                 createStatesList(rejexObj, selectState);//Build Select States options list
                 // add event when select County
-                selectState.addEventListener('change', function () {
+                selectState.addEventListener("change", function () {
                     const selectedStateVal = selectState.value;
                     if(selectedStateVal == "0"){
                         licenseNumber.val("");
-                        licenseNumber.attr('placeholder', "e.g. DL05876");
+                        licenseNumber.attr("placeholder", "e.g. DL05876");
                     } else if ((selectedStateVal.length !== 0)&&(selectedStateVal !== "")) {
                         getLicenseRegex( licenseNumber, rejexObj, selectState.value);
                         document.getElementById("license-number").addEventListener("keypress", forceKeyPressUppercase, false);
@@ -337,15 +326,57 @@ $(document).ready(() => {
                     }
                 })
             } else {
-                console.log('there is no rejex.json file');
+                console.log("there is no rejex.json file");
             }
         };
         request.onerror = function() {
-            console.error('An error occurred fetching the JSON from ' + licenseURL);
+            console.error("An error occurred fetching the JSON from " + licenseURL);
         };
         request.send();
     }
     licenseJSON();
+    
+    //regex
+    $.validator.addMethod("pattern", function(value, element, ) {
+        let re = new RegExp($(element).attr("data-rule-pattern"));
+        return this.optional(element) || re.test(value);
+    }, "Please recheck your Driver’s License Number");
+    
+    $("#address").validate({
+        successClass: "valid-feedback",
+        errorClass: "invalid-feedback",
+        ignore: ":hidden",
+        groups: {
+            street_line: "str_number str_name",
+            birthday: "dobMonth dobDay dobYear dateBirth",
+        },
+        messages: {
+            street_line: {
+                required: "Please enter your street number and name"
+            },
+        },
+        errorPlacement: function(error,element) {
+            let name = element.prop("id");
+            $(element).parent("div").addClass("field-error");
+            if (name === "date-month" || name === "date-day" || name === "date-year") {
+                error.insertAfter(".dateBirth");
+            } else if (name === "street_number" || name === "#route"){
+                error.insertAfter(".street-address");
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        // submitHandler: function(form) { // <- pass "form" argument in
+        //     alert("valid form submitted");
+        //     $("#submit").attr("disabled", false);
+        //     form.submit(); // <- use "form" argument here.
+        // }
+    });
+    
+    $(".dob-field").on("blur change",function(){
+        $("#dateBirth").val($("#date-day option:selected").val()+"/"+$("#date-month option:selected").val()+"/"+$("#date-year option:selected").val());
+        console.log($("#dateBirth").val());
+    });
     $.validator.addMethod("dob", function (value, element) {
         var result = true;
         var ageMin = 16;
@@ -387,7 +418,7 @@ $(document).ready(() => {
             var currDay = currDate.getDate();
             
             var age = currYear - subYear;
-            console.log('age:', age);
+            console.log("age:", age);
             if (subMonth > currMonth) {
                 age = age - 1; // next birthday not yet reached
             } else if (subMonth == currMonth && currDay < subDay) {
@@ -398,7 +429,7 @@ $(document).ready(() => {
                 if (age < ageMin) {
                     $.validator.messages.dob = "You must be at least 16 years old to complete our course";
                     result = false;
-                    console.log('age:', age);
+                    console.log("age:", age);
                 }
             }
             
@@ -406,189 +437,31 @@ $(document).ready(() => {
                 if (age >= ageMax) {
                     $.validator.messages.dob = "Please select a valid Date of Birth";
                     result = false;
-                    console.log('age:', age);
+                    console.log("age:", age);
                 }
             }
-            console.log('dob validate good');
+            console.log("dob validate good");
         }
         console.log(result);
-        console.log('dob validate bad');
+        console.log("dob validate bad");
         return result;
     },
     "Please select a valid Date of Birth");
-    //regex
-    $.validator.addMethod("pattern", function(value, element, ) {
-            // let re = new RegExp($("#license-number").data("rule-pattern"));
-            let re = new RegExp($(element).attr('data-rule-pattern'));
-            // // console.log(regexp);
-            // console.log(re);
-            // if(!value){
-            //     $.validator.messages.dob = "Please enter your Driver’s License Number";
-            // }
-            return this.optional(element) || re.test(value);
-            // return this.optional(element) || new RegExp(regex).test(value);
-        }, "Please recheck your Driver’s License Number"
-    );
-    $("#address").validate({
-        // onkeyup: true,
-        // onfocusout: true,
-        // focusCleanup: true,
-        successClass: "valid-feedback",
-        errorClass: "invalid-feedback",
-        ignore: ":hidden",
-        rules: {
-            phone : {
-                digits: true,
-                minlength: 10,
-                maxlength: 10,
-                required: true,
-                phoneUS: true,
-            },
-            dobMonth : {
-                required: true,
-            },
-            dobDay : {
-                required: true,
-            },
-            dobYear : {
-                required: true,
-            },
-            dateBirth: {
-                required: true,
-                dob: true
-            },
-            str_address:{
-                required: true,
-            },
-            str_number: {
-                required: true,
-            },
-            str_name: {
-                required: true,
-            },
-            city: {
-                required: true,
-            },
-            state: {
-                required: true,
-            },
-            country: {
-                required : true,
-            },
-            postal_code: {
-                required : true,
-            },
-            county: {
-                required : true,
-            },
-            court: {
-                required : true,
-            },
-            lea: {
-                required : true,
-            },
-            case_number: {
-                required : true,
-            },
-            license_state: {
-                required : true,
-            },
-            license_number: {
-                required : true,
-    
-                pattern: true
-            }
-        },
-        groups: {
-            street_line: "str_number str_name",
-            birthday: "dobMonth dobDay dobYear dateBirth",
-        },
-        messages: {
-            phone: {
-                required : "Please enter your phone number",
-                minLength: "Your phone number must be 10 digits",
-                maxLength: "Your phone number must be 10 digits",
-                phoneUS: "Enter valid phone number"
-            },
-            str_address : {
-                required: "Please enter your current address",
-            },
-            // str_number: {
-            //     required: "Please enter your street number",
-            // },
-            // str_name: {
-            //     required: "Please enter your street name",
-            // },
-            street_line: {
-                required: "Please enter your street number and name"
-            },
-            city: {
-                required: "Please enter your City",
-            },
-            state: {
-                required: "Please enter your State",
-            },
-            country: {
-                required: 'Please select your Country',
-            },
-            postal_code: {
-                required : "Please enter your zip code",
-            },
-            county: {
-                required : "Please select a County",
-            },
-            court: {
-                required : "Please select a Court",
-            },
-            lea: {
-                required : "Please select a LEA Code",
-            },
-            case_number: {
-                required : "Please enter your Case Number",
-            },
-            license_state: {
-                required : "Please select your Driver’s License State",
-            },
-            license_number: {
-                required : "Please enter your Driver’s License Number",
-            }
-        },
-        errorPlacement: function(error, element) {
-            let name = element.prop("name");
-            $(element).parent('div').addClass('field-error');
-            if (name === "dobMonth" || name === "dobDay" || name === "dobYear") {
-                error.insertAfter(".dateBirth");
-            } else if (name === "str_number" || name === "str_name"){
-                error.insertAfter(".street-address");
-            } else {
-                error.insertAfter(element);
-            }
-        },
-        // submitHandler: function(form) { // <- pass 'form' argument in
-        //     alert('valid form submitted');
-        //     $("#submit").attr("disabled", false);
-        //     form.submit(); // <- use 'form' argument here.
-        // }
-    });
-    $(".dob-field").on('blur change',function(){
-        $("#dateBirth").val($('[name="dobDay"] option:selected').val()+"/"+$('[name="dobMonth"] option:selected').val()+"/"+$('[name="dobYear"] option:selected').val());
-        console.log($("#dateBirth").val());
-    });
-    $("#submit").prop('disabled', true);
+    $("#submit").prop("disabled", true);
     function checkInputs() {
         let isValid = true;
-        // $('#address :input').filter('[required]').each(function() {
-        $('#address input:required').each(function() {
-            if ($(this).val() === '') {
-                $("#submit").prop('disabled', true);
+        // $("#address :input").filter("[required]").each(function() {
+        $("#address input:required").each(function() {
+            if ($(this).val() === "") {
+                $("#submit").prop("disabled", true);
                 isValid = false;
-                console.log('submit disabled');
+                console.log("submit disabled");
                 return false;
             }
         });
-        
-        if(isValid) {$("#submit").prop('disabled', false)}
-        console.log('submit enabled');
+
+        if(isValid) {$("#submit").prop("disabled", false)}
+        console.log("submit enabled");
         return isValid;
     }
     
@@ -601,5 +474,119 @@ $(document).ready(() => {
         checkInputs();
     });
     
-    $(".locked").popover();
+    
+    
+    $("#phoneNumber").rules("add", {
+        digits: true,
+        minlength: 10,
+        maxlength: 10,
+        required: true,
+        phoneUS: true,
+        messages: {
+            required : "Please enter your phone number",
+            minLength: "Your phone number must be 10 digits",
+            maxLength: "Your phone number must be 10 digits",
+            phoneUS: "Enter valid phone number"
+        }
+    });
+    $("#date-month").rules("add", {
+        required: true,
+    });
+    $("#date-day").rules("add", {
+        required: true,
+    });
+    $("#date-year").rules("add", {
+        required: true,
+    });
+    $("#dateBirth").rules("add", {
+        required: true,
+        dob: true,
+        messages: {
+            required : "Please select a valid Date of Birth",
+        }
+    });
+    $("#county").rules("add", {
+        required: true,
+        messages: {
+            required : "Please select a County",
+        }
+    });
+    $("#court").rules("add", {
+        required: true,
+        messages: {
+            required : "Please select a Court",
+        }
+    });
+    $("#lea").rules("add", {
+        required: true,
+        messages: {
+            required : "Please select a LEA Code",
+        }
+    });
+    //address "autocomplete"
+    $("#autocomplete").rules("add", {
+        required: true,
+        messages: {
+            required : "Please enter your current address",
+        }
+    });
+    //city
+    $("#locality").rules("add", {
+        required: true,
+        messages: {
+            required : "Please enter your City",
+        }
+    });
+    //street number
+    $("#street_number").rules("add", {
+        required: true,
+    });
+    //street name
+    $("#route").rules("add", {
+        required: true,
+    });
+    //state
+    $("#administrative_area_level_1").rules("add", {
+        required: true,
+        messages: {
+            required: "Please enter your State",
+        }
+    });
+    //country
+    $("#country").rules("add", {
+        required: true,
+        messages: {
+            required: "Please select your Country",
+        }
+    });
+    //postal code
+    $("#postal_code").rules("add", {
+        required: true,
+        messages: {
+            required : "Please enter your zip code",
+        }
+    });
+    //Case Number
+    $("#case-number").rules("add", {
+        required: true,
+        messages: {
+            required : "Please enter your Case Number",
+        }
+    });
+    //License State
+    $("#license-state").rules("add", {
+        required: true,
+        messages: {
+            required : "Please select your Driver’s License State",
+        }
+    });
+    //License State
+    $("#license-number").rules("add", {
+        required: true,
+        pattern: true,
+        messages: {
+            required : "Please select your Driver’s License Number",
+        }
+    });
+    
 });
