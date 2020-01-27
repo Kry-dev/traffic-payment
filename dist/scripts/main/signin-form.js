@@ -14,32 +14,47 @@ $(document).ready(() => {
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
-        rules: {
-            signin_email: {required: true,},
-            signin_pass: {
-                required: true,
-                minlength: 6
-            }
-        },
-        groups: {
-            signin: "signin_email signin_pass",
-        },
-        messages: {
-            signin_pass: {
-                required: "Incorrect username or password.",
-                minlength: "Your password must be at least 6 characters"
-            },
-            signin_email: {
-                required: "Incorrect username or password."
-            }
-        },
+        // rules: {
+        //     signin_email: {required: true,},
+        //     signin_pass: {
+        //         required: true,
+        //         minlength: 6
+        //     }
+        // },
+        // groups: {
+        //     signin: "signin_email signin_pass",
+        // },
+        // messages: {
+        //     signin_pass: {
+        //         required: "Incorrect username or password.",
+        //         minlength: "Your password must be at least 6 characters"
+        //     },
+        //     signin_email: {
+        //         required: "Incorrect username or password."
+        //     }
+        // },
         errorPlacement: function(error, element) {
-            if (element.attr("name") =="signin_email" || element.attr("name") =="signin_pass") {
+            if (element.attr("id") =="signin_email" || element.attr("id") =="signin_pass") {
                 error.insertAfter("#signin_pass");
             } else {
                 error.insertAfter(element);
             }
         },
+    });
+    $("#signin_email").rules("add", {
+        required: true,
+        messages: {
+            required : "Incorrect username or password.",
+            
+        }
+    });
+    $("#signin_pass").rules("add", {
+        required: true,
+        minlength: 6,
+        messages: {
+            required : "Incorrect username or password.",
+            minlength: "Your password must be at least 6 characters"
+        }
     });
     const inputSelector = ":input[required]:visible";
     function checkForm() {

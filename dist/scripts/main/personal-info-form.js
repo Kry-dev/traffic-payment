@@ -15,19 +15,6 @@ $(document).ready(() => {
             opt.innerHTML = i;
             dateYear.appendChild(opt);
         }
-        const aMonth = ["January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-        ];
         const nMonths = 12;
         for (let i = 1; i <= nMonths; i++) {
             const opt = document.createElement("option");
