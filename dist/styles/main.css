@@ -7510,6 +7510,10 @@ form label.invalid-feedback {
   opacity: 0;
 }
 
+.verify-form #birthday-error {
+  position: absolute;
+}
+
 .multi-steps {
   min-width: 430px;
   margin: 0 auto;

@@ -375,7 +375,6 @@ $(document).ready(() => {
     
     $(".dob-field").on("blur change",function(){
         $("#dateBirth").val($("#date-day option:selected").val()+"/"+$("#date-month option:selected").val()+"/"+$("#date-year option:selected").val());
-        console.log($("#dateBirth").val());
     });
     $.validator.addMethod("dob", function (value, element) {
         var result = true;
