@@ -83,7 +83,6 @@ $(document).ready(() => {
         }
         
         function changeDateDay(event) {
-            console.log(event);
         }
         
         function getDaysInMonth(month, year) {
@@ -97,12 +96,12 @@ $(document).ready(() => {
     
     /** INIT PHONE AND ZIP FIELDS EDIT */
     function PhoneValidation() {
-        document.getElementById("phone").addEventListener("input", (e) => {
+        const phone = document.getElementById("phone");
+        phone.addEventListener("input", (e) => {
             const x = e.target.value.replace(/\D/g, "").match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
             e.target.value = !x[2] ? x[1] : `${x[1]}${x[2]}${x[3] ? `${x[3]}` : ""}`;
         });
         
-        const phone = document.getElementById("phone");
     
         phone.addEventListener("change", (() => {
             const postalCode = document.getElementById("phone");
@@ -130,7 +129,6 @@ $(document).ready(() => {
         //is the date valid?
         //is it within the allowed range
         var myDate = value.split("/");
-        // console.log(myDate);
         // var myDate = value;
         var subDay = myDate[0];
         var subMonth = myDate[1] - 1;
@@ -150,9 +148,7 @@ $(document).ready(() => {
             return false;
         }
         
-        console.log(isValidDate(value));
         if (calcDay != subDay || calcMonth != subMonth || calcYear != subYear) {
-            // console.log(calcDay ,subDay, calcMonth ,subMonth, calcYear,subYear);
             $.validator.messages.dob = "Please select a valid Date of Birth";
             result = false;
         }
@@ -164,7 +160,6 @@ $(document).ready(() => {
             var currDay = currDate.getDate();
             
             var age = currYear - subYear;
-            console.log("age:", age);
             if (subMonth > currMonth) {
                 age = age - 1; // next birthday not yet reached
             } else if (subMonth == currMonth && currDay < subDay) {
@@ -175,7 +170,6 @@ $(document).ready(() => {
                 if (age < ageMin) {
                     $.validator.messages.dob = "You must be at least 16 years old to complete our course";
                     result = false;
-                    console.log("age:", age);
                 }
             }
             
@@ -183,13 +177,9 @@ $(document).ready(() => {
                 if (age >= ageMax) {
                     $.validator.messages.dob = "Please select a valid Date of Birth";
                     result = false;
-                    console.log("age:", age);
                 }
             }
-            console.log("dob validate good");
         }
-        console.log(result);
-        console.log("dob validate bad");
         return result;
     },
     "Please select a valid Date of Birth");
@@ -197,64 +187,14 @@ $(document).ready(() => {
         successClass: "valid-feedback",
         errorClass: "invalid-feedback",
         ignore: ":hidden",
-        rules: {
-            first_name: {
-                required: true,
-            },
-            last_name: {
-                required: true,
-            },
-            phone: {
-                digits: true,
-                minlength: 10,
-                maxlength: 10,
-                required: true,
-                phoneUS: true,
-            },
-            dobMonth: {
-                required: true,
-            },
-            dobDay: {
-                required: true,
-            },
-            dobYear: {
-                required: true,
-            },
-            dateBirth: {
-                required: true,
-                dob: true
-            },
-            read_privacy: {
-                required: true
-            }
-            
-        },
         groups: {
             street_line: "str_number str_name",
             birthday: "dobMonth dobDay dobYear dateBirth",
         },
-        messages: {
-            phone: {
-                required: "Please enter your phone number",
-                minLength: "Your phone number must be 10 digits",
-                maxLength: "Your phone number must be 10 digits",
-                phoneUS: "Enter valid phone number"
-            },
-            first_name: {
-                required: "Please enter your first name",
-            },
-            last_name: {
-                required: "Please enter your first name",
-            },
-            read_privacy: {
-                required: "The field is not checked"
-            }
-            
-        },
         errorPlacement: function (error, element) {
-            let name = element.prop("name");
+            let name = element.prop("id");
             $(element).parent("div").addClass("field-error");
-            if (name === "dobMonth" || name === "dobDay" || name === "dobYear") {
+            if (name === "date-month" || name === "date-day" || name === "date-year") {
                 error.insertAfter(".dateBirth");
             }  else {
                 error.insertAfter(element);
@@ -262,9 +202,56 @@ $(document).ready(() => {
         },
     });
     $(".dob-field").on("blur change", function () {
-        $("#dateBirth").val($("[name=\"dobDay\"] option:selected").val() + "/" + $("[name=\"dobMonth\"] option:selected").val() + "/" + $("[name=\"dobYear\"] option:selected").val());
-        console.log($("#dateBirth").val());
+        $("#dateBirth").val($("#date-day option:selected").val() + "/" + $("#date-month option:selected").val() + "/" + $("#date-year option:selected").val());
     });
+    $("#phone").rules("add", {
+        digits: true,
+        minlength: 10,
+        maxlength: 10,
+        required: true,
+        phoneUS: true,
+        messages: {
+            required : "Please enter your phone number",
+            minLength: "Your phone number must be 10 digits",
+            maxLength: "Your phone number must be 10 digits",
+            phoneUS: "Enter valid phone number"
+        }
+    });
+    $("#date-month").rules("add", {
+        required: true,
+    });
+    $("#date-day").rules("add", {
+        required: true,
+    });
+    $("#date-year").rules("add", {
+        required: true,
+    });
+    $("#dateBirth").rules("add", {
+        required: true,
+        dob: true,
+        messages: {
+            required : "Please select a valid Date of Birth",
+        }
+    });
+    $("#first_name").rules("add", {
+        required: true,
+        messages: {
+            required : "Please enter your first name",
+        }
+    });
+    $("#last_name").rules("add", {
+        required: true,
+        messages: {
+            required : "Please enter your first name",
+        }
+    });
+    $("#read-privacy").rules("add", {
+        required: true,
+        messages: {
+            required : "The field is not checked",
+        }
+    });
+    
     const inputSelector = ":input[required]:visible";
     function checkForm() {
         // here, "this" is an input element

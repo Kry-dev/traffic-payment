@@ -83,7 +83,6 @@ $(document).ready(function() {
         }
         
         function changeDateDay(event) {
-            console.log(event);
         }
         
         function getDaysInMonth(month, year) {
