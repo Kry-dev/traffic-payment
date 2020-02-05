@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Course Completion</title>
+    <meta name="theme-color" content="#fff">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="img/favicons/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="16x16" href="img/favicons/favicon-16x16.png" type="image/png">
+    <link rel="icon" sizes="32x32" href="img/favicons/favicon-32x32.png" type="image/png">
+    <link rel="apple-touch-icon-precomposed" href="img/favicons/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="img/favicons/apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="img/favicons/apple-touch-icon-1024x1024.png">
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header border-bottom">
+        <div class="container my-auto">
+          <nav class="navbar navbar-light navbar-expand-lg"><a class="navbar-brand brand" href="/">BEST ONLINE<br>TRAFFIC SCHOOL</a>
+            <div class="multi-steps m-auto">
+              <ul class="list-unstyled multi-steps-list">
+                <li class="active"><span>Evaluation</span></li>
+                <li class="active"><span>My Info</span></li>
+                <li class="active"><span>Payment</span></li>
+                <li class="active"><span>Confirmation</span></li>
+              </ul>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <main class="content content-completion" role="main">
+        <section class="section completion">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-2"><img class="img-fluid" src="img/general/party.png" alt="party"></div>
+              <div class="col-lg-8">
+                <h2 class="mb-5">You Have Passed Traffic School!</h2>
+                <p class="mb-4">Thank you for your payment of ${{Payment_Amount}}! You will receive a copy of your certificate and a payment receipt by email.</p>
+                <p class="mb-4">We will be electronically submitting your traffic school completion certificate to the California DMV and {{selected_courthouse}} on {{date of payment}}.</p>
+                <p class="mb-4">You will receive credit for completing the course on this date. As long as it’s before 11:59 PM on your due date, you’ll be fine. You don’t need to mail in your certificate or visit the courthouse. The court will only accept our electronic submission.</p>
+                <p class="mb-4">Traffic school results can take up to eight weeks for individual courts to process. Best Online Traffic School has no control over how long the court takes to process your certificate.</p>
+              </div>
+            </div>
+            <hr class="my-48">
+            <div class="row mb-80">
+              <div class="col-lg-8 offset-lg-2">
+                <h3 class="text-danger mb-48"><span class="warning-icon"></span><strong>Next Steps! Please Read Carefully:</strong></h3>
+                <ol class="text-list">
+                  <li>
+                    <p>You are solely responsible for contacting the {{selected_courthouse}} to ensure that the court has received and processed your traffic school certificate. We will not be providing any case status updates.</p>
+                  </li>
+                  <li>
+                    <p>We recommend checking every few days for an update. Depending on the county and courthouse, you may be able to check the status over the phone or in-person.</p>
+                  </li>
+                </ol>
+                <p class="mb-0">If you wish to enroll in our Ultimate Peace of Mind Case Status Service (additional $19.99) and let us follow-up with the court for you, feel free to contact us via email or live chat.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-4 offset-lg-4"><a class="btn btn-danger w-100" href="#">Download Certificate</a></div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer mt-auto">
+        <div class="container">
+          <p class="text-center"><em>
+              <script>new Date().getFullYear() > document.write("&copy; " + new Date().getFullYear());</script> Best Online Traffic School. All Rights Reserved.</em></p>
+        </div>
+      </footer>
+    </div>
+    <!--script(src="js/signin.js")-->
+    <!--script(src="js/vendor.js")-->
+    <script src="scripts/vendor/jquery.min.js"></script>
+    <!--script(src="/scripts/vendor/popper.min.js")-->
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="scripts/vendor/bootstrap.min.js"></script>
+    <script src="scripts/vendor/jquery.validate.js"></script>
+    <script src="scripts/vendor/additional-methods.js"></script>
+    <script src="scripts/main/signin-form.js"></script>
+  </body>
+</html>
