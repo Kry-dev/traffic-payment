@@ -7654,6 +7654,10 @@ form label.invalid-feedback {
   background-color: #D0D0D0;
 }
 
+.multi-steps-list > li.active ~ li.active:after {
+  background-color: #12C0C5;
+}
+
 .personal-descr {
   padding: 80px 0 64px;
 }
@@ -11584,6 +11588,10 @@ form label.invalid-feedback {
   .navbar-expand-lg > .container-xl {
     padding-right: 0;
     padding-left: 0;
+  }
+
+  .wrapper .content-completion {
+    padding: 120px 0;
   }
 
   .header .container {

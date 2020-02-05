@@ -27,6 +27,9 @@ body {
     }
     .content-completion {
         padding: 80px 0 120px;
+        @include media-breakpoint-down(md){
+            padding: 120px 0;
+        }
     }
 }
 

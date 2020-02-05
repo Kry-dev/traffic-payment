@@ -59,8 +59,13 @@
                 background-color: $success;
             }
             ~ li{
-                &:after{
+                &:after {
                     background-color: $gray-200;
+                }
+            }
+            ~ li.active {
+                &:after {
+                    background-color: $success;
                 }
             }
         }
