@@ -1,0 +1,94 @@
+.row.payment-row
+    .col-xl-2.offset-xl-1.col-lg-2.col-md-12
+        h3.text-blue-dark Personal Information
+    .col-xl-8.col-lg-10.col-md-12
+        .form-group.mb-4
+            label Full Name
+            input.form-control-plaintext(type="text" readonly, value="Derrik Sun")
+        .form-group.row.mb-4
+            .col-xl-6.col-md-12
+                label(for='phoneNumber') Phone Number: *
+                input.form-control-plaintext.input-tel(
+                    id="phoneNumber",
+                    name="phone",
+                    type="tel",
+                    readonly,
+                    placeholder="888 888-8888",
+                    value="(873) 960-1186",
+                    required="required")
+            .col-xl-6.col-md-12
+                .row.payment-DOB.mt-4.mt-xl-0
+                    label.w-100 Date of Birth: *
+                    select.form-control.dob-field(id="date-month",name="dobMonth" required)
+                        option(value="" selected="selected", disabled="disabled") Month
+                    select.form-control.dob-field(id="date-day",name="dobDay" required)
+                        option(value="" selected="selected", disabled="disabled") Day
+                    select.form-control.dob-field(id="date-year",name="dobYear" required)
+                        option(value="" selected="selected", disabled="disabled") Year
+                    input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
+        .form-group.row.mb-0
+            .col-xl-9.col-lg-10.col-md-12
+                <!-- Search Field -->
+                #locationField.locationField
+                    label(for='autocomplete') Address: *
+                    input.form-control-plaintext(
+                        name="str_address",
+                        value="888, Brannan Street, San Francisco, California, USA, 94103",
+                        id="autocomplete",
+                        placeholder="Start typing full address",
+                        type="text",
+                        required="required",
+                        readonly,
+                    )
+
+.row.payment-row.border-bottom-0
+    .col-xl-2.offset-xl-1.col-lg-2.col-md-12
+        h3.text-blue-dark Citation Information
+    .col-xl-8.col-lg-10.col-md-12
+        .form-group.row
+            .col-sm-6.mb-4
+                label(for='county') County of Violation: *
+                select.form-control-plaintext(
+                    name="county" id="county" required)
+            .col-sm-6.mb-4
+                label(for='court') Court of Violation: *
+                select.form-control-plaintext(
+                    name="court" id="court" disabled required)
+            #leaBox.col-sm-6.mb-4
+                label(for='lea') Law Enforcement Agency (LEA): *
+                select.form-control-plaintext(
+                    name="lea" id="lea" disabled required)
+        .form-group.row
+            .col-sm-6.mb-3
+                label(for='case-number') Case Number: *
+                input.form-control-plaintext(type="text", readonly, id="case-number" value="092769302" name="case_number" placeholder="e.g. 092769302")
+            .col-sm-6
+                p.font-italic
+                    em
+                        | If you have a citation number AND a case or docket number, we suggest using the case or
+                        | docket number.
+        .form-group.row
+            .col-sm-6
+                label(for='license-state') Driver’s License State: *
+                select.form-control-plaintext(readonly, name="license_state", id="license-state")
+                    option(value="" selected="selected") Select a State
+                    +listOfStates
+            .col-sm-6
+                label(for='license-number') Driver’s License Number: *
+                input.form-control-plaintext(readonly, type="text", id="license-number" name="license_number", value="e.g. DL05876" , required)
+.row.payment-row.border-bottom-0.pt-0
+    .col-xl-8.offset-xl-3.col-md-12
+        .form-group.row.mb-0
+            .col-12
+                p.text-danger Important!
+                p.mb-5
+                    | It is your responsibility to make sure you are eligible for traffic school. We will be submitting your
+                    | course results to the DMV and Court, but the submission may not be accepted if you have unpaid court fees
+                    | or errors in your information. If you require us to RESUBMIT your test results again, we will assess a
+                    | $6.99 fee to reissue your certificate and resubmit your course results.
+            .col-md-6.col-sm-12
+                //button#submit.w-100.btn.btn-danger(type='submit', ) Save Changes & Continue
+                button#submit.w-100.btn.btn-danger(type='submit', disabled) Save Changes & Continue
+
+
+

@@ -98,3 +98,9 @@ form label {
         }
     }
 }
+.form-control-plaintext{
+    &:focus {
+        outline: 0;
+        border-color: transparent ;
+    }
+}

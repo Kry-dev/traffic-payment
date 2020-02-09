@@ -7183,6 +7183,11 @@ form label.invalid-feedback {
   padding-left: 1.5rem;
 }
 
+.form-control-plaintext:focus {
+  outline: 0;
+  border-color: transparent;
+}
+
 .header {
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   min-height: 100px;
@@ -7436,7 +7441,7 @@ form label.invalid-feedback {
   position: absolute;
   text-align: right;
   right: 0;
-  bottom: -25px;
+  bottom: -27px;
 }
 
 .form-sign .form-group label.invalid-feedback:before {
