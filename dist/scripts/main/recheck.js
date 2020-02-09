@@ -462,10 +462,6 @@ $(document).ready(() => {
         console.log("submit enabled");
         return isValid;
     }
-    
-    // $("#submit").click(function() {
-    //     alert(All checkInputs());
-    // });
 
     //Enable or disable button based on if inputs are filled or not
     $(".form-control:required").on("change" ,function() {

@@ -160,7 +160,7 @@ $(document).ready(function() {
         errorPlacement: function(error, element) {
             let name = element.prop("id");
             if (name === "date-month" || name === "date-day" || name === "date-year") {
-                error.insertAfter("#date-year");
+                error.insertAfter("#date-day");
             } else {
                 error.insertAfter(element);
             }
@@ -189,33 +189,27 @@ $(document).ready(function() {
             required : "Please select a valid Date of Birth",
         }
     });
-    function buttonStatus() {
-        let buttonDisable = function() {
-                $("#submit").attr("disabled", true);
-            },
-            buttonEnable = function() {
-                $("#submit").attr("disabled", false);
-            };
-        
-        let elements = $("select").on("keyup change", function() {
-            let valid = false;
-            buttonDisable();
-            elements.each(function() {
-                let elm = $(this),
-                    val = elm.val();
-                if ((val != "0" && elm.is("select")) || (val != "" && elm.is("input"))) {
-                    valid = true;
-                    return false;
-                }
-            });
-            
-            if(valid) {
-                buttonEnable();
-            }
-            else {
-                buttonDisable();
+    
+    //disable button by default
+    $("#submit").prop("disabled", true);
+    // check if inputs are not empty
+    function checkInputs() {
+        let select = $("select");
+        let selectFieldsCount = select.length;
+        console.log("selectFieldsCount");
+        let count = 0;
+        select.each(function(){
+            if($(this).val() != null){
+                count ++;
             }
         });
+        if(count == selectFieldsCount) {
+            $("#submit").prop("disabled", false);
+            console.log("all selected");
+        }
     }
-    buttonStatus();
+    //Enable or disable button based on if inputs are filled or not
+    $(".form-control:required").on("change" ,function() {
+        checkInputs();
+    });
 });
