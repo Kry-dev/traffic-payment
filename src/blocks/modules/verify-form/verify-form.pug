@@ -1,17 +1,17 @@
 form#verify.verify-form(action="#", method="POST")
-    .form-group.mb-5
+    .form-group.mb-4
         label() What is your Year of Birth?
         select.form-control.dob-field(id="date-year", name="dobYear" required)
             option(value="" selected="selected", disabled="disabled") Select Year
-        input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
     .form-group.mb-4
         label() What is your Month of Birth?
         select.form-control.dob-field(id="date-month", name="dobMonth" required)
             option(value="" selected="selected", disabled="disabled") Select Month
-    .form-group.mb-4
+    .form-group.mb-5
         label() What is your Day of Birth?
         select.form-control.dob-field(id="date-day", name="dobDay" required)
             option(value="" selected="selected", disabled="disabled") Select Date
+        input(type="text" name="dateBirth" id="dateBirth" class="dateBirth" placeholder="DD/MM/YYYY" data-mask="00/00/0000")
 
     .form-group
         button#submit.btn.btn-danger.w-100.mb-3(type='submit') Verify Identity
