@@ -579,7 +579,7 @@ $(document).ready(() => {
         required: true,
         pattern: true,
         messages: {
-            required : "Please select your Driver’s License Number",
+            required : "Please enter your Driver’s License Number",
         }
     });
     
