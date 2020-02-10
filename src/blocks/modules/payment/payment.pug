@@ -34,7 +34,7 @@
     .col-xl-2.offset-xl-1.col-lg-2.col-md-12
         h3.text-blue-dark Citation Information
     .col-xl-8.col-lg-10.col-md-12
-        .form-group.row
+        .form-group.row.mb-0.mb-sm-3
             .col-sm-6.mb-4
                 label(for='county') County of Violation: *
                 select.form-control(
@@ -47,12 +47,12 @@
                 label(for='lea') Law Enforcement Agency (LEA): *
                 select.form-control(
                     name="lea" id="lea" disabled required)
-        .form-group.row
+        .form-group.row.mb-0.mb-sm-3
             .col-sm-6.mb-3
                 label(for='case-number') Case Number: *
                 input.form-control(id="case-number" value="" name="case_number" placeholder="e.g. 092769302")
             .col-sm-6
-                p.font-italic
+                p.mt-0.mt-sm-4.pt-0.pt-sm-2.font-italic
                     em
                         | If you have a citation number AND a case or docket number, we suggest using the case or
                         | docket number.
