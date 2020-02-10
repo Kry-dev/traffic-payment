@@ -550,7 +550,7 @@ $(document).ready(() => {
     $("#country").rules("add", {
         required: true,
         messages: {
-            required: "Please select your Country",
+            required: "Please enter your Country",
         }
     });
     //postal code
