@@ -30,14 +30,14 @@ $(document).ready(function() {
         // Get the place details from the autocomplete object.
         const place = autocomplete.getPlace();
         for (const component in componentForm) {
-            document.getElementById(component).value = '';
+            document.getElementById(component).value = "";
             document.getElementById(component).disabled = false;
         }
         
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
         for (let i = 0; i < place.address_components.length; i++) {
-            // console.log(place.address_components);
+            console.log(place.address_components);
             const addressType = place.address_components[i].types[0];
             if (componentForm[addressType]) {
                 const val = place.address_components[i][componentForm[addressType]];
@@ -77,7 +77,7 @@ $(document).ready(function() {
     const inputs = $autocomplete.find("input");
     // let val = "";
     
-    $('#autocomplete').prop('disabled', true);
+    // $('#autocomplete').prop('disabled', true);
     console.log($('#autocomplete').val());
     $autocomplete.find('input').prop('disabled', true);
     $autocomplete.find('select').prop('disabled', true);
@@ -90,7 +90,9 @@ $(document).ready(function() {
     $save.on('click', (e) => {
         e.preventDefault();
         let getVal = inputs.map(function () {
+            console.log (this.value);
             if(this.value != 0 || this.value != ""){
+                // console.log (this.value);
                 return this.value; // $(this).val()
             }
             
