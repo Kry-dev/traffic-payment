@@ -1,5 +1,4 @@
 $(document).ready(() => {
-    console.log("scripts load !!!!");
     $(".locked").popover();
     /** INIT DATE FIELDS */
     function initializeDate() {

@@ -7385,6 +7385,10 @@ form label.invalid-feedback {
   width: 20%;
 }
 
+#autocomplete {
+  padding-right: 38px;
+}
+
 .content-sign {
   padding: 80px 0;
   position: relative;

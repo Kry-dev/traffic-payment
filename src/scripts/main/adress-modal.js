@@ -3,26 +3,26 @@ $(document).ready(function() {
     let placeSearch;
     let autocomplete;
     const componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'long_name',
-        country: 'long_name',
-        postal_code: 'short_name',
+        street_number: "short_name",
+        route: "long_name",
+        locality: "long_name",
+        administrative_area_level_1: "long_name",
+        country: "long_name",
+        postal_code: "short_name",
     };
     
     function initialize() {
         // Create the autocomplete object, restricting the search
         // to geographical location types.
         autocomplete = new google.maps.places.Autocomplete(
-            (document.getElementById('autocomplete')), { types: ['geocode'] },
+            (document.getElementById("autocomplete")), { types: ["geocode"] },
         );
-        google.maps.event.addListener(autocomplete, 'place_changed', () => {
+        google.maps.event.addListener(autocomplete, "place_changed", () => {
             fillInAddress();
         });
         
-        const autocompleteinput = document.getElementById('autocomplete');
-        autocompleteinput.addEventListener('focus keyup', geolocate, true);
+        const autocompleteinput = document.getElementById("autocomplete");
+        autocompleteinput.addEventListener("focus keyup", geolocate, true);
     }
     
     // [START region_fillform]
@@ -43,10 +43,10 @@ $(document).ready(function() {
                 const val = place.address_components[i][componentForm[addressType]];
                 const element = document.getElementById(addressType);
                 element.value = val;
-                if ((addressType == 'administrative_area_level_1') || (addressType == 'country')) {
+                if ((addressType == "administrative_area_level_1") || (addressType == "country")) {
                     const valSecond = place.address_components[i].short_name;
-                    element.setAttribute('data-code', valSecond);
-                    element.setAttribute('data-name', val);
+                    element.setAttribute("data-code", valSecond);
+                    element.setAttribute("data-name", val);
                 }
                 
                 
@@ -69,69 +69,62 @@ $(document).ready(function() {
     }
     
     initialize();
-    const $save = $('#action-save');
-    const $reset = $('#action-reset');
-    const $edit = $('#action-edit');
-    const $autocomplete = $('#autocomplete-edit');
-    const body = $('body');
+    const $save = $("#action-save");
+    const $reset = $("#action-reset");
+    const $edit = $("#action-edit");
+    const $autocomplete = $("#autocomplete-edit");
+    const body = $("body");
     const inputs = $autocomplete.find("input");
-    // let val = "";
-    
-    // $('#autocomplete').prop('disabled', true);
-    console.log($('#autocomplete').val());
-    $autocomplete.find('input').prop('disabled', true);
-    $autocomplete.find('select').prop('disabled', true);
-    $autocomplete.addClass('disabled');
-    $autocomplete.hide('fast');
-    $autocomplete.on('click', (e) => {
-        let getVal = $autocomplete.serialize();
-        console.log(getVal);
-    });
-    $save.on('click', (e) => {
+    $autocomplete.find("input").prop("disabled", true);
+    $autocomplete.find("select").prop("disabled", true);
+    $autocomplete.addClass("disabled");
+    $autocomplete.hide("fast");
+    $save.on("click", (e) => {
         e.preventDefault();
         let getVal = inputs.map(function () {
+            console.log (this);
             console.log (this.value);
             if(this.value != 0 || this.value != ""){
-                // console.log (this.value);
-                return this.value; // $(this).val()
+                return this.value;
             }
             
         }).get();
-        
-        if (!$autocomplete.hasClass('disabled')) {
-            $('#autocomplete').prop('disabled', true);
-            $autocomplete.find('input').prop('disabled', true);
-            $autocomplete.find('select').prop('disabled', true);
-            $autocomplete.addClass('disabled');
-            $autocomplete.hide('slow');
-            console.log($('#autocomplete').val());
-            $('#autocomplete').val(getVal);
-            console.log($('#autocomplete').val());
+        console.log(getVal);
+        let addressEdited = getVal.toString().replace(/,/g, ", ").replace(',',' ');
+        if (!$autocomplete.hasClass("disabled")) {
+            $("#autocomplete").prop("disabled", true);
+            $autocomplete.find("input").prop("disabled", true);
+            $autocomplete.find("select").prop("disabled", true);
+            $autocomplete.addClass("disabled");
+            $autocomplete.hide("slow");
+            console.log($("#autocomplete").val());
+            $("#autocomplete").val(addressEdited);
+            console.log($("#autocomplete").val());
         }
     });
     
-    // body.on('click', '#action-edit', (e) => {
-    $edit.on('click', (e) => {
+    // body.on("click", "#action-edit", (e) => {
+    $edit.on("click", (e) => {
         e.preventDefault();
-        if ($autocomplete.hasClass('disabled')) {
-            $('#autocomplete').prop('disabled', false);
-            $autocomplete.find('input').prop('disabled', false);
-            $autocomplete.find('select').prop('disabled', false);
-            $autocomplete.removeClass('disabled');
-            $autocomplete.show('slow');
+        if ($autocomplete.hasClass("disabled")) {
+            $("#autocomplete").prop("disabled", false);
+            $autocomplete.find("input").prop("disabled", false);
+            $autocomplete.find("select").prop("disabled", false);
+            $autocomplete.removeClass("disabled");
+            $autocomplete.show("slow");
         }
     });
     
-    body.on('click', '#action-reset', (e) => {
-        if ($autocomplete.hasClass('disabled')) {
-            $('#autocomplete').prop('disabled', false);
-            $autocomplete.find('input').prop('disabled', false);
-            $autocomplete.find('select').prop('disabled', false);
-            $autocomplete.removeClass('disabled');
-            $autocomplete.show('slow');
+    body.on("click", "#action-reset", (e) => {
+        if ($autocomplete.hasClass("disabled")) {
+            $("#autocomplete").prop("disabled", false);
+            $autocomplete.find("input").prop("disabled", false);
+            $autocomplete.find("select").prop("disabled", false);
+            $autocomplete.removeClass("disabled");
+            $autocomplete.show("slow");
         }
-        $('#autocomplete').val('');
-        $autocomplete.find('input').val('');
-        $autocomplete.find('select').val('');
+        $("#autocomplete").val("");
+        $autocomplete.find("input").val("");
+        $autocomplete.find("select").val("");
     });
 });
